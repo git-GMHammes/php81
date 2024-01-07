@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/**********************geral.css***************************/
+/* cores */
+:root {
+    font-family: Antenna, Arial, Helvetica, sans-serif;
+    --gradient-state: linear-gradient(90deg, #192844 67.81%, #472774 100%);
+    --background-color: #CFCFCF;
+    --background-color-light: #FFFF;
+    --background-color-primary: #192844;
+    --text-light: #e8e7e7;
+    --text-primary: #192844;
+    --text-button: #05F2F2;
+    --button-primary: #192844;
+    --button-red: #bf1818;
+}
+
+input, 
+select, 
+.select2-container, 
+.form-control {
+    border: 2px solid var(--blue-state);
+    border-radius: 5px;
+}
+
+/* button {
+    color: var(--text-button) !important;
+    background-color: var(--button-primary) !important;
+} */
+

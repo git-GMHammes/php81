@@ -1,0 +1,19 @@
+.formulario-div {
+    overflow: hidden;
+    border: 3px solid var(--background-color-primary);
+    border-radius: 20px;
+}
+
+.formulario-header {
+    background-color: var(--background-color-primary);
+    height: 85px;
+}
+
+.img-file-icon {
+    width: 45px;
+    height: 50px;
+}
+
+.form-control {
+    border: 1px solid var(--background-color-primary);
+}

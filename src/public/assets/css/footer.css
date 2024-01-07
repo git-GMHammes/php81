@@ -1,0 +1,33 @@
+.rodape {
+    width: 100%;
+    /* position: absolute; */
+    bottom: 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.rodape-login {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#rodape-logo-proderj {
+    width: 300px;
+    height: auto;
+    padding-top: 20px;
+}
+
+#rodape-logo-governo {
+    width: 300px;
+    height: auto;
+}
+
+.rodape-logos {
+    width: 100%;
+    height: 150px;
+    background: var(--gradient-state);
+}
+

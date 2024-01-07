@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "degase2022agenda",
+  "private_key_id": "74d453c6e3972d4419adfb08408c880055952288",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCU/e4yulObKCzE\nhZsDY9KYG9dxzlLcvuEbX46AFigKnwPVFJ5Q6Tf+X6xGOmI39Z2hSSmfcZI8gDx7\n1NMnvBS1JOaoOIZC+lcl4qjzUs/PjwyFuCdYaavw16GOolgEB8gN1azEWVv/CR6p\nGYyn/ieGOvTQ6DkHR/61kctHido6WBcU9c+paWR8YMdpFrcQxNmniakTkvomoGiG\nIhVuDB72awmUrUMjqTz2GqJq4XzitFMBfbqQ69rUgUg/NkQYk2CAj7yPpLAxNUtd\nGExisk7yoInUKX03q8px2czjxSdkgLU9C/O36BXQvoglWCGoSNsLRYI29yEh7YQa\nPCtb5lIFAgMBAAECggEAGXB6GWNDHzzu1+dQHnYO4TXvxVjLQTG+UeQw+qHN2HJq\nPxm0JnCLxP0k9yDE4HUpov5RAw5rP7VNnn8qRqCQkJVqZNKx6gHAm5Fl85XyMahl\nJPfaj/gLCaZnyWjiyl1hxSr0wtnXIWa3O3xHTe/RY9PxNTJRenLKhMoOAXsCLe/V\n0PeqgmOSRRlaaQ8JS9x3hAxzPHsnvf1U4J5AfjEB6i4BtTKtqIKH3zvTpxyCR0oo\nAeTcUrQwIvbUj6dw/7Pqcvp2gShVz7qHSW3nSTw5CEkP7Lw3694+HYvbgZToIw84\nbn5ojpHIB/jtZBdFNJ0PfZHt2Z9EpAJtGjOFUA7/QQKBgQDLkMU9X88919Cdk9JX\nyZFw10RVJbAyCV45sIcBUkdDTOtmw4ytc7r5mrx3fAKRTLM0qvDekQmsL2qyVkLR\nj35zTjeOYThpQCm5DsDVjlEXtLVGaTGJJq4ym6z5UG1LQ9fYWB6Z8sL9n1hLOj5x\npriDkwMXgDeYA/Bc1csq9dqjHQKBgQC7XouLbEhfFt47n1WdHljOPawQgrfnbiy/\n7NLUIfUU3+c6a//lXZEwPJTe3dieuNBnxiCNT4gSNF8G3ko63v0tGJv0oUt+iFmD\n2S5ny75GjudHIO74aT+eP0Z4lNf7Dw7//ra9oZXd/4EcXPhBsXDErEAkcblOkS0I\nmNhrVocOCQKBgFB3j6AtKUy27L39Wt5czWMflOFbnoSI83g2cYdyML1HwJ3Emu1N\nnBFiuzE4EgPBn+0nzUMNbhdkPvbz5kHUSRXnS0q634OrW1LNpChGs4N9aVLF7lDa\nu21B4GRFCI8B6Gaanq4YKj/7JvnFsj1WvAU2rbgydMdgdzkbQc5flOd5AoGBALL6\nav2xX6hFZd86IkPFWzsWuifDVfxhx6lFhVZRYZShFHU/+N6V9DxJgkMpUuS60Yhv\nP2T8lZQeJq+e4vU9UEYlfcO91yl1AVzqtmM7wfQQSWguU1dC4hw9gQlp1K3jAocS\nPmkB0vCOQjxfqlzGLFwR1et6HnKoRoYxynkt3DBRAoGBAMONCvSnHkJWIFTZ3zMw\nSOX8wU3w/HJ0hs/bbgdvx2iM2sTIrNMAIU1DtK+WP3IZuoPUrgvRROz20NTfs6xm\nYafDrM+LwOkNhWUomAYkNC+nurLEUSmJuHI1P3hsE+9XxTD8qkEIKFdqD9ceSsKo\nUVtZoLdqS+UlbwJZwDlZNy/r\n-----END PRIVATE KEY-----\n",
+  "client_email": "degase2022agenda@degase2022agenda.iam.gserviceaccount.com",
+  "client_id": "101981882601885957427",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/degase2022agenda%40degase2022agenda.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
