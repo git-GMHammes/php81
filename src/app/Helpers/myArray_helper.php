@@ -47,6 +47,12 @@ if (!function_exists('eagarScagaire')) {
         if (isset($parameter['enviar'])) {
             unset($parameter['enviar']);
         }
+        if (isset($parameter['json'])) {
+            unset($parameter['json']);
+        }
+        if (isset($parameter['csrf_cookie_name'])) {
+            unset($parameter['csrf_cookie_name']);
+        }
         return $parameter;
     }
 }

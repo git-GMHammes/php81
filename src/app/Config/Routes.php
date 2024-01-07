@@ -7,6 +7,28 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+$routes->addRedirect('/table/array', '/react/tabela/array');
+$routes->addRedirect('/table/api', '/react/tabela/api');
+
+# www/react/(:any)
+$routes->group('react', function ($routes) {
+    # www/react/tabela/(:any)
+    $routes->group('tabela', function ($routes) {
+        # www/react/tabela/api/(:any)
+        $routes->get('api', 'ModeloReactEndPointController::apiTable');
+        $routes->get('api/(:segment)', 'ModeloReactEndPointController::apiTable/$1');
+        $routes->get('api/(:any)', 'ModeloReactEndPointController::apiTable/$1');
+        $routes->post('api', 'ModeloReactEndPointController::apiTable');
+        $routes->post('api/(:segment)', 'ModeloReactEndPointController::apiTable/$1');
+        # www/react/tabela/array/(:any)
+        $routes->get('array', 'ModeloReactEndPointController::arrayTable');
+        $routes->get('array/(:segment)', 'ModeloReactEndPointController::arrayTable/$1');
+        $routes->get('array/(:any)', 'ModeloReactEndPointController::arrayTable/$1');
+        $routes->post('array', 'ModeloReactEndPointController::arrayTable');
+        $routes->post('array/(:segment)', 'ModeloReactEndPointController::arrayTable/$1');
+    });
+});
+
 # www/upload/(:any)
 $routes->group('upload', function ($routes) {
     # www/upload/api/(:any)

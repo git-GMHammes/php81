@@ -84,3 +84,30 @@ if (!function_exists('currency_formats')) {
         return $result;
     }
 }
+
+/**
+ * This file is part of CodeIgniter 4 framework.
+ *
+ * (c) CodeIgniter Foundation <admin@codeigniter.com>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
+// CodeIgniter currency formats Helpers
+
+if (!function_exists('partial_value')) {
+    /**
+     * Exibe um print e para o código
+     */
+    function partial_value($paramenter = NULL, $strig_value = NULL)
+    {
+        $strig_value = $strig_value != NULL ? $strig_value : 100;
+
+        if (strlen($paramenter) > $strig_value) {
+            return substr($paramenter, 0, $strig_value) . '...';
+        } else {
+            return $paramenter;
+        }
+    }
+}
