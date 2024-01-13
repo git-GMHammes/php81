@@ -23,9 +23,23 @@
 
     <main>
         <?php
-        myPrint($metadata, 'src\app\Views\react\template\main.php', true);
+        $getURI = $metadata['getURI'] ?? array();
+        myPrint($metadata['getURI'], 'src\app\Views\react\template\main.php', true);
         ?>
-        <?= view('react/react_recebe_api');?>
+        <?php if (
+            in_array('react', $getURI)
+            && in_array('tabela', $getURI)
+            && in_array('array', $getURI)
+        ) : ?>
+            <?= view('react/react_array_tab'); ?>
+        <?php endif; ?>
+        <?php if (
+            in_array('react', $getURI)
+            && in_array('tabela', $getURI)
+            && in_array('api', $getURI)
+        ) : ?>
+            <?= view('react/react_recebe_api'); ?>
+        <?php endif; ?>
     </main>
 
     <footer>

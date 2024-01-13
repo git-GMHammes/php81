@@ -1,6 +1,7 @@
 <?php
 $result; // Declaração da variável $result. Ela deve ser definida ou preenchida em algum lugar anteriormente no código.
 $jsonData = json_encode($result); // Converte o array PHP $result em uma string JSON e armazena em $jsonData.
+// myPrint($jsonData, true);
 ?>
 
 <!-- Esta é a div onde o seu aplicativo React vai ser renderizado. -->
@@ -18,8 +19,7 @@ $jsonData = json_encode($result); // Converte o array PHP $result em uma string 
         return (
             <div>
                 <h1>Dados do Array</h1> 
-                // Um cabeçalho para o conteúdo.
-
+                {/* // Um cabeçalho para o conteúdo. */}
                 <ul>
                     {data.map((item, index) => (
                         {/* 

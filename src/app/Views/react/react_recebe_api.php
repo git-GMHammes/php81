@@ -13,7 +13,7 @@
 
         React.useEffect(() => {
             // Fazendo uma chamada fetch para a API
-            fetch('http://localhost:5201/react/tabela/api')
+            fetch('https://www.intranet.degase.proderj.rj.gov.br/react/tabela/api')
                 .then(response => response.json()) // Processando a resposta para JSON
                 .then(data => setData(data)) // Atualizando o estado 'data' com os dados da resposta
                 .catch(error => console.error('Error fetching data:', error)); // Capturando erros, se houver

@@ -190,11 +190,12 @@ class ModeloReactEndPointController extends ResourceController
         try {
             // $myEndPoint = myEndPoint('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1', '123');
             // $myEndPoint = myEndPoint('https://deckofcardsapi.com/api/deck/74h2frsayy2l/draw/?count=2', '123');
-            // $myEndPoint = myEndPoint('http://localhost/react/tabela/api', '123');
-            $myEndPoint = myEndPoint('http://www.intranet.degase.proderj.rj.gov.br/react/tabela/api', '123');
-            myPrint($myEndPoint, 'src\app\Controllers\ModeloReactEndPointController.php');
+            // myPrint($myEndPoint, 'src\app\Controllers\ModeloReactEndPointController.php');
+            // $myEndPoint = myEndPoint('http://localhost:5201/react/tabela/api', '123');
+            $myEndPoint = myEndPoint('https://www.intranet.degase.proderj.rj.gov.br/react/tabela/api', '123');
             $requestJSONform = $myEndPoint['result'] ?? array();
-            $getURI = myPrint($requestJSONform, 'src\app\Controllers\ModeloReactEndPointController.php');
+            // myPrint($requestJSONform, 'src\app\Controllers\ModeloReactEndPointController.php');
+            // exit();
             $apiRespond = [
                 'status' => 'success',
                 'message' => 'API loading data (dados para carregamento da API)',
@@ -234,6 +235,7 @@ class ModeloReactEndPointController extends ResourceController
                 ]
             ];
         }
+        // exit();
         if ($parameter == 'json') {
             return $apiRespond;
         } else {
