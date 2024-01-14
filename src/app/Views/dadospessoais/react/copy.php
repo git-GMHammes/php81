@@ -1,3 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sua Página com React</title>
+    <!-- React e ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Babel via CDN -->
+    <script src="https://unpkg.com/@babel/standalone@7.12.10/babel.min.js"></script>
+</head>
+<body>
+    <div id="reactApp" data-result='<?php echo json_encode($result); ?>'></div>
+
+    <script type="text/babel">
+        function App({ data }) {
+            return (
+                <div>
+                    {data.map((item, index) => (
+                        <div key={index}>{item}</div>
+                    ))}
+                </div>
+            );
+        }
+
+        const reactAppElement = document.getElementById('reactApp');
+        const dataResult = JSON.parse(reactAppElement.getAttribute('data-result'));
+
+        ReactDOM.render(<App data={dataResult} />, reactAppElement);
+    </script>
+</body>
+</html>
+
 <!-- Exemplo de View em CodeIgniter 4 -->
 <div id="reactApp" data-result='<?php echo json_encode($result); ?>'></div>
 
