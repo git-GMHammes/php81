@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-// use App\Models\NomeModel;
+use App\Models\DadodsPessoaisModel;
 use Exception;
 
 class DadosPessoaisEndPointController extends ResourceController
@@ -15,14 +15,13 @@ class DadosPessoaisEndPointController extends ResourceController
     private $footer = 'dadospessoais/footer';
     private $head = 'dadospessoais/head';
     private $menu = 'dadospessoais/menu';
-    private $ModelResponse;
+    private $ModelDadodsPessoais;
     private $uri;
     #
     public function __construct()
     {
-        // $this->ModelResponse = new NomeModel();
+        $this->ModelDadodsPessoais = new DadodsPessoaisModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
-        return NULL;
     }
     #
     # route POST /www/sigla/rota
@@ -101,6 +100,189 @@ class DadosPessoaisEndPointController extends ResourceController
             // return view($this->template, $apiRespond);
         } else {
             return $apiRespond;
+        }
+    }
+
+    private function returnMyFunction($message = array(), $typeMessage, $dataValue = array())
+    {
+        // ['success', 'warning', 'danger'];
+        if ($message !== array()) {
+            $message['message'][$typeMessage] = $message;
+            session()->set('message',  $message);
+            session()->markAsTempdata('message', 5);
+            if ($dataValue !== array()) {
+                session()->set('value_form',  $dataValue);
+            }
+            session()->markAsTempdata('message', 15);
+        }
+        return (NULL);
+    }
+
+    private function token_csrf()
+    {
+        $token_csrf = md5(password_hash(time(), PASSWORD_DEFAULT));
+        session()->set('token_csrf',  $token_csrf);
+        session()->markAsTempdata('token_csrf', 1800);
+        // myPrint($token_csrf, 'www\oficina\app\Controllers\CustomersEndPointController.php', true);
+        return $token_csrf;
+    }
+
+    # Consumo de API
+    # route GET /www/dadospessoais/api/listar/(:any)
+    # route POST /www/dadospessoais/api/listar/(:any)
+    # Informação sobre o controller
+    # retorno do controller [VIEW]
+
+    # Consumo de API
+    # route GET /www/sigla/rota
+    # route POST /www/sigla/rota
+    # Informação sobre o controller
+    # retorno do controller [VIEW]
+    public function dbRead($parameter = NULL)
+    {
+        $request = service('request');
+        $processRequest = (array)$request->getVar();
+        $json = $processRequest['json'] ?? 0;
+        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
+        // $processRequest = eagarScagaire($processRequest);
+        #
+        $loadView = array(
+            $this->head,
+            $this->menu,
+            $this->message,
+            'dadospessoais/react/array_table',
+            $this->footer,
+        );
+        try {
+            if ($id === '/') {
+                $myEndPoint = myEndPoint('dadospessoais/api/listar', '123');
+            } else {
+                $myEndPoint = myEndPoint('dadospessoais/api/listar' . $id, '123');
+            }
+            $requestJSONform = (isset($myEndPoint['result'])) ? ($myEndPoint['result']) : (array());
+            #
+            $apiRespond = [
+                'status' => 'success',
+                'message' => 'API loading data (dados para carregamento da API)',
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Description',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                // 'method' => '__METHOD__',
+                // 'function' => '__FUNCTION__',
+                'result' => $requestJSONform,
+                'loadView' => $loadView,
+                'metadata' => [
+                    'page_title' => 'Application title',
+                    'getURI' => $this->uri->getSegments(),
+                    // Você pode adicionar campos comentados anteriormente se forem relevantes
+                    // 'method' => '__METHOD__',
+                    // 'function' => '__FUNCTION__',
+                ]
+            ];
+            if ($json == 1) {
+                $response = $this->response->setJSON($apiRespond, 201);
+            }
+        } catch (\Exception $e) {
+            $apiRespond = [
+                'status' => 'error',
+                'message' => $e->getMessage(),
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Criar Method',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                'metadata' => [
+                    'page_title' => 'ERRO - API Method',
+                    'getURI' => $this->uri->getSegments(),
+                ]
+            ];
+            if ($json == 1) {
+                $response = $this->response->setJSON($apiRespond, 500);
+            }
+        }
+        if ($json == 1) {
+            return $response;
+        } else {
+            // return $response;
+            return view($this->template, $apiRespond);
+        }
+    }
+
+    public function gg($parameter = NULL)
+    {
+        $request = service('request');
+        $processRequest = (array)$request->getVar();
+        $json = $processRequest['json'] ?? 0;
+        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
+        // $processRequest = eagarScagaire($processRequest);
+        #
+        $loadView = array(
+            $this->head,
+            $this->menu,
+            $this->message,
+            'dadospessoais/react/array_table',
+            $this->footer,
+        );
+        try {
+            if ($id === '/') {
+                $myEndPoint = myEndPoint('dadospessoais/api/listar', '123');
+            } else {
+                $myEndPoint = myEndPoint('dadospessoais/api/listar' . $id, '123');
+            }
+            $requestJSONform = (isset($myEndPoint['result'])) ? ($myEndPoint['result']) : (array());
+            $apiRespond = [
+                'status' => 'success',
+                'message' => 'API loading data (dados para carregamento da API)',
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Description',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                // 'method' => '__METHOD__',
+                // 'function' => '__FUNCTION__',
+                'result' => $requestJSONform,
+                'loadView' => $loadView,
+                'metadata' => [
+                    'page_title' => 'Application title',
+                    'getURI' => $this->uri->getSegments(),
+                    // Você pode adicionar campos comentados anteriormente se forem relevantes
+                    // 'method' => '__METHOD__',
+                    // 'function' => '__FUNCTION__',
+                ]
+            ];
+            // $response = $this->response->setJSON($apiRespond, 201);
+        } catch (\Exception $e) {
+            $apiRespond = [
+                'status' => 'error',
+                'message' => $e->getMessage(),
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Criar Method',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                'metadata' => [
+                    'page_title' => 'ERRO - API Method',
+                    'getURI' => $this->uri->getSegments(),
+                ]
+            ];
+            // $response = $this->response->setJSON($apiRespond, 500);
+        }
+        // myPrint($apiRespond, 'src\app\Controllers\DadosPessoaisEndPointController.php');
+        if ($json == 1) {
+            // return $response;
+        } else {
+            // return $response;
+            return view($this->template, $apiRespond);
         }
     }
 }

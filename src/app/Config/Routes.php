@@ -82,9 +82,9 @@ $routes->group('dadospessoais', function ($routes) {
     # www/dadospessoais/endpoint/(:any)
     $routes->group('endpoint', function ($routes) {
         # www/dadospessoais/endpoint/listar/(:any)
-        $routes->get('listar', 'MyUploadApi::dbRead');
-        $routes->get('listar/(:segment)', 'MyUploadApi::dbRead/$1');
-        $routes->get('listar/(:any)', 'MyUploadApi::dbRead/$1');
-        $routes->post('listar', 'MyUploadApi::dbRead');
+        $routes->get('listar', 'DadosPessoaisEndPointController::dbRead');
+        $routes->get('listar/(:segment)', 'DadosPessoaisEndPointController::dbRead/$1');
+        $routes->get('listar/(:any)', 'DadosPessoaisEndPointController::dbRead/$1');
+        $routes->post('listar', 'DadosPessoaisEndPointController::dbRead');
     });
 });
