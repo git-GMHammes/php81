@@ -1,3 +1,34 @@
+<div id="reactApp" data-result='<?php echo json_encode($result); ?>'></div>
+
+<script type="text/babel">
+    function App({ data }) {
+        return (
+            <div>
+                {data.map((item, index) => (
+                    <div key={index}>
+                        <p>ID: {item.id}</p>
+                        <p>Nome: {item.nome}</p>
+                        <p>Telefone: {item.telefone}</p>
+                        <p>Email: {item.email}</p>
+                        <p>Idade: {item.idade}</p>
+                        <p>CEP: {item.end_cep}</p>
+                        <p>Endereço: {item.end_complemento}</p>
+                        <p>Criado em: {item.created_at}</p>
+                        <p>Atualizado em: {item.updated_at}</p>
+                        {item.deleted_at && <p>Deletado em: {item.deleted_at}</p>}
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    const reactAppElement = document.getElementById('reactApp');
+    const dataResult = JSON.parse(reactAppElement.getAttribute('data-result'));
+
+    ReactDOM.render(<App data={dataResult} />, reactAppElement);
+</script>
+
+
 <!DOCTYPE html>
 <html>
 <head>
