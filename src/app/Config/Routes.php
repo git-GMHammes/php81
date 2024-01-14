@@ -48,3 +48,43 @@ $routes->group('upload', function ($routes) {
         $routes->post('form_upload', 'MyUploadEndpoint::formUpload');
     });
 });
+
+# www/dadospessoais/(:any)
+$routes->group('dadospessoais', function ($routes) {
+    # www/dadospessoais/api/(:any)
+    $routes->group('api', function ($routes) {
+        # www/dadospessoais/api/criar/(:any)
+        $routes->get('criar', 'DadosPessoaisApiController::create_update');
+        $routes->get('criar/(:segment)', 'DadosPessoaisApiController::create_update/$1');
+        $routes->get('criar/(:any)', 'DadosPessoaisApiController::create_update/$1');
+        $routes->post('criar', 'DadosPessoaisApiController::create_update');
+        # www/dadospessoais/api/listar/(:any)
+        $routes->get('listar', 'DadosPessoaisApiController::dbRead');
+        $routes->get('listar/(:segment)', 'DadosPessoaisApiController::dbRead/$1');
+        $routes->get('listar/(:any)', 'DadosPessoaisApiController::dbRead/$1');
+        $routes->post('listar', 'DadosPessoaisApiController::dbRead');
+        # www/dadospessoais/api/atualizar/(:any)
+        $routes->get('atualizar', 'DadosPessoaisApiController::create_update');
+        $routes->get('atualizar/(:segment)', 'DadosPessoaisApiController::create_update/$1');
+        $routes->get('atualizar/(:any)', 'DadosPessoaisApiController::create_update/$1');
+        $routes->post('atualizar', 'DadosPessoaisApiController::create_update');
+        # www/dadospessoais/api/excluir/(:any)
+        $routes->get('excluir', 'DadosPessoaisApiController::dbDelete');
+        $routes->get('excluir/(:segment)', 'DadosPessoaisApiController::dbDelete/$1');
+        $routes->get('excluir/(:any)', 'DadosPessoaisApiController::dbDelete/$1');
+        $routes->post('excluir', 'DadosPessoaisApiController::dbDelete');
+        # www/dadospessoais/api/limpar/(:any)
+        $routes->get('limpar', 'DadosPessoaisApiController::dbClean');
+        $routes->get('limpar/(:segment)', 'DadosPessoaisApiController::dbClean/$1');
+        $routes->get('limpar/(:any)', 'DadosPessoaisApiController::dbClean/$1');
+        $routes->post('limpar', 'DadosPessoaisApiController::dbClean');
+    });
+    # www/dadospessoais/endpoint/(:any)
+    $routes->group('endpoint', function ($routes) {
+        # www/dadospessoais/endpoint/listar/(:any)
+        $routes->get('listar', 'MyUploadApi::dbRead');
+        $routes->get('listar/(:segment)', 'MyUploadApi::dbRead/$1');
+        $routes->get('listar/(:any)', 'MyUploadApi::dbRead/$1');
+        $routes->post('listar', 'MyUploadApi::dbRead');
+    });
+});
