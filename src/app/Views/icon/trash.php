@@ -1,6 +1,8 @@
 <?php
 $height = (isset($height)) ? ($height) : ('16px');
 $width = (isset($width)) ? ($width) : ('16px');
+// www\catasrp\app\Views\icon\trash.php
+// Excluir
 ?>
 <span>
     <svg xmlns="http://www.w3.org/2000/svg" width="<?= $width ?>" height="<?= $height ?>" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

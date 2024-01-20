@@ -27,6 +27,24 @@ if (!function_exists('listFileIcon')) {
 if (!function_exists('listTranslatorIcon')) {
     function listTranslatorIcon($text)
     {
+        $translator['01_whatsapp'] = 'Whatsapp';
+        $translator['02_youtube'] = 'Youtube';
+        $translator['03_instagram'] = 'Instagram';
+        $translator['04_facebook'] = 'Facebook';
+        $translator['05_tiktok'] = 'TikTok';
+        $translator['07_0_twitter'] = 'Twitter';
+        $translator['07_1_twitter_x'] = 'Twitter X';
+        $translator['07_2_twitch'] = 'Twitch';
+        $translator['08_pinterest'] = 'Pinterest';
+        $translator['09_linkedin'] = 'LinkedIn';
+        $translator['10_snapchat'] = 'Snapchat';
+        $translator['11_line'] = 'Line';
+        $translator['12_wechat'] = 'Wechat';
+        $translator['13_google'] = 'Google';
+        $translator['14_git'] = 'Git';
+        $translator['15_github'] = 'Git Hub';
+        $translator['16_gitlab'] = 'Git Lab';
+        #
         $translator['align_end'] = 'Alinhe final';
         $translator['align_start'] = 'Alinhe o início';
         $translator['arrow_bar_bottom'] = 'Baixa da barra de seta';

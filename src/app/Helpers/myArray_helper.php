@@ -53,6 +53,12 @@ if (!function_exists('eagarScagaire')) {
         if (isset($parameter['csrf_cookie_name'])) {
             unset($parameter['csrf_cookie_name']);
         }
+        if (isset($parameter['ckCsrfToken'])) {
+            unset($parameter['ckCsrfToken']);
+        }
+        if (isset($parameter['select_icone'])) {
+            unset($parameter['select_icone']);
+        }
         return $parameter;
     }
 }
