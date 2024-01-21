@@ -1,7 +1,5 @@
 <div id="dados_pessoais_array_paginator" data-result='<?php echo json_encode($result); ?>'></div>
-<div class="d-flex justify-content-center">
-    &nbsp;
-</div>
+
 <script type="text/babel">
 
     // Definição de estilo para o select
@@ -32,7 +30,6 @@
         for (let i = 1; i <= Math.ceil(totalRecords / recordsPerPage); i++) {
             pageNumbers.push(i);
         }
-
         return (
             <nav>
                 <ul className='pagination'>
@@ -51,7 +48,7 @@
     function App_table_array_paginator({ data }) {
         console.log('Passou na função');
 
-        // Componente de Paginação
+        // Estados e lógica de paginação existentes
         const [currentPage, setCurrentPage] = React.useState(1);
         const [recordsPerPage, setRecordsPerPage] = React.useState(5);
 
@@ -61,31 +58,45 @@
 
         const paginate = pageNumber => setCurrentPage(pageNumber);
 
+        // Função para lidar com a mudança de registros por página
+        const handleRecordsPerPageChange = (e) => {
+            const newRecordsPerPage = Number(e.target.value);
+            const newTotalPages = Math.ceil(data.length / newRecordsPerPage);
+            // Se a página atual for maior que o novo total de páginas, vá para a última página disponível
+            const newCurrentPage = currentPage > newTotalPages ? newTotalPages : currentPage;
+
+            setRecordsPerPage(newRecordsPerPage);
+            // Certifique-se de mudar para a nova página atual se ela foi ajustada
+            setCurrentPage(newCurrentPage);
+        };
+
         return (
             <div className="container mt-4">
 
-                {/* Componente de Paginação */}
+                {/* Outros elementos e lógica do componente */}
                 <div className="d-flex justify-content-start mb-3">
-                    <select className="form-select form-select-sm"
-                    style={selectStyle}
-                    id="recordsPerPage"
-                    value={recordsPerPage}
-                    onChange={(e) => setRecordsPerPage(Number(e.target.value))}
+                    <select 
+                        className="form-select form-select-sm" 
+                        style={selectStyle} 
+                        id="recordsPerPage"
+                        value={recordsPerPage}
+                        onChange={handleRecordsPerPageChange}
                     >
-                    {[5, 10, 20, 30, 40, 50].map(number => (
-                        <option key={number} value={number}>
-                        {number}
-                        </option>
-                    ))}
+                        {[5, 10, 20, 30, 40, 50].map(number => (
+                            <option key={number} value={number}>
+                                {number}
+                            </option>
+                        ))}
                     </select> &nbsp;
                     <label htmlFor="recordsPerPage">Linhas</label>
                 </div>
-                    {/* Componente de Paginação */}
-                    <Pagination
-                        recordsPerPage={recordsPerPage}
-                        totalRecords={data.length}
-                        paginate={paginate}
-                    />
+
+                {/* Componente de Paginação */}
+                <Pagination
+                    recordsPerPage={recordsPerPage}
+                    totalRecords={data.length}
+                    paginate={paginate}
+                />
 
                 <table className="table table-hover">
                     <thead>
@@ -98,9 +109,6 @@
                             <th>Idade</th>
                             <th>CEP</th>
                             <th>Endereço</th>
-                            <th>Criado Em</th>
-                            <th>Atualizado Em</th>
-                            <th>Deletado Em</th>
                             <th>Excluir</th>
                         </tr>
                     </thead>
@@ -119,9 +127,6 @@
                                 <td>{item.idade}</td>
                                 <td>{item.end_cep}</td>
                                 <td>{item.end_complemento}</td>
-                                <td>{item.created_at}</td>
-                                <td>{item.updated_at}</td>
-                                <td>{item.deleted_at || 'N/A'}</td>
                                 <td>
                                     <a className="btn btn-outline-danger" href="#" role="button">
                                         <TrashIcon />
