@@ -150,7 +150,9 @@ class DadosPessoaisEndPointController extends ResourceController
             $this->head,
             $this->menu,
             $this->message,
-            'dadospessoais/react/array_table',
+            'dadospessoais/react/array_table_paginator',
+            // 'dadospessoais/react/array_table',
+            // 'dadospessoais/react/array_id',
             $this->footer,
         );
         try {
@@ -213,5 +215,4 @@ class DadosPessoaisEndPointController extends ResourceController
             return view($this->template, $apiRespond);
         }
     }
-
 }
