@@ -62,6 +62,7 @@
         const handleRecordsPerPageChange = (e) => {
             const newRecordsPerPage = Number(e.target.value);
             const newTotalPages = Math.ceil(data.length / newRecordsPerPage);
+            
             // Se a página atual for maior que o novo total de páginas, vá para a última página disponível
             const newCurrentPage = currentPage > newTotalPages ? newTotalPages : currentPage;
 
