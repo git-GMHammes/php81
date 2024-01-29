@@ -1,7 +1,6 @@
 <div id="dados_pessoais_array_paginator" data-result='<?php echo json_encode($result); ?>'></div>
 
 <script type="text/babel">
-
     // Definição de estilo para o select
     const selectStyle = {
         width: '60px',
@@ -23,7 +22,7 @@
             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
         </svg>
     );
-
+    
     // Componente de Paginação
     const Pagination = ({ recordsPerPage, totalRecords, paginate }) => {
         const pageNumbers = [];
@@ -45,7 +44,8 @@
         );
     };
 
-    function App_table_array_paginator({ data }) {
+    // Estados para os dados e para a paginação
+    function AppTableArrayPaginator({ data }) {
         console.log('Passou na função');
 
         // Estados e lógica de paginação existentes
@@ -73,7 +73,6 @@
 
         return (
             <div className="container mt-4">
-
                 {/* Outros elementos e lógica do componente */}
                 <div className="d-flex justify-content-start mb-3">
                     <select 
@@ -144,7 +143,6 @@
                     totalRecords={data.length}
                     paginate={paginate}
                 />
-
             </div>
         );
     }
@@ -152,6 +150,6 @@
     const reactAppElement = document.getElementById('dados_pessoais_array_paginator');
     {/* Transforma a string JSON em um objeto JavaScript. */}
     const dataResult = JSON.parse(reactAppElement.getAttribute('data-result'));
-    {/* Renderiza o componente App_table_array_paginator no DOM. */}
-    ReactDOM.render(<App_table_array_paginator data={dataResult} />, reactAppElement);
+    {/* Renderiza o componente AppTableArrayPaginator no DOM. */}
+    ReactDOM.render(<AppTableArrayPaginator data={dataResult} />, reactAppElement);
 </script>

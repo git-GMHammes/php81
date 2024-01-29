@@ -1,3 +1,4 @@
+<!-- src\app\Views\dadospessoais\react\api\002_api_table.php -->
 <div id="react_result_api_table"></div>
 
 <script type="text/babel">
@@ -50,6 +51,7 @@
 
                 {data && data.result && (
                     <table className="table table-hover">
+                        {/* Cabeçalho e corpo da tabela */}
                         <thead>
                             <tr>
                                 <th>Editar</th>
@@ -64,7 +66,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             {/*
                                 {data.result.map(item => (...))}
 
@@ -82,7 +83,6 @@
                                 Então, para cada objeto em data.result, esta expressão cria uma nova linha na tabela, 
                                 preenchendo as células com os dados desse objeto.
                             */}
-
                             {data.result.map(item => (
                                 <tr key={item.id}>
                                     <td>
@@ -110,6 +110,5 @@
             </div>
         );
     };
-
     ReactDOM.render(<App_table_api_table />, document.getElementById('react_result_api_table'));
 </script>

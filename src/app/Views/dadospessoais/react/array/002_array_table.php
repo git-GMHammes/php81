@@ -1,4 +1,6 @@
 <!-- 
+    Projeto: src\app\Views\dadospessoais\react\array\002_array_table.php
+    
     <div id="dados_pessoais" ...></div>: Este é um elemento div com um identificador 
     único id="dados_pessoais". Este div será o ponto de montagem para o aplicativo React.
     data-result=...: Um atributo data-* é usado para armazenar dados adicionais. 
@@ -38,7 +40,6 @@
         // Log no console para fins de depuração.
         console.log('Passou na função');
         // return (...): Retorna o JSX que descreve o que o React deve renderizar.
-
         return (
             // <div className="container mt-4">: Um div com classes de estilo, 
             // provavelmente do Bootstrap, para estilização.

@@ -1,3 +1,4 @@
+<!-- Projeto: src\app\Views\dadospessoais\react\array\004_array_table_filter.php -->
 <div id="dados_pessoais_array_filter" data-result='<?php echo json_encode($result); ?>'></div>
 
 <script type="text/babel">
