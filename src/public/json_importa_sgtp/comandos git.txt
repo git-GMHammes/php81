@@ -1,0 +1,8 @@
+Caminho: http://localhost:4107/json_importa_sgtp/sgtp_importa.php
+cd C:/laragon/www/intranetdegase
+git show --name-only 37514d7b4ed3ab9f3af572fb0c9232538d7f79db
+
+Ctr+q para sair
+
+
+

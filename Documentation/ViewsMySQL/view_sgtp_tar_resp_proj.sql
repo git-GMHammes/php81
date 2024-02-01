@@ -60,10 +60,14 @@ SELECT
     p.`active` AS `pro_active`,
     p.`deleted_at` AS `pro_deleted_at`
 FROM
-    `tarefa` t
-    JOIN `projeto` p ON t.`projeto_id` = p.`id`
-    LEFT JOIN `tarefa_colaborador` tc ON t.`id` = tc.`tarefa_id`
+    tarefa t
+    JOIN projeto p ON t.projeto_id = p.id
+    JOIN tarefa_colaborador tc ON t.id = tc.tarefa_id
+    JOIN colaborador c ON tc.colaborador_id = c.id
+WHERE c.nome = 'Gustavo de Melo Hammes'
+  AND YEAR(t.data_inicio_real) = 2024
 ORDER BY
-    p.`nome`,
-    tc.`created_by_name`,
-    t.`data_inicio_real`;
+    p.nome,
+    t.nome,
+    c.nome,
+    t.data_inicio_real;

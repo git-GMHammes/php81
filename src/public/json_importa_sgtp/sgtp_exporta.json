@@ -1,0 +1,398 @@
+[
+  {
+    "id": "C9344279567059",
+    "content": "src/app/Config/Autoload.php ",
+    "isEditing": "true",
+    "checked_at": "05/01/2024 12:25"
+  },
+  {
+    "id": "I1161196373232",
+    "content": "src/app/Config/Filters.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "U1480091022694",
+    "content": "src/app/Config/Pager.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "P9366150496949",
+    "content": "src/app/Config/Routes.php ",
+    "isEditing": "true",
+    "checked_at": "18/01/2024 02:27"
+  },
+  {
+    "id": "W7892879657024",
+    "content": "src/app/Controllers/AuditoriaApiController.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "W7694149224511",
+    "content": "src/app/Controllers/AuditoriaEndPointController.php ",
+    "isEditing": "true",
+    "checked_at": "06/01/2024 03:25"
+  },
+  {
+    "id": "N1546297503227",
+    "content": "src/app/Controllers/PainelEndpointController.php ",
+    "isEditing": "true",
+    "checked_at": "06/01/2024 06:27"
+  },
+  {
+    "id": "B0983083066936",
+    "content": "src/app/Controllers/RedeSocialApiController.php ",
+    "isEditing": "true",
+    "checked_at": "07/01/2024 07:34"
+  },
+  {
+    "id": "U5241942055397",
+    "content": "src/app/Controllers/_ModeloEndPointController.php ",
+    "isEditing": "true",
+    "checked_at": "05/01/2024 19:10"
+  },
+  {
+    "id": "H9378457885375",
+    "content": "src/app/Filters/AuditoriaFilter.php ",
+    "isEditing": "true",
+    "checked_at": "22/01/2024 23:54"
+  },
+  {
+    "id": "U7742799019112",
+    "content": "src/app/Helpers/myTerminalTraslation_helper.php ",
+    "isEditing": "true",
+    "checked_at": "18/01/2024 16:16"
+  },
+  {
+    "id": "P1047328135140",
+    "content": "src/app/Models/AuditoriaModel.php ",
+    "isEditing": "true",
+    "checked_at": "20/01/2024 09:50"
+  },
+  {
+    "id": "Q4198256035210",
+    "content": "src/app/Models/LogModel.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "J9036791219416",
+    "content": "src/app/Views/Pager/default_bootstrap.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "F2573078161411",
+    "content": "src/app/Views/Pager/paginate_bootstrap_1.php ",
+    "isEditing": "true",
+    "checked_at": "06/01/2024 14:19"
+  },
+  {
+    "id": "O3808556199829",
+    "content": "src/app/Views/intranet/auditoria/lista.php ",
+    "isEditing": "true",
+    "checked_at": "25/01/2024 01:32"
+  },
+  {
+    "id": "L1096749172245",
+    "content": "src/app/Views/intranet/menu.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "K9983889043698",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "N3548954057472",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "U9782516763885",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido_colecao.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "A0432580286936",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido_form.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "H9296247406639",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido_list.php ",
+    "isEditing": "true",
+    "checked_at": "13/01/2024 22:14"
+  },
+  {
+    "id": "K2237910839433",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_assunto.php ",
+    "isEditing": "true",
+    "checked_at": "12/01/2024 15:01"
+  },
+  {
+    "id": "E7004517038919",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_assunto_form.php ",
+    "isEditing": "true",
+    "checked_at": "14/01/2024 06:57"
+  },
+  {
+    "id": "N7184626574112",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_form_noticia.php ",
+    "isEditing": "true",
+    "checked_at": "04/01/2024 04:37"
+  },
+  {
+    "id": "F3412983240292",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_form_noticia2.php ",
+    "isEditing": "true",
+    "checked_at": "12/01/2024 23:38"
+  },
+  {
+    "id": "E9832580293175",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_list_assunto.php ",
+    "isEditing": "true",
+    "checked_at": "13/01/2024 06:38"
+  },
+  {
+    "id": "L5559243702951",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_list_assunto1.php ",
+    "isEditing": "true",
+    "checked_at": "07/01/2024 22:36"
+  },
+  {
+    "id": "Z3300862235170",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_atualizar.php ",
+    "isEditing": "true",
+    "checked_at": "18/01/2024 17:41"
+  },
+  {
+    "id": "M0290855360908",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_atualizar2.php ",
+    "isEditing": "true",
+    "checked_at": "19/01/2024 23:26"
+  },
+  {
+    "id": "W4426593928728",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_cadastrar.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "A8368732844281",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_cadastrar2.php ",
+    "isEditing": "true",
+    "checked_at": "03/01/2024 11:05"
+  },
+  {
+    "id": "K6812757654424",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_form_v2.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "X0879780400082",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_form_v3.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "Y3137065251701",
+    "content": "src/app/Views/intranet/painel/adm__/index.html ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "I1207798659346",
+    "content": "src/app/Views/intranet/painel/adm__/main.php ",
+    "isEditing": "true",
+    "checked_at": "02/01/2024 20:04"
+  },
+  {
+    "id": "Y8060714285390",
+    "content": "src/app/Views/intranet/painel/adm__/menu_form.php ",
+    "isEditing": "true",
+    "checked_at": "01/01/2024 23:12"
+  },
+  {
+    "id": "C0360490761697",
+    "content": "src/app/Views/intranet/painel/adm__/rede_social_form.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "I4802321165589",
+    "content": "src/app/Views/intranet/painel/adm__/rodape_rodape.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "J0714976640261",
+    "content": "src/app/Views/intranet/painel/master/main_collapse.php ",
+    "isEditing": "true",
+    "checked_at": "24/01/2024 05:19"
+  },
+  {
+    "id": "Z4025385956293",
+    "content": "src/app/Views/intranet/template/main_v2.php ",
+    "isEditing": "true",
+    "checked_at": "25/01/2024 11:38"
+  },
+  {
+    "id": "O7159771237462",
+    "content": "src/public/assets/css/autenticacao.css ",
+    "isEditing": "true",
+    "checked_at": "27/01/2024 11:04"
+  },
+  {
+    "id": "O8595442035663",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido_colecao.php ",
+    "isEditing": "true",
+    "checked_at": "27/01/2024 02:59"
+  },
+  {
+    "id": "T5440126621478",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido_form.php ",
+    "isEditing": "true",
+    "checked_at": "22/01/2024 02:06"
+  },
+  {
+    "id": "Z7806772498503",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_acesso_rapido_list.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "K7782357326401",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_assunto.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "V6568213486623",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_assunto_form.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "G0626505413924",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_form_noticia.php ",
+    "isEditing": "true",
+    "checked_at": "03/01/2024 15:33"
+  },
+  {
+    "id": "V6096743340275",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_form_noticia2.php ",
+    "isEditing": "true",
+    "checked_at": "24/01/2024 15:05"
+  },
+  {
+    "id": "Q2178176038087",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_list_assunto.php ",
+    "isEditing": "true",
+    "checked_at": "11/01/2024 21:17"
+  },
+  {
+    "id": "H3904205047297",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_list_assunto1.php ",
+    "isEditing": "true",
+    "checked_at": "26/01/2024 12:30"
+  },
+  {
+    "id": "P1714942046422",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_atualizar.php ",
+    "isEditing": "true",
+    "checked_at": "24/01/2024 18:47"
+  },
+  {
+    "id": "G7398000140174",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_atualizar2.php ",
+    "isEditing": "true",
+    "checked_at": "25/01/2024 20:35"
+  },
+  {
+    "id": "B2403219293535",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_cadastrar.php ",
+    "isEditing": "true",
+    "checked_at": "01/01/2024 15:44"
+  },
+  {
+    "id": "M4345417550982",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_cadastrar2.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "X2193019797178",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_form_v2.php ",
+    "isEditing": "true",
+    "checked_at": "01/01/2024 14:22"
+  },
+  {
+    "id": "X8492970485192",
+    "content": "src/app/Views/intranet/painel/adm__/ERRO/ERRO_noticia_form_v3.php ",
+    "isEditing": "true",
+    "checked_at": "13/01/2024 04:53"
+  },
+  {
+    "id": "Y9370768685471",
+    "content": "src/app/Views/intranet/painel/adm__/index.html ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "E0452284174651",
+    "content": "src/app/Views/intranet/painel/adm__/main.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "G2051500844581",
+    "content": "src/app/Views/intranet/painel/adm__/menu_form.php ",
+    "isEditing": "true",
+    "checked_at": "10/01/2024 22:39"
+  },
+  {
+    "id": "D0001954982864",
+    "content": "src/app/Views/intranet/painel/adm__/rede_social_form.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "V2798931920704",
+    "content": "src/app/Views/intranet/painel/adm__/rodape_rodape.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "V9514314408608",
+    "content": "src/app/Views/intranet/painel/master/main_collapse.php ",
+    "isEditing": "true",
+    "checked_at": "24/01/2024 13:27"
+  },
+  {
+    "id": "M0448779880287",
+    "content": "src/app/Views/intranet/template/main_v2.php ",
+    "isEditing": "false",
+    "checked_at": "false"
+  },
+  {
+    "id": "K0535228209434",
+    "content": "src/public/assets/css/autenticacao.css ",
+    "isEditing": "true",
+    "checked_at": "24/01/2024 17:39"
+  },
+  {
+    "id": "J3826378929967",
+    "content": "",
+    "isEditing": "true",
+    "checked_at": "06/01/2024 18:55"
+  }
+]
