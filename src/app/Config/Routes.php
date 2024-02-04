@@ -52,25 +52,11 @@ $routes->group('dadospessoais', function ($routes) {
         $routes->get('listar/api/(:segment)', 'DadosPessoaisEndPointController::dbRead_api/$1');
         $routes->get('listar/api/(:any)', 'DadosPessoaisEndPointController::dbRead_api/$1');
         $routes->post('listar/api', 'DadosPessoaisEndPointController::dbRead_api');
-    });
-});
-
-# www/react/(:any)
-$routes->group('react', function ($routes) {
-    # www/react/tabela/(:any)
-    $routes->group('tabela', function ($routes) {
-        # www/react/tabela/api/(:any)
-        $routes->get('api', 'ModeloReactEndPointController::apiTable');
-        $routes->get('api/(:segment)', 'ModeloReactEndPointController::apiTable/$1');
-        $routes->get('api/(:any)', 'ModeloReactEndPointController::apiTable/$1');
-        $routes->post('api', 'ModeloReactEndPointController::apiTable');
-        $routes->post('api/(:segment)', 'ModeloReactEndPointController::apiTable/$1');
-        # www/react/tabela/array/(:any)
-        $routes->get('array', 'ModeloReactEndPointController::arrayTable');
-        $routes->get('array/(:segment)', 'ModeloReactEndPointController::arrayTable/$1');
-        $routes->get('array/(:any)', 'ModeloReactEndPointController::arrayTable/$1');
-        $routes->post('array', 'ModeloReactEndPointController::arrayTable');
-        $routes->post('array/(:segment)', 'ModeloReactEndPointController::arrayTable/$1');
+        # www/dadospessoais/endpoint/create/dadospessoais/(:any)
+        $routes->get('create/dadospessoais', 'DadosPessoaisEndPointController::dbCreate');
+        $routes->get('create/dadospessoais/(:segment)', 'DadosPessoaisEndPointController::dbCreate/$1');
+        $routes->get('create/dadospessoais/(:any)', 'DadosPessoaisEndPointController::dbCreate/$1');
+        $routes->post('create/dadospessoais', 'DadosPessoaisEndPointController::dbCreate');
     });
 });
 

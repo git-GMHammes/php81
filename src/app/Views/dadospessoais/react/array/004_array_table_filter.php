@@ -1,6 +1,7 @@
 <!-- Projeto: src\app\Views\dadospessoais\react\array\004_array_table_filter.php -->
 <?php
-myPrint($result, 'src\app\Views\dadospessoais\react\array\004_array_table_filter.php');
+// myPrint($result, 'src\app\Views\dadospessoais\react\array\004_array_table_filter.php');
+// exit('Aqui estou');
 ?>
 <div id="dados_pessoais_array_filter" data-result='<?php echo json_encode($result); ?>'></div>
 

@@ -233,7 +233,7 @@
 </head>
 
 <body>
-    <div class="card ms-4 me-4">
+    <div class="card ms-4 me-4 mt-4 mb-4">
         <div class="card-header">
             <h5 class="card-title">
                 <div class="d-flex justify-content-center">
@@ -250,36 +250,72 @@
                         </a>
                     </div>
                     <div class="d-grid gap-2">
-                        <a class="btn btn-outline-secondary mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/array' . '/paginator'; ?>" role="button" target="_blanck">
-                            React + Array Estático (Paginação)
-                        </a>
-                    </div>
-                    <div class="d-grid gap-2">
                         <a class="btn btn-outline-success mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/array' . '/table'; ?>" role="button" target="_blanck">
                             React + Array Estático (Tabela)
                         </a>
                     </div>
                     <div class="d-grid gap-2">
-                        <a class="btn btn-outline-danger mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/array' . '/filter'; ?>" role="button" target="_blanck">
-                            React + Array Estático (Filtro)
+                        <a class="btn btn-outline-secondary mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/array' . '/paginator'; ?>" role="button" target="_blanck">
+                            React + Array Estático (Tabela/Paginação)
                         </a>
                     </div>
                     <div class="d-grid gap-2">
-                        <a class="btn btn-outline-warning mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/api'; ?>" role="button" target="_blank">
-                            React + API Dinâmico
+                        <a class="btn btn-outline-danger mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/array' . '/filter'; ?>" role="button" target="_blanck">
+                            React + Array Estático (Tabela/Filtro)
                         </a>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-warning">
+                            Warning
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-info">
+                            Info
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-dark">
+                            Dark
+                        </button>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-primary">Primary</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-secondary">Secondary</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-success">Success</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-danger">Danger</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-warning">Warning</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-info">Info</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-light">Light</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-dark">Dark</button></div>
-                    <div class="d-grid gap-2 mb-2"><button type="button" class="btn btn-outline-link">Link</button></div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-primary mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/array' . '/id'; ?>" role="button" target="_blanck">
+                            React + Api Estático (ID)
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-secondary mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/paginator'; ?>" role="button" target="_blanck">
+                            React + Api Estático (Tabela/Paginação)
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-success mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/table'; ?>" role="button" target="_blanck">
+                            React + Api Estático (Tabela)
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-danger mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/filter'; ?>" role="button" target="_blanck">
+                            React + Api Estático (Tabela/Filtro)
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-warning mb-2" href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/all_in_one'; ?>" role="button" target="_blanck">
+                            React + Api Estático (Tabela/All In One)                                                                      
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-info">
+                            Info
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-dark">
+                            Dark
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

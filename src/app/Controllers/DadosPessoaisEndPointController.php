@@ -128,6 +128,78 @@ class DadosPessoaisEndPointController extends ResourceController
     }
 
     # Consumo de API
+    # route GET /www/dadospessoais/endpoint/form/dadospessoais/(:any)
+    # route POST /www/dadospessoais/endpoint/form/dadospessoais/(:any)
+    # Informação sobre o controller
+    # retorno do controller [VIEW]
+    public function dbCreate($parameter = NULL)
+    {
+        $request = service('request');
+        $processRequest = (array)$request->getVar();
+        $json = $processRequest['json'] ?? 0;
+        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
+        $processRequest = eagarScagaire($processRequest);
+        myPrint($processRequest, 'dadospessoais/endpoint/CustomersEndPointController.php');
+        #
+        $loadView = array(
+            $this->head,
+            $this->menu,
+            $this->message,
+            'dadospessoais/react/api/006_api_form',
+            $this->footer,
+        );
+        try {
+            $requestJSONform = array();
+            $apiRespond = [
+                'status' => 'success',
+                'message' => 'API loading data (dados para carregamento da API)',
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Description',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                // 'method' => '__METHOD__',
+                // 'function' => '__FUNCTION__',
+                'result' => $processRequest,
+                'loadView' => $loadView,
+                'metadata' => [
+                    'page_title' => 'Application title',
+                    'getURI' => $this->uri->getSegments(),
+                    // Você pode adicionar campos comentados anteriormente se forem relevantes
+                    // 'method' => '__METHOD__',
+                    // 'function' => '__FUNCTION__',
+                ]
+            ];
+            $response = $this->response->setJSON($apiRespond, 201);
+        } catch (\Exception $e) {
+            $apiRespond = [
+                'status' => 'error',
+                'message' => $e->getMessage(),
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Criar Method',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                'metadata' => [
+                    'page_title' => 'ERRO - API Method',
+                    'getURI' => $this->uri->getSegments(),
+                ]
+            ];
+            $response = $this->response->setJSON($apiRespond, 500);
+        }
+        if ($json == 1) {
+            return $response;
+        } else {
+            return $response;
+            // return view($this->template, $apiRespond);
+        }
+    }
+
+    # Consumo de API
     # route GET /www/dadospessoais/endpoint/listar/array/(:any)
     # route POST /www/dadospessoais/endpoint/listar/array/(:any)
     # Informação sobre o controller
@@ -151,7 +223,9 @@ class DadosPessoaisEndPointController extends ResourceController
                 $react_parameter = 'dadospessoais/react/array/002_array_table';
                 break;
             case 'filter':
+                // myPrint('Aqui', 'dadospessoais/endpoint/CustomersEndPointController.php');
                 $react_parameter = 'dadospessoais/react/array/004_array_table_filter';
+                break;
             default:
                 myPrint('Error: ' . $parameter1, 'dadospessoais/endpoint/CustomersEndPointController.php');
                 break;
@@ -164,7 +238,6 @@ class DadosPessoaisEndPointController extends ResourceController
             $react_parameter,
             $this->footer,
         );
-        // myPrint($loadView, '', true);
         try {
             if ($id === '/') {
                 $myEndPoint = myEndPoint('dadospessoais/api/listar', '123');
@@ -232,23 +305,41 @@ class DadosPessoaisEndPointController extends ResourceController
     # route POST /www/react/tabela/api/(:any)
     # Informação sobre o controller
     # retorno do controller [VIEW]
-    public function dbRead_api($parameter = NULL)
+    public function dbRead_api($parameter1 = NULL, $parameter2 = NULL)
     {
         $request = service('request');
         $processRequest = (array)$request->getVar();
         $json = $processRequest['json'] ?? 0;
-        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
+        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
         // $processRequest = eagarScagaire($processRequest);
+        #
+        switch ($parameter1) {
+            case 'id':
+                $react_parameter = 'dadospessoais/react/api/001_api_id';
+                break;
+            case 'paginator':
+                $react_parameter = 'dadospessoais/react/api/003_api_table_paginator';
+                break;
+            case 'table':
+                $react_parameter = 'dadospessoais/react/api/002_api_table';
+                break;
+            case 'filter':
+                // myPrint('Aqui', 'dadospessoais/endpoint/CustomersEndPointController.php');
+                $react_parameter = 'dadospessoais/react/api/004_api_table_filter';
+                break;
+            case 'all_in_one':
+                $react_parameter = 'dadospessoais/react/api/005_api_all_in_one';
+                break;
+            default:
+                myPrint('Error: ' . $parameter1, 'dadospessoais/endpoint/CustomersEndPointController.php');
+                break;
+        };
         #
         $loadView = array(
             $this->head,
             $this->menu,
             $this->message,
-            'dadospessoais/react/api/005_api_all_in_one',
-            'dadospessoais/react/api/001_api_id',
-            'dadospessoais/react/api/002_api_table',
-            'dadospessoais/react/api/003_api_table_paginator',
-            'dadospessoais/react/api/004_api_table_filter',
+            $react_parameter,
             $this->footer,
         );
         try {
