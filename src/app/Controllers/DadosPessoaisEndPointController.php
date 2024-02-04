@@ -132,24 +132,39 @@ class DadosPessoaisEndPointController extends ResourceController
     # route POST /www/dadospessoais/endpoint/listar/array/(:any)
     # Informação sobre o controller
     # retorno do controller [VIEW]
-    public function dbRead_array($parameter = NULL)
+    public function dbRead_array($parameter1 = NULL, $parameter2 = NULL)
     {
         $request = service('request');
         $processRequest = (array)$request->getVar();
         $json = $processRequest['json'] ?? 0;
-        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
+        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
         // $processRequest = eagarScagaire($processRequest);
+        #
+        switch ($parameter1) {
+            case 'id':
+                $react_parameter = 'dadospessoais/react/array/001_array_id';
+                break;
+            case 'paginator':
+                $react_parameter = 'dadospessoais/react/array/003_array_table_paginator';
+                break;
+            case 'table':
+                $react_parameter = 'dadospessoais/react/array/002_array_table';
+                break;
+            case 'filter':
+                $react_parameter = 'dadospessoais/react/array/004_array_table_filter';
+            default:
+                myPrint('Error: ' . $parameter1, 'dadospessoais/endpoint/CustomersEndPointController.php');
+                break;
+        };
         #
         $loadView = array(
             $this->head,
             $this->menu,
             $this->message,
-            'dadospessoais/react/array/001_array_id',
-            'dadospessoais/react/array/002_array_table',
-            'dadospessoais/react/array/003_array_table_paginator',
-            'dadospessoais/react/array/004_array_table_filter',
+            $react_parameter,
             $this->footer,
         );
+        // myPrint($loadView, '', true);
         try {
             if ($id === '/') {
                 $myEndPoint = myEndPoint('dadospessoais/api/listar', '123');
@@ -157,6 +172,7 @@ class DadosPessoaisEndPointController extends ResourceController
                 $myEndPoint = myEndPoint('dadospessoais/api/listar' . $id, '123');
             }
             $requestJSONform = (isset($myEndPoint['result'])) ? ($myEndPoint['result']) : (array());
+            // myPrint($requestJSONform, '');
             #
             $apiRespond = [
                 'status' => 'success',
@@ -212,8 +228,8 @@ class DadosPessoaisEndPointController extends ResourceController
     }
 
     # Consumo de API
-    # route GET /www/sigla/rota
-    # route POST /www/sigla/rota
+    # route GET /www/react/tabela/api/(:any)
+    # route POST /www/react/tabela/api/(:any)
     # Informação sobre o controller
     # retorno do controller [VIEW]
     public function dbRead_api($parameter = NULL)
@@ -229,10 +245,10 @@ class DadosPessoaisEndPointController extends ResourceController
             $this->menu,
             $this->message,
             'dadospessoais/react/api/005_api_all_in_one',
-            // 'dadospessoais/react/api/001_api_id',
-            // 'dadospessoais/react/api/002_api_table',
-            // 'dadospessoais/react/api/003_api_table_paginator',
-            // 'dadospessoais/react/api/004_api_table_filter',
+            'dadospessoais/react/api/001_api_id',
+            'dadospessoais/react/api/002_api_table',
+            'dadospessoais/react/api/003_api_table_paginator',
+            'dadospessoais/react/api/004_api_table_filter',
             $this->footer,
         );
         try {
