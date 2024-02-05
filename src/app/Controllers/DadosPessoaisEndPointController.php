@@ -128,8 +128,8 @@ class DadosPessoaisEndPointController extends ResourceController
     }
 
     # Consumo de API
-    # route GET /www/dadospessoais/endpoint/form/dadospessoais/(:any)
-    # route POST /www/dadospessoais/endpoint/form/dadospessoais/(:any)
+    # route GET /www/dadospessoais/endpoint/create/dadospessoais/(:any)
+    # route POST /www/dadospessoais/endpoint/create/dadospessoais/(:any)
     # Informação sobre o controller
     # retorno do controller [VIEW]
     public function dbCreate($parameter = NULL)
@@ -139,7 +139,7 @@ class DadosPessoaisEndPointController extends ResourceController
         $json = $processRequest['json'] ?? 0;
         $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
         $processRequest = eagarScagaire($processRequest);
-        myPrint($processRequest, 'dadospessoais/endpoint/CustomersEndPointController.php');
+        // myPrint($processRequest, 'dadospessoais/endpoint/CustomersEndPointController.php');
         #
         $loadView = array(
             $this->head,
@@ -172,7 +172,9 @@ class DadosPessoaisEndPointController extends ResourceController
                     // 'function' => '__FUNCTION__',
                 ]
             ];
-            $response = $this->response->setJSON($apiRespond, 201);
+            if ($json == 1) {
+                return $response = $this->response->setJSON($apiRespond, 201);
+            }
         } catch (\Exception $e) {
             $apiRespond = [
                 'status' => 'error',
@@ -194,8 +196,8 @@ class DadosPessoaisEndPointController extends ResourceController
         if ($json == 1) {
             return $response;
         } else {
-            return $response;
-            // return view($this->template, $apiRespond);
+            return view($this->template, $apiRespond);
+            // return $response;
         }
     }
 
