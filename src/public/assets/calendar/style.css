@@ -1,0 +1,18 @@
+.calendar-day {
+  border: 1px solid #ddd;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.previous-month,
+.next-month {
+  background-color: #f0f0f0;
+}
+
+.today {
+  background-color: #ff0;
+  border-radius: 50%;
+}
+/* src\public\assets\calendar\style.css */

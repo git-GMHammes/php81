@@ -1,0 +1,25 @@
+CRITICAL - 2024-02-12 01:04:25 --> Undefined variable $response
+in APPPATH/Controllers/CalendarEndPointController.php on line 205.
+ 1 APPPATH/Controllers/CalendarEndPointController.php(205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $response', '/var/www/html/app/Controllers/CalendarEndPointController.php', 205)
+ 2 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->dbRead()
+ 3 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+ 4 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-12 01:04:47 --> Invalid file: "react/calendar/main.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('react/calendar/main.php')
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('react/calendar/main', [], true)
+ 3 APPPATH/Controllers/CalendarEndPointController.php(206): view('react/calendar/main', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->dbRead()
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-12 01:05:41 --> Invalid file: "react/calendar/main.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('react/calendar/main.php')
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('react/calendar/main', [], true)
+ 3 APPPATH/Controllers/CalendarEndPointController.php(206): view('react/calendar/main', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->dbRead()
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
