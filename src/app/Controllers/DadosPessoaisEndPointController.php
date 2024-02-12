@@ -145,6 +145,7 @@ class DadosPessoaisEndPointController extends ResourceController
             $this->head,
             $this->menu,
             $this->message,
+            // 'dadospessoais/teste_input',
             'dadospessoais/react/api/006_api_form',
             $this->footer,
         );

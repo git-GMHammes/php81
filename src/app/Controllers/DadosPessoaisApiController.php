@@ -180,8 +180,9 @@ class DadosPessoaisApiController extends ResourceController
         $token_csrf = ($processRequest['token_csrf'] ?? NULL);
         $json = ($processRequest['json'] ?? FALSE);
         $id = (isset($processRequest['id'])) ? (true) : (false);
-        // $processRequest = eagarScagaire($processRequest);
+        $processRequest = eagarScagaire($processRequest);
         #
+        // myPrint($processRequest, 'src\app\Controllers\DadosPessoaisApiController.php');
         // $processRequest = array();
         try {
             if ($id === true) {
@@ -197,6 +198,7 @@ class DadosPessoaisApiController extends ResourceController
                 }
             } elseif ($id === false) {
                 if ($this->validtoken_csrf($token_csrf)) {
+                    // myPrint($this->dbFields($processRequest), 'src\app\Controllers\DadosPessoaisApiController.php');
                     $this->ModelDadodsPessoais->dbCreate($this->dbFields($processRequest));
                     if ($this->ModelDadodsPessoais->affectedRows() > 0) {
                         $this->returnMyFunction(['Create realizado com sucesso'], 'success');

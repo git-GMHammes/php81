@@ -59,6 +59,9 @@ if (!function_exists('eagarScagaire')) {
         if (isset($parameter['select_icone'])) {
             unset($parameter['select_icone']);
         }
+        if (isset($parameter['radio-stacked'])) {
+            unset($parameter['radio-stacked']);
+        }
         return $parameter;
     }
 }
