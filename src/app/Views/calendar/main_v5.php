@@ -1,6 +1,3 @@
-<?php
-$result = (isset($result)) ? ($result) : (array());
-?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- src\app\Views\dadospessoais\react\calendar\main.php -->
@@ -23,29 +20,20 @@ $result = (isset($result)) ? ($result) : (array());
         <h1>Calendário</h1>
     </header>
     <main>
-        <div id="calendar" data-result='<?php echo json_encode($result); ?>'></div>
+        <div id="calendar"></div>
         <?php
-        // myPrint($result, '', true);
+        myPrint($result, '', true);
         ?>
     </main>
     <footer>
-        <script>
-            var baseUrl = "<?php echo base_url(); ?>";
-        </script>
         <script type="text/babel">
             const Calendar = () => {
                 const today = new Date();
-                // Acessando os dados passados para o elemento 'calendar'
-                const dataElement = document.getElementById('calendar').getAttribute('data-result');
-                const initialData = JSON.parse(dataElement).data || { ano: new Date().getFullYear(), mes: new Date().getMonth() + 1, dia: new Date().getDate() };
-
-                // Estados para ano, mês e dia, atualizados para usar os valores iniciais
-                const [currentYear, setCurrentYear] = React.useState(parseInt(initialData.ano));
-                const [currentMonth, setCurrentMonth] = React.useState(parseInt(initialData.mes) - 1); // Subtraindo 1 para alinhar com a contagem de meses do JavaScript
-                const [currentDay, setCurrentDay] = React.useState(parseInt(initialData.dia));
-
+                const [currentYear, setCurrentYear] = React.useState(today.getFullYear());
+                const [currentMonth, setCurrentMonth] = React.useState(today.getMonth());
                 const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-                const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
                 // Função para navegar para o mês anterior
                 const goToPreviousMonth = () => {
@@ -75,28 +63,21 @@ $result = (isset($result)) ? ($result) : (array());
 
                     // Preenche com os dias do mês atual, anterior e próximo
                     const calendarDays = totalSlots.map((_, index) => {
-                    const dayIndex = index - firstDayOfMonth + 1;
-                    const isCurrentMonthDay = dayIndex > 0 && dayIndex <= daysInMonth;
+                        const dayIndex = index - firstDayOfMonth + 1;
+                        const isCurrentMonthDay = dayIndex > 0 && dayIndex <= daysInMonth;
+                        const isToday = dayIndex === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+                        const btnClass = isToday ? 'btn-dark' : 'btn-outline-secondary';
 
-                    // Verifica se o dia é o dia especificado
-                    const isSelectedDay = dayIndex === currentDay && month === currentMonth && year === currentYear;
-                    const btnClass = isSelectedDay ? 'btn-dark' : 'btn-outline-secondary';
-
-                    if (isCurrentMonthDay) {
-                        const dayString = String(dayIndex).padStart(2, '0');
-                        const monthString = String(month + 1).padStart(2, '0'); // Mês é de 0-11 no JS, então adicione 1.
-                        const yearString = String(year);
-
-                        // Construa a URL completa para cada dia.
-                        const dayUrl = `${baseUrl}/calendar/endpoint/listar/${yearString}/${monthString}/${dayString}`;
-
-                        return (
-                            <td key={index} className="text-center">
-                                <a className={`btn btn-sm ${btnClass}`} href={dayUrl} role="button">
-                                    {dayString}
-                                </a>
-                            </td>
-                        );
+                        if (isCurrentMonthDay) {
+                            // Use padStart para garantir que o dia tenha dois dígitos
+                            const dayString = String(dayIndex).padStart(2, '0');
+                            return (
+                                <td key={index} className="text-center">
+                                    <a className={`btn btn-sm ${btnClass}`} href="#" role="button">
+                                        {dayString}
+                                    </a>
+                                </td>
+                            );
                         } else {
                             // Dias do mês anterior ou próximo
                             return <td key={index} className="text-center"></td>;

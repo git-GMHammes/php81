@@ -6,6 +6,11 @@
   align-items: center;
 }
 
+.week-day {
+  text-align: center;
+  /* Adicione quaisquer outros estilos que desejar aqui */
+}
+
 .previous-month,
 .next-month {
   background-color: #f0f0f0;
@@ -15,4 +20,5 @@
   background-color: #ff0;
   border-radius: 50%;
 }
+
 /* src\public\assets\calendar\style.css */

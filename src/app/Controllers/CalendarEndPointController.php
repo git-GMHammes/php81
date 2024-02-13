@@ -121,13 +121,16 @@ class CalendarEndPointController extends ResourceController
     # route POST /www/calendar/endpoint/listar/(:any)
     # Informação sobre o controller
     # retorno do controller [VIEW]
-    public function dbRead($parameter = NULL)
+    public function dbRead($parameter1 = NULL, $parameter2 = NULL, $parameter3 = NULL)
     {
         $request = service('request');
         $processRequest = (array)$request->getVar();
         $json = $processRequest['json'] ?? 0;
-        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
-        // $processRequest = eagarScagaire($processRequest);
+        $ano = ($parameter1 !== NULL) ? ('/' . $parameter1) : (NULL);
+        $mes = ($parameter1 !== NULL && $parameter2 !== NULL) ? ('/' . $parameter2) : (NULL);
+        $dia = ($parameter1 !== NULL && $parameter2 !== NULL && $parameter3 !== NULL) ? ('/' . $parameter3) : (NULL);
+        $data = $ano . $mes . $dia;
+        $processRequest = eagarScagaire($processRequest);
         #
         $loadView = array(
             // $this->head,
@@ -138,10 +141,11 @@ class CalendarEndPointController extends ResourceController
         );
         try {
             # URI da API                                                                                                          
-            $endPoint['objeto'] = myEndPoint('index.php/projeto/endereco/api/verbo', '123');
-            $requestJSONform['objeto'] = $endPoint['objeto']['result'] ?? array();
+            $endPoint['data'] = myEndPoint('calendar/api/listar' . $data, '123');
+            $requestJSONform['data'] = $endPoint['data']['result'] ?? array();
+            // myPrint($requestJSONform, 'src\app\Controllers\CalendarEndPointController.php');
             # Configuração Paginate
-            $totalItems = count($requestJSONform['objeto']);
+            $totalItems = count($requestJSONform['data']);
             $itemsPerPage = 10; // Itens por página
             // $totalPages = ceil($totalItems / $itemsPerPage);
             $currentPage = $request->getVar('page') ?? 1;
@@ -150,10 +154,10 @@ class CalendarEndPointController extends ResourceController
             $pager->setPath('intranet/painel/endpoint/master');
             $pager->makeLinks($currentPage, $itemsPerPage, $totalItems);
             # Finalização Paginate
-            $requestJSONform['objeto']['list'] = $this->paginateArray($requestJSONform['objeto'], $currentPage, $itemsPerPage);
-            $requestJSONform['objeto']['pager'] = $pager;
+            $requestJSONform['data']['list'] = $this->paginateArray($requestJSONform['data'], $currentPage, $itemsPerPage);
+            $requestJSONform['data']['pager'] = $pager;
             #
-            $requestJSONform = array();
+            $processRequest = $requestJSONform;
             $apiRespond = [
                 'status' => 'success',
                 'message' => 'API loading data (dados para carregamento da API)',
@@ -199,6 +203,7 @@ class CalendarEndPointController extends ResourceController
                 $response = $this->response->setJSON($apiRespond, 500);
             }
         }
+        // myPrint($apiRespond, 'src\app\Controllers\CalendarEndPointController.php');
         if ($json == 1) {
             return $response;
         } else {

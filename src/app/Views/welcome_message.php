@@ -318,6 +318,82 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-primary mb-2" href="<?= base_url().''; ?>" role="button" target="_blanck">
+                            Calendário
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-success mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            success
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-secondary mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            secondary
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-danger mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            danger
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-warning mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            warning
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-info">
+                            Info
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-dark">
+                            Dark
+                        </button>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-primary mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            primary
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-secondary mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            secondary
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-success mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            success
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-danger mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            danger
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-warning mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
+                            warning
+                        </a>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-info">
+                            Info
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="button" class="btn btn-outline-dark">
+                            Dark
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-footer text-right">
             Sistema Desenvolvido pela empresa Habilidade.Com

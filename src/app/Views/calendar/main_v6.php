@@ -29,9 +29,6 @@ $result = (isset($result)) ? ($result) : (array());
         ?>
     </main>
     <footer>
-        <script>
-            var baseUrl = "<?php echo base_url(); ?>";
-        </script>
         <script type="text/babel">
             const Calendar = () => {
                 const today = new Date();
@@ -75,28 +72,24 @@ $result = (isset($result)) ? ($result) : (array());
 
                     // Preenche com os dias do mês atual, anterior e próximo
                     const calendarDays = totalSlots.map((_, index) => {
-                    const dayIndex = index - firstDayOfMonth + 1;
-                    const isCurrentMonthDay = dayIndex > 0 && dayIndex <= daysInMonth;
+                        const dayIndex = index - firstDayOfMonth + 1;
+                        const isCurrentMonthDay = dayIndex > 0 && dayIndex <= daysInMonth;
 
-                    // Verifica se o dia é o dia especificado
-                    const isSelectedDay = dayIndex === currentDay && month === currentMonth && year === currentYear;
-                    const btnClass = isSelectedDay ? 'btn-dark' : 'btn-outline-secondary';
+                        // Atualize a condição para verificar se o dia é o dia especificado
+                        const isSelectedDay = dayIndex === currentDay && month === currentMonth && year === currentYear;
+                        const btnClass = isSelectedDay ? 'btn-dark' : 'btn-outline-secondary';
 
-                    if (isCurrentMonthDay) {
-                        const dayString = String(dayIndex).padStart(2, '0');
-                        const monthString = String(month + 1).padStart(2, '0'); // Mês é de 0-11 no JS, então adicione 1.
-                        const yearString = String(year);
 
-                        // Construa a URL completa para cada dia.
-                        const dayUrl = `${baseUrl}/calendar/endpoint/listar/${yearString}/${monthString}/${dayString}`;
-
-                        return (
-                            <td key={index} className="text-center">
-                                <a className={`btn btn-sm ${btnClass}`} href={dayUrl} role="button">
-                                    {dayString}
-                                </a>
-                            </td>
-                        );
+                        if (isCurrentMonthDay) {
+                            // Use padStart para garantir que o dia tenha dois dígitos
+                            const dayString = String(dayIndex).padStart(2, '0');
+                            return (
+                                <td key={index} className="text-center">
+                                    <a className={`btn btn-sm ${btnClass}`} href="#" role="button">
+                                        {dayString}
+                                    </a>
+                                </td>
+                            );
                         } else {
                             // Dias do mês anterior ou próximo
                             return <td key={index} className="text-center"></td>;
