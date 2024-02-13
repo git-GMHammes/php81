@@ -43,7 +43,6 @@ $result = (isset($result)) ? ($result) : (array());
                 const [currentYear, setCurrentYear] = React.useState(parseInt(initialData.ano));
                 const [currentMonth, setCurrentMonth] = React.useState(parseInt(initialData.mes) - 1); // Subtraindo 1 para alinhar com a contagem de meses do JavaScript
                 const [currentDay, setCurrentDay] = React.useState(parseInt(initialData.dia));
-
                 const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
                 const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
