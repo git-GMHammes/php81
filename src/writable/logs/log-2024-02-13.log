@@ -19,3 +19,14 @@ in APPPATH/Views/calendar/main.php on line 2.
  6 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
  7 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-13 22:19:50 --> unlink(/var/www/html/writable/debugbar/debugbar_1707797497.403406.json): No such file or directory
+in SYSTEMPATH/Debug/Toolbar/Collectors/History.php on line 80.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(/var/www/html/writable/debugbar/debugbar_1707797497.403406.json): No such file or directory', '/var/www/html/system/Debug/Toolbar/Collectors/History.php', 80)
+ 2 SYSTEMPATH/Debug/Toolbar/Collectors/History.php(80): unlink('/var/www/html/writable/debugbar/debugbar_1707797497.403406.json')
+ 3 SYSTEMPATH/Debug/Toolbar.php(499): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles('1707862788.797656', 20)
+ 4 SYSTEMPATH/Debug/Toolbar.php(476): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 5 APPPATH/Config/Events.php(47): CodeIgniter\Debug\Toolbar->respond()
+ 6 SYSTEMPATH/Events/Events.php(154): CodeIgniter\Events\Events::Config\{closure}()
+ 7 SYSTEMPATH/CodeIgniter.php(442): CodeIgniter\Events\Events::trigger('pre_system')
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
