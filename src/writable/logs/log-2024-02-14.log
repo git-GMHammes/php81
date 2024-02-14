@@ -1,0 +1,65 @@
+CRITICAL - 2024-02-14 01:00:43 --> Invalid file: "react/template/main.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('react/template/main.php')
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('react/template/main', [], true)
+ 3 APPPATH/Controllers/CalendarEndPointController.php(211): view('react/template/main', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->dbRead('2024', '07', '14')
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-14 01:02:31 --> syntax error, unexpected variable "$endPoint"
+in APPPATH/Controllers/CalendarEndPointController.php on line 144.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/app/Controllers/CalendarEndPointController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\CalendarEndPointController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\CalendarEndPointController')
+ 4 SYSTEMPATH/CodeIgniter.php(900): class_exists('\\App\\Controllers\\CalendarEndPointController', true)
+ 5 SYSTEMPATH/CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-14 01:04:17 --> Invalid file: "caalendar/template/main.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('caalendar/template/main.php')
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('caalendar/template/main', [], true)
+ 3 APPPATH/Controllers/CalendarEndPointController.php(211): view('caalendar/template/main', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->dbRead('2024', '07', '14')
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-14 01:04:36 --> Invalid file: "calendar/head.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('calendar/head.php')
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('calendar/head', [], true)
+ 3 APPPATH/Views/calendar/template/main.php(31): view('calendar/head')
+ 4 SYSTEMPATH/View/View.php(228): include('/var/www/html/app/Views/calendar/template/main.php')
+ 5 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('calendar/template/main', [], true)
+ 7 APPPATH/Controllers/CalendarEndPointController.php(211): view('calendar/template/main', [...])
+ 8 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->dbRead('2024', '07', '14')
+ 9 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+10 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-14 01:06:02 --> include_once(react/calendar): Failed to open stream: No such file or directory
+in APPPATH/Views/calendar/template/main.php on line 41.
+ 1 APPPATH/Views/calendar/template/main.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include_once(react/calendar): Failed to open stream: No such file or directory', '/var/www/html/app/Views/calendar/template/main.php', 41)
+ 2 APPPATH/Views/calendar/template/main.php(41): include_once()
+ 3 SYSTEMPATH/View/View.php(228): include('/var/www/html/app/Views/calendar/template/main.php')
+ 4 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('calendar/template/main', [], true)
+ 6 APPPATH/Controllers/CalendarEndPointController.php(211): view('calendar/template/main', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->dbRead('2024', '07', '14')
+ 8 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-14 01:35:26 --> Invalid file: "calendar/main.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('calendar/main.php')
+ 2 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('calendar/main', [], true)
+ 3 APPPATH/Views/calendar/template/main.php(31): view('calendar/main')
+ 4 SYSTEMPATH/View/View.php(228): include('/var/www/html/app/Views/calendar/template/main.php')
+ 5 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1190): CodeIgniter\View\View->render('calendar/template/main', [], true)
+ 7 APPPATH/Controllers/CalendarEndPointController.php(306): view('calendar/template/main', [...])
+ 8 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\CalendarEndPointController->main()
+ 9 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CalendarEndPointController))
+10 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()

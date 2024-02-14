@@ -321,13 +321,13 @@
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <div class="d-grid gap-2">
-                        <a class="btn btn-outline-primary mb-2" href="<?= base_url().''; ?>" role="button" target="_blanck">
+                        <a class="btn btn-outline-primary mb-2" href="<?= base_url() . 'calendar/endpoint/listar'; ?>" role="button" target="_blanck">
                             Calendário
                         </a>
                     </div>
                     <div class="d-grid gap-2">
-                        <a class="btn btn-outline-success mb-2" href="<?= base_url(); ?>" role="button" target="_blanck">
-                            success
+                        <a class="btn btn-outline-success mb-2" href="<?= base_url() . 'calendar/endpoint/principal'; ?>" role="button" target="_blanck">
+                            Principal
                         </a>
                     </div>
                     <div class="d-grid gap-2">

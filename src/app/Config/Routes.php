@@ -92,6 +92,11 @@ $routes->group('calendar', function ($routes) {
     });
     # www/calendar/endpoint/(:any)
     $routes->group('endpoint', function ($routes) {
+        # www/calendar/endpoint/principal/(:any)
+        $routes->get('principal', 'CalendarEndPointController::main');
+        $routes->get('principal/(:segment)', 'CalendarEndPointController::main/$1');
+        $routes->get('principal/(:any)', 'CalendarEndPointController::main/$1');
+        $routes->post('principal', 'CalendarEndPointController::main');
         # www/calendar/endpoint/listar/(:any)
         $routes->get('listar', 'CalendarEndPointController::dbRead');
         $routes->get('listar/(:segment)', 'CalendarEndPointController::dbRead/$1');
