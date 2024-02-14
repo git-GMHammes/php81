@@ -3,7 +3,7 @@
         Login
     </div>
     <div class="col-12 col-sm-6">
-        Calendario
+        <?= view('calendar/calendar_card'); ?>
     </div>
 </div>
 <div class="row">

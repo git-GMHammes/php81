@@ -224,7 +224,15 @@ class CalendarEndPointController extends ResourceController
         $ano = ($parameter1 !== NULL) ? ('/' . $parameter1) : (NULL);
         $mes = ($parameter1 !== NULL && $parameter2 !== NULL) ? ('/' . $parameter2) : (NULL);
         $dia = ($parameter1 !== NULL && $parameter2 !== NULL && $parameter3 !== NULL) ? ('/' . $parameter3) : (NULL);
-        $data = $ano . $mes . $dia;
+        if (
+            is_numeric($parameter1)
+            && is_numeric($parameter2)
+            && is_numeric($parameter3)
+        ) {
+            $data = $ano . $mes . $dia;
+        } else {
+            $data = NULL;
+        }
         $processRequest = eagarScagaire($processRequest);
         #
         $loadView = array(

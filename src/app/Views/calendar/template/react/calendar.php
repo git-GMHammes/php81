@@ -10,7 +10,7 @@
 
         // Estados para ano, mês e dia, atualizados para usar os valores iniciais
         const [currentYear, setCurrentYear] = React.useState(parseInt(initialData.ano));
-        const [currentMonth, setCurrentMonth] = React.useState(parseInt(initialData.mes) - 1); // Subtraindo 1 para alinhar com a contagem de meses do JavaScript
+        const [currentMonth, setCurrentMonth] = React.useState(parseInt(initialData.mes) - 1);
         const [currentDay, setCurrentDay] = React.useState(parseInt(initialData.dia));
         const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
         const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -56,7 +56,7 @@
                 const yearString = String(year);
 
                 // Construa a URL completa para cada dia.
-                const dayUrl = `${baseUrl}calendar/endpoint/listar/${yearString}/${monthString}/${dayString}`;
+                const dayUrl = `${baseUrl}calendar/endpoint/principal/${yearString}/${monthString}/${dayString}`;
 
                 return (
                     <td key={index} className="text-center">

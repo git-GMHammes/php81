@@ -21,7 +21,7 @@ $result = (isset($result)) ? ($result) : (array());
 <body>
     <header>
         <div class="mt-4 mb-4 ms-4 me-4">
-            <h1>Calendário</h1>
+            <h1>PROES - Protótipo de Cadastro e Registro</h1>
         </div>
     </header>
     <main>
