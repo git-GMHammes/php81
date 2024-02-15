@@ -56,7 +56,7 @@
                 const yearString = String(year);
 
                 // Construa a URL completa para cada dia.
-                const dayUrl = `${baseUrl}calendar/endpoint/principal/${yearString}/${monthString}/${dayString}`;
+                const dayUrl = `${baseUrl}calendar/endpoint/principal/${yearString}/${monthString}/${dayString}#a_calendario`;
 
                 return (
                     <td key={index} className="text-center">
@@ -90,11 +90,11 @@
 
         return (
             <div className="mt-2 mb-2 ms-2 me-2">
-            <div className="d-flex justify-content-center btn-sm mt-2 mb-2 ms-2 me-2">
-                <button className="btn btn-outline-secondary btn-sm mt-2 mb-2 ms-2 me-2" onClick={goToPreviousMonth}>&lt; Anterior</button>
-                    <h3 className="text-center btn-sm mt-2 mb-2 ms-2 me-2">{months[currentMonth]} {currentYear}</h3>
-                <button className="btn btn-outline-secondary btn-sm mt-2 mb-2 ms-2 me-2" onClick={goToNextMonth}>Próximo &gt;</button>
-            </div>
+                <div className="d-flex justify-content-center btn-sm mt-2 mb-2 ms-2 me-2">
+                    <button className="btn btn-outline-secondary btn-sm mt-2 mb-2 ms-2 me-2" onClick={goToPreviousMonth}>&lt; Anterior</button>
+                        <h3 className="text-center btn-sm mt-2 mb-2 ms-2 me-2">{months[currentMonth]} {currentYear}</h3>
+                    <button className="btn btn-outline-secondary btn-sm mt-2 mb-2 ms-2 me-2" onClick={goToNextMonth}>Próximo &gt;</button>
+                </div>
                 <table className="table table-bordered border-dark table-hover">
                     <thead>
                         <tr className="fs-6">

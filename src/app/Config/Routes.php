@@ -62,7 +62,20 @@ $routes->group('dadospessoais', function ($routes) {
 
 # www/calendar/(:any)
 $routes->group('calendar', function ($routes) {
-    # www/calendar/api/(:any)
+    # www/calendar/usuario/(:any)
+    $routes->group('usuario', function ($routes) {
+        # www/calendar/usuario/api/(:any)
+        $routes->group('api', function ($routes) {
+            # www/calendar/usuario/api/criar/(:any)
+            $routes->get('criar', 'UserApiController::create_update');
+            $routes->get('criar/(:segment)', 'UserApiController::create_update/$1');
+            $routes->get('criar/(:any)', 'UserApiController::create_update/$1');
+            $routes->post('criar', 'UserApiController::create_update');
+            $routes->post('criar/(:any)', 'UserApiController::create_update/$1');
+        });
+        $routes->group('endpoint', function ($routes) {
+        });
+    });
     $routes->group('api', function ($routes) {
         # www/calendar/api/criar/(:any)
         $routes->get('criar', 'CalendarApiController::create_update');
@@ -129,4 +142,3 @@ $routes->group('upload', function ($routes) {
         $routes->post('form_upload', 'MyUploadEndpoint::formUpload');
     });
 });
-

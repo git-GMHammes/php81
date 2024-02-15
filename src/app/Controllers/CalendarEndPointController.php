@@ -24,6 +24,16 @@ class CalendarEndPointController extends ResourceController
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
         return NULL;
     }
+
+    private function token_csrf()
+    {
+        $token_csrf = md5(password_hash(time(), PASSWORD_DEFAULT));
+        session()->set('token_csrf',  $token_csrf);
+        session()->markAsTempdata('token_csrf', 1800);
+        // myPrint($token_csrf, 'www\oficina\app\Controllers\CustomersEndPointController.php', true);
+        return $token_csrf;
+    }
+
     private function paginateArray($data, $page, $perPage)
     {
         // Calcula o offset
@@ -218,6 +228,7 @@ class CalendarEndPointController extends ResourceController
     # retorno do controller [VIEW]
     public function main($parameter1 = NULL, $parameter2 = NULL, $parameter3 = NULL)
     {
+        $this->token_csrf();
         $request = service('request');
         $processRequest = (array)$request->getVar();
         $json = $processRequest['json'] ?? 0;

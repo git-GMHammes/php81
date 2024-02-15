@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mt-2 mb-2 ms-2 me-2" id="a_calendario">
     <div class="card-header">
         <h5 class="card-title">Calendário</h5>
     </div>
