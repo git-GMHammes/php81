@@ -233,3 +233,4 @@ WARNING - 2024-02-15 00:55:18 --> [DEPRECATED] Optional parameter $message decla
  6 SYSTEMPATH/CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
  7 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-02-15 15:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
