@@ -1,0 +1,17 @@
+<script>
+    const socket = new WebSocket('ws://189.126.105.136:4109');
+
+    // Abertura da conexão
+    socket.addEventListener('open', function (event) {
+        console.log('Connected to WS Server');
+    });
+
+    // Escuta por mensagens
+    socket.addEventListener('message', function (event) {
+        console.log('Message from server ', event.data);
+    });
+
+    // Enviar uma mensagem ao servidor
+    // socket.send('your message');
+
+</script>

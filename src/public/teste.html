@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <div id="messages"></div>
+
+    <script>
+        const socket = new WebSocket('ws://189.126.105.136:4109');
+
+        // Abertura da conexão
+        socket.addEventListener('open', function (event) {
+            console.log('Connected to WS Server');
+            // Exibe uma mensagem na página
+            document.getElementById('messages').innerText = 'Connected to WS Server';
+        });
+
+        // Escuta por mensagens
+        socket.addEventListener('message', function (event) {
+            console.log('Message from server ', event.data);
+            // Exibe a mensagem recebida na página
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p>Message from server: ${event.data}</p>`;
+        });
+
+        // Enviar uma mensagem ao servidor
+        function sendMessage() {
+            const message = 'your message'; // Substitua com a sua mensagem
+            socket.send(message);
+            console.log('Message sent to server: ', message);
+            // Exibe a mensagem enviada na página
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p>Message sent to server: ${message}</p>`;
+        }
+
+        // Descomente a linha abaixo para enviar uma mensagem assim que a conexão abrir
+        // socket.addEventListener('open', sendMessage);
+
+    </script>
+</body>
+</html>
