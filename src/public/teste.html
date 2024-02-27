@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+    <script>
+        var ws;
+
+        function connect() {
+            var server = 'ws://10.146.84.151:4109'; // WebSocket server address
+            ws = new WebSocket(server);
+
+            ws.onopen = function () {
+                log('Connected');
+            };
+
+            ws.onclose = function () {
+                log('Disconnected');
+            };
+
+            ws.onmessage = function (event) {
+                log('Message: ' + event.data);
+            };
+
+            ws.onerror = function () {
+                log('Error occurred!');
+            };
+        }
+
+        function disconnect() {
+            if (ws) {
+                ws.close();
+            }
+        }
+
+        function sendMessage() {
+            var message = document.getElementById('message').value;
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(message);
+            } else {
+                log('WebSocket is not connected.');
+            }
+        }
+
+        function log(message) {
+            var logDiv = document.getElementById('log');
+            logDiv.innerHTML += message + '<br>';
+        }
+    </script>
+</head>
+
+<body>
+    <h2>WebSocket Test</h2>
+    <div>
+        <button onclick="connect()">Connect</button>
+        <button onclick="disconnect()">Disconnect</button>
+    </div>
+    <div>
+        Message: <input type="text" id="message">
+        <button onclick="sendMessage()">Send Message</button>
+    </div>
+    <div id="log" style="height:200px; overflow:auto; border:1px solid #ccc; margin-top:10px;"></div>
+</body>
+
+</html>

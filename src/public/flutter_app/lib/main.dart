@@ -1,64 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel/io.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  final WebSocketChannel channel = WebSocketChannel.connect(
-    Uri.parse('ws://127.0.0.1:4109'),
-  );
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('WebSocket Test'),
-        ),
-        body: WebSocketTest(channel: channel),
+      title: 'WebSocket Test',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: WebSocketTestPage(),
     );
   }
 }
 
-class WebSocketTest extends StatefulWidget {
-  final WebSocketChannel channel;
-
-  const WebSocketTest({Key? key, required this.channel}) : super(key: key);
-
+class WebSocketTestPage extends StatefulWidget {
   @override
-  WebSocketTestState createState() => WebSocketTestState();
+  _WebSocketTestPageState createState() => _WebSocketTestPageState();
 }
 
-class WebSocketTestState extends State<WebSocketTest> {
+class _WebSocketTestPageState extends State<WebSocketTestPage> {
+  late IOWebSocketChannel channel;
   bool isConnected = false;
 
   @override
   void initState() {
     super.initState();
-    widget.channel.stream.listen(
-      (_) {
-        if (mounted) setState(() => isConnected = true);
+    // Use the correct IP and port for your WebSocket server.
+    channel = IOWebSocketChannel.connect('ws://10.146.84.151:4109');
+    channel.stream.listen(
+      (message) {
+        setState(() {
+          isConnected = true; // Update the connection status
+        });
+        // Process the incoming messages
+        print(message);
       },
       onDone: () {
-        if (mounted) setState(() => isConnected = false);
+        setState(() {
+          isConnected = false; // Update the connection status
+        });
       },
-      onError: (_) {
-        if (mounted) setState(() => isConnected = false);
+      onError: (error) {
+        setState(() {
+          isConnected = false; // Update the connection status
+        });
+        print(error.toString());
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('WebSocket Test'),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // Status bar indicator
           Container(
-            height: 20.0, // Height set to 20 pixels, approximately 5mm.
+            height: 20.0,
             color: isConnected ? Colors.green : Colors.red,
           ),
-          // ... other widgets, if needed
+          // Add more widgets for your app below
         ],
       ),
     );
@@ -66,7 +74,7 @@ class WebSocketTestState extends State<WebSocketTest> {
 
   @override
   void dispose() {
-    widget.channel.sink.close();
+    channel.sink.close();
     super.dispose();
   }
 }
