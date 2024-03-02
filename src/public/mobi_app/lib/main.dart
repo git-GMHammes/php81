@@ -1,67 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: WebSocketTest(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
+class WebSocketTest extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _WebSocketTestState createState() => _WebSocketTestState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _WebSocketTestState extends State<WebSocketTest> {
+  WebSocketChannel? channel;
+  Color connectionColor = Colors.red;
+  String connectionMessage = "Falha ao conectar ao websocket";
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _connect();
+  }
+
+  void _connect() {
+    try {
+      channel = WebSocketChannel.connect(
+        Uri.parse('ws://localhost:4109'),
+      );
+      channel!.stream.listen(
+        (message) {
+          setState(() {
+            connectionColor = Colors.green;
+            connectionMessage = "Conexão websocket realizada com sucesso";
+          });
+        },
+        onDone: () {
+          // called when the connection is closed
+          setState(() {
+            connectionColor = Colors.red;
+            connectionMessage = "Falha ao conectar ao websocket";
+          });
+        },
+        onError: (error) {
+          // called when there is an error
+          setState(() {
+            connectionColor = Colors.red;
+            connectionMessage = "Falha ao conectar ao websocket";
+          });
+        },
+      );
+    } catch (e) {
+      setState(() {
+        connectionColor = Colors.red;
+        connectionMessage = "Falha ao conectar ao websocket";
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text('WebSocket Test'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: Container(
+        color: connectionColor,
+        child: Center(
+          child: Text(connectionMessage),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
     );
+  }
+
+  @override
+  void dispose() {
+    channel?.sink.close();
+    super.dispose();
   }
 }
