@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mobi_app/main.dart';
+import 'package:mobi_app/main_ERRO_WEBSOCKET.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
