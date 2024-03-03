@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de WebSocket</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var wsUri = "ws://10.146.84.151:4109";
+            var output;
+
+            function init() {
+                output = document.getElementById("status");
+                testWebSocket();
+            }
+
+            function testWebSocket() {
+                websocket = new WebSocket(wsUri);
+                websocket.onopen = function (evt) { onOpen(evt) };
+                websocket.onerror = function (evt) { onError(evt) };
+            }
+
+            function onOpen(evt) {
+                writeToScreen('<span style="color: green;">Conexão websocket realizada com sucesso</span>');
+                // websocket.close(); // Descomente se você quiser fechar a conexão imediatamente após o sucesso
+            }
+
+            function onError(evt) {
+                writeToScreen('<span style="color: red;">Falha ao conectar no websocket</span>');
+            }
+
+            function writeToScreen(message) {
+                output.innerHTML = message;
+            }
+
+            window.addEventListener("load", init, false);
+        });
+    </script>
+</head>
+
+<body>
+    <h2>Teste de WebSocket</h2>
+    <div id="status"></div>
+</body>
+
+</html>

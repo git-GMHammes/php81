@@ -33,7 +33,8 @@ class _WebSocketTestState extends State<WebSocketTest> {
   void _connect() {
     try {
       channel = WebSocketChannel.connect(
-        Uri.parse('ws://localhost:4109'),
+        Uri.parse('ws://10.146.84.151:4109'),
+        // Uri.parse('ws://10.0.2.2:4109'),
       );
       channel!.stream.listen(
         (message) {
@@ -50,6 +51,7 @@ class _WebSocketTestState extends State<WebSocketTest> {
           });
         },
         onError: (error) {
+          print(error.toString());
           // called when there is an error
           setState(() {
             connectionColor = Colors.red;
