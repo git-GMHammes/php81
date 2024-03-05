@@ -11,6 +11,38 @@ $routes->addRedirect('/table/array', '/react/tabela/array');
 $routes->addRedirect('/table/api', '/react/tabela/api');
 
 # www/dadospessoais/(:any)
+$routes->group('candidato', function ($routes) {
+    # www/dadospessoais/api/(:any)
+    $routes->group('api', function ($routes) {
+        # www/candidato/api/criar/(:any)
+        $routes->get('criar', 'CandidatoController::create_update');
+        $routes->get('criar/(:segment)', 'CandidatoController::create_update/$1');
+        $routes->get('criar/(:any)', 'CandidatoController::create_update/$1');
+        $routes->post('criar', 'CandidatoController::create_update');
+        # www/candidato/api/listar/(:any)
+        $routes->get('listar', 'CandidatoController::dbRead');
+        $routes->get('listar/(:segment)', 'CandidatoController::dbRead/$1');
+        $routes->get('listar/(:any)', 'CandidatoController::dbRead/$1');
+        $routes->post('listar', 'CandidatoController::dbRead');
+        # www/candidato/api/atualizar/(:any)
+        $routes->get('atualizar', 'CandidatoController::create_update');
+        $routes->get('atualizar/(:segment)', 'CandidatoController::create_update/$1');
+        $routes->get('atualizar/(:any)', 'CandidatoController::create_update/$1');
+        $routes->post('atualizar', 'CandidatoController::create_update');
+        # www/candidato/api/excluir/(:any)
+        $routes->get('excluir', 'CandidatoController::dbDelete');
+        $routes->get('excluir/(:segment)', 'CandidatoController::dbDelete/$1');
+        $routes->get('excluir/(:any)', 'CandidatoController::dbDelete/$1');
+        $routes->post('excluir', 'CandidatoController::dbDelete');
+        # www/candidato/api/limpar/(:any)
+        $routes->get('limpar', 'CandidatoController::dbClean');
+        $routes->get('limpar/(:segment)', 'CandidatoController::dbClean/$1');
+        $routes->get('limpar/(:any)', 'CandidatoController::dbClean/$1');
+        $routes->post('limpar', 'CandidatoController::dbClean');
+    });
+});
+
+# www/dadospessoais/(:any)
 $routes->group('dadospessoais', function ($routes) {
     # www/dadospessoais/api/(:any)
     $routes->group('api', function ($routes) {

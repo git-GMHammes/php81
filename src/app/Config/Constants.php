@@ -96,14 +96,14 @@ define('EVENT_PRIORITY_HIGH', 10);
 # Modo Debug MyPrint
 # 
 if (
-    $_SERVER['SERVER_NAME'] == 'qlikadmin.proderj.rj.gov.br'
-    || $_SERVER['SERVER_NAME'] == 'www.qlikadmin.proderj.rj.gov.br'
+    $_SERVER['SERVER_NAME'] == ''
+    || $_SERVER['SERVER_NAME'] == 'www.'
 ) {
     # Ambiente HML
     defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', false);
 } elseif (
-    $_SERVER['SERVER_NAME'] == 'qlikadmin.rj.gov.br'
-    || $_SERVER['SERVER_NAME'] == 'www.qlikadmin.rj.gov.br'
+    $_SERVER['SERVER_NAME'] == ''
+    || $_SERVER['SERVER_NAME'] == 'www.'
 ) {
     # Ambiente PRD
     defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', false);
