@@ -159,15 +159,16 @@ class CandidatoApiController extends ResourceController
     private function dbFields($processRequestFields = array())
     {
         $dbCreate = array();
+        (isset($processRequestFields['uf'])) ? ($dbCreate['uf'] = $processRequestFields['uf']) : (NULL);
         (isset($processRequestFields['name'])) ? ($dbCreate['name'] = $processRequestFields['name']) : (NULL);
         (isset($processRequestFields['mail'])) ? ($dbCreate['mail'] = $processRequestFields['mail']) : (NULL);
-        (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb03'] = $processRequestFields['fieldForm']) : (NULL);
-        (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb04'] = $processRequestFields['fieldForm']) : (NULL);
-        (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb05'] = $processRequestFields['fieldForm']) : (NULL);
-        (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb06'] = $processRequestFields['fieldForm']) : (NULL);
-        (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb07'] = $processRequestFields['fieldForm']) : (NULL);
-        (isset($processRequestFields['created_at'])) ? ($dbCreate['created_at'] = $processRequestFields['created_at']) : (NULL);
-        (isset($processRequestFields['updated_at'])) ? ($dbCreate['updated_at'] = $processRequestFields['updated_at']) : (NULL);
+        (isset($processRequestFields['city'])) ? ($dbCreate['city'] = $processRequestFields['city']) : (NULL);
+        (isset($processRequestFields['office'])) ? ($dbCreate['office'] = $processRequestFields['office']) : (NULL);
+        (isset($processRequestFields['sector'])) ? ($dbCreate['sector'] = $processRequestFields['sector']) : (NULL);
+        (isset($processRequestFields['location'])) ? ($dbCreate['location'] = $processRequestFields['location']) : (NULL);
+        (isset($processRequestFields['zip_code'])) ? ($dbCreate['zip_code'] = $processRequestFields['zip_code']) : (NULL);
+        (isset($processRequestFields['neighborhood'])) ? ($dbCreate['neighborhood'] = $processRequestFields['neighborhood']) : (NULL);
+        (isset($processRequestFields['military_rank'])) ? ($dbCreate['military_rank'] = $processRequestFields['military_rank']) : (NULL);
         return ($dbCreate);
     }
 
