@@ -12,33 +12,61 @@ $routes->addRedirect('/table/api', '/react/tabela/api');
 
 # www/dadospessoais/(:any)
 $routes->group('candidato', function ($routes) {
-    # www/dadospessoais/api/(:any)
+    # www/candidato/api/(:any)
     $routes->group('api', function ($routes) {
         # www/candidato/api/criar/(:any)
-        $routes->get('criar', 'CandidatoController::create_update');
-        $routes->get('criar/(:segment)', 'CandidatoController::create_update/$1');
-        $routes->get('criar/(:any)', 'CandidatoController::create_update/$1');
-        $routes->post('criar', 'CandidatoController::create_update');
+        $routes->get('criar', 'CandidatoApiController::create_update');
+        $routes->get('criar/(:segment)', 'CandidatoApiController::create_update/$1');
+        $routes->get('criar/(:any)', 'CandidatoApiController::create_update/$1');
+        $routes->post('criar', 'CandidatoApiController::create_update');
         # www/candidato/api/listar/(:any)
-        $routes->get('listar', 'CandidatoController::dbRead');
-        $routes->get('listar/(:segment)', 'CandidatoController::dbRead/$1');
-        $routes->get('listar/(:any)', 'CandidatoController::dbRead/$1');
-        $routes->post('listar', 'CandidatoController::dbRead');
+        $routes->get('listar', 'CandidatoApiController::dbRead');
+        $routes->get('listar/(:segment)', 'CandidatoApiController::dbRead/$1');
+        $routes->get('listar/(:any)', 'CandidatoApiController::dbRead/$1');
+        $routes->post('listar', 'CandidatoApiController::dbRead');
         # www/candidato/api/atualizar/(:any)
-        $routes->get('atualizar', 'CandidatoController::create_update');
-        $routes->get('atualizar/(:segment)', 'CandidatoController::create_update/$1');
-        $routes->get('atualizar/(:any)', 'CandidatoController::create_update/$1');
-        $routes->post('atualizar', 'CandidatoController::create_update');
+        $routes->get('atualizar', 'CandidatoApiController::create_update');
+        $routes->get('atualizar/(:segment)', 'CandidatoApiController::create_update/$1');
+        $routes->get('atualizar/(:any)', 'CandidatoApiController::create_update/$1');
+        $routes->post('atualizar', 'CandidatoApiController::create_update');
         # www/candidato/api/excluir/(:any)
-        $routes->get('excluir', 'CandidatoController::dbDelete');
-        $routes->get('excluir/(:segment)', 'CandidatoController::dbDelete/$1');
-        $routes->get('excluir/(:any)', 'CandidatoController::dbDelete/$1');
-        $routes->post('excluir', 'CandidatoController::dbDelete');
+        $routes->get('excluir', 'CandidatoApiController::dbDelete');
+        $routes->get('excluir/(:segment)', 'CandidatoApiController::dbDelete/$1');
+        $routes->get('excluir/(:any)', 'CandidatoApiController::dbDelete/$1');
+        $routes->post('excluir', 'CandidatoApiController::dbDelete');
         # www/candidato/api/limpar/(:any)
-        $routes->get('limpar', 'CandidatoController::dbClean');
-        $routes->get('limpar/(:segment)', 'CandidatoController::dbClean/$1');
-        $routes->get('limpar/(:any)', 'CandidatoController::dbClean/$1');
-        $routes->post('limpar', 'CandidatoController::dbClean');
+        $routes->get('limpar', 'CandidatoApiController::dbClean');
+        $routes->get('limpar/(:segment)', 'CandidatoApiController::dbClean/$1');
+        $routes->get('limpar/(:any)', 'CandidatoApiController::dbClean/$1');
+        $routes->post('limpar', 'CandidatoApiController::dbClean');
+    });
+    # www/candidato/endpoint/(:any)
+    $routes->group('endpoint', function ($routes) {
+        # www/candidato/endpoint/criar/(:any)
+        $routes->get('criar', 'CandidatoEndPointController::dbCreate');
+        $routes->get('criar/(:segment)', 'CandidatoEndPointController::dbCreate/$1');
+        $routes->get('criar/(:any)', 'CandidatoEndPointController::dbCreate/$1');
+        $routes->post('criar', 'CandidatoEndPointController::dbCreate');
+        # www/candidato/endpoint/listar/(:any)
+        $routes->get('listar', 'CandidatoEndPointController::dbRead');
+        $routes->get('listar/(:segment)', 'CandidatoEndPointController::dbRead/$1');
+        $routes->get('listar/(:any)', 'CandidatoEndPointController::dbRead/$1');
+        $routes->post('listar', 'CandidatoEndPointController::dbRead');
+        # www/candidato/endpoint/atualizar/(:any)
+        $routes->get('atualizar', 'CandidatoEndPointController::dbUpdate');
+        $routes->get('atualizar/(:segment)', 'CandidatoEndPointController::dbUpdate/$1');
+        $routes->get('atualizar/(:any)', 'CandidatoEndPointController::dbUpdate/$1');
+        $routes->post('atualizar', 'CandidatoEndPointController::dbUpdate');
+        # www/candidato/endpoint/excluir/(:any)
+        $routes->get('excluir', 'CandidatoEndPointController::dbDelete');
+        $routes->get('excluir/(:segment)', 'CandidatoEndPointController::dbDelete/$1');
+        $routes->get('excluir/(:any)', 'CandidatoEndPointController::dbDelete/$1');
+        $routes->post('excluir', 'CandidatoEndPointController::dbDelete');
+        # www/candidato/endpoint/limpar/(:any)
+        $routes->get('limpar', 'CandidatoEndPointController::dbClean');
+        $routes->get('limpar/(:segment)', 'CandidatoEndPointController::dbClean/$1');
+        $routes->get('limpar/(:any)', 'CandidatoEndPointController::dbClean/$1');
+        $routes->post('limpar', 'CandidatoEndPointController::dbClean');
     });
 });
 

@@ -7,7 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\CandidatoModel;
 use Exception;
 
-class CandidatoController extends ResourceController
+class CandidatoApiController extends ResourceController
 {
     use ResponseTrait;
     private $ModelCandidato;
@@ -29,7 +29,7 @@ class CandidatoController extends ResourceController
         # Parâmentros para receber um POST
         $request = service('request');
         $processRequest = (array)$request->getVar();
-        $uploadedFiles = $request->getFiles();
+        // $uploadedFiles = $request->getFiles();
         $json = $processRequest['json'] ?? 0;
         // $processRequest = eagarScagaire($processRequest);
         #
@@ -160,7 +160,7 @@ class CandidatoController extends ResourceController
     {
         $dbCreate = array();
         (isset($processRequestFields['name'])) ? ($dbCreate['name'] = $processRequestFields['name']) : (NULL);
-        (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb02'] = $processRequestFields['fieldForm']) : (NULL);
+        (isset($processRequestFields['mail'])) ? ($dbCreate['mail'] = $processRequestFields['mail']) : (NULL);
         (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb03'] = $processRequestFields['fieldForm']) : (NULL);
         (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb04'] = $processRequestFields['fieldForm']) : (NULL);
         (isset($processRequestFields['fieldForm'])) ? ($dbCreate['fieldDb05'] = $processRequestFields['fieldForm']) : (NULL);
@@ -171,6 +171,17 @@ class CandidatoController extends ResourceController
         return ($dbCreate);
     }
 
+    private function newRegister($parameter)
+    {
+        if ($parameter === 'new') {
+            $this->ModelCandidato->dbCreate(['name' => 'Candidato']);
+            $id = ($this->ModelCandidato->affectedRows() > 0) ? ($this->ModelCandidato->insertID()) : (NULL);
+            return $id;
+        } else {
+            return false;
+        }
+    }
+
     # route POST /www/candidato/api/criar/(:any)
     # route GET /www/candidato/api/criar/(:any)
     # route POST /www/candidato/api/atualizar/(:any)
@@ -179,6 +190,10 @@ class CandidatoController extends ResourceController
     # retorno do controller [JSON]
     public function create_update($parameter = NULL)
     {
+        $newParameter = $this->newRegister($parameter);
+        if ($newParameter) {
+            return $this->response->setJSON($newParameter, 500);
+        }
         # Parâmentros para receber um POST
         $request = service('request');
         $processRequest = (array)$request->getVar();
@@ -263,6 +278,91 @@ class CandidatoController extends ResourceController
             return $response;
             // return redirect()->to('project/endpoint/parameter/parameter/' . $parameter);
         } else {
+            return $response;
+            // return redirect()->back();
+        }
+    }
+
+    # route POST /www/candidato/endpoint/listar/(:any)
+    # route GET /www/candidato/endpoint/listar/(:any)
+    # Informação sobre o controller
+    # retorno do controller [JSON]
+    public function dbRead($parameter = NULL)
+    {
+        # Parâmentros para receber um POST
+        $request = service('request');
+        $processRequest = (array)$request->getVar();
+        $json = ($processRequest['json'] ?? 0);
+        // $processRequest = eagarScagaire($processRequest);
+        #
+        try {
+            if (isset($processRequest['id'])) {
+                $dbResponse = $this->ModelCandidato
+                   ->where('id', $processRequest['id'])
+                    ->where('deleted_at', NULL)
+                    ->orderBy('updated_at', 'asc')
+                    ->dBread()
+                    ->find();
+                #
+            } elseif ($parameter !== NULL) {
+                $dbResponse = $this->ModelCandidato
+                    ->where('id', $parameter)
+                    ->where('deleted_at', NULL)
+                    ->orderBy('updated_at', 'asc')
+                    ->dBread()
+                    ->find();
+                #
+            } else {
+                $dbResponse = $this->ModelCandidato
+                    ->where('deleted_at', NULL)
+                    ->orderBy('updated_at', 'asc')
+                    ->dBread()
+                    ->findAll();
+            };
+            $apiRespond = [
+                'status' => 'success',
+                'message' => 'API loading data (dados para carregamento da API)',
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Description',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                // 'method' => '__METHOD__',
+                // 'function' => '__FUNCTION__',
+                'result' => $dbResponse,
+                'metadata' => [
+                    'page_title' => 'Application title',
+                    'getURI' => $this->uri->getSegments(),
+                    // Você pode adicionar campos comentados anteriormente se forem relevantes
+                    // 'method' => '__METHOD__',
+                    // 'function' => '__FUNCTION__',
+                    ]
+            ];
+            $response = $this->response->setJSON($apiRespond, 201);
+        } catch (\Exception $e) {
+                $apiRespond = [
+                    'status' => 'error',
+                    'message' => $e->getMessage(),
+                    'date' => date('Y-m-d'),
+                    'api' => [
+                        'version' => '1.0',
+                        'method' => $request->getMethod() ?? 'unknown',
+                        'description' => 'API Criar Method',
+                        'content_type' => 'application/x-www-form-urlencoded'
+                    ],
+                    'metadata' => [
+                        'page_title' => 'ERRO - API Method',
+                        'getURI' => $this->uri->getSegments(),
+                    ]
+                ];
+                $response = $this->response->setJSON($apiRespond, 500);
+        }
+        if($json == 1){
+            return $response;
+            // return redirect()->to('project/endpoint/parameter/parameter/' . $parameter);
+        }else{
             return $response;
             // return redirect()->back();
         }

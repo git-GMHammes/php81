@@ -1,3 +1,9 @@
 mysql-data/*
 src/public/writable/*
 src/writable/debugbar/*
+src/writable/logs/*
+src/writable/session/*
+src/writable/session/*
+src/writable/session/*
+src/writable/logs/*
+*.log
