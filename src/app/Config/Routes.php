@@ -10,6 +10,28 @@ $routes->get('/', 'Home::index');
 $routes->addRedirect('/table/array', '/react/tabela/array');
 $routes->addRedirect('/table/api', '/react/tabela/api');
 
+# www/meureact/(:any)
+$routes->group('meureact', function ($routes) {
+    # www/meureact/endpoint/verbo/(:any)
+    $routes->group('api', function ($routes) {
+        # www/meureact/api/verbo/(:any)
+        $routes->get('verbo', 'Controller::verbo');
+        $routes->get('verbo/(:segment)', 'Controller::verbo/$1');
+        $routes->get('verbo/(:any)', 'Controller::verbo/$1');
+        $routes->post('verbo', 'Controller::verbo');
+        $routes->group('endpoint', function ($routes) {
+        });
+    });
+    # www/meureact/endpoint/myCard/(:any)
+    $routes->group('endpoint', function ($routes) {
+        # www/meureact/endpoint/cartao/(:any)
+        $routes->get('cartao', 'MeuReactEndpointController::myCard');
+        $routes->get('cartao/(:segment)', 'MeuReactEndpointController::myCard/$1');
+        $routes->get('cartao/(:any)', 'MeuReactEndpointController::myCard/$1');
+        $routes->post('cartao', 'MeuReactEndpointController::myCard');
+    });
+});
+
 # www/dadospessoais/(:any)
 $routes->group('candidato', function ($routes) {
     # www/candidato/api/(:any)
