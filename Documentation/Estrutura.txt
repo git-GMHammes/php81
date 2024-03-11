@@ -1,0 +1,196 @@
+
+"ESTRUTURA BASE":
+"C:"
+|    |--"C:\laragon\www\php81\Documentation"
+|    |    \--"C:\laragon\www\php81\Documentation\Estrutura.txt"
+|    |--"C:\laragon\www\php81\mysql-data"
+|    |--"C:\laragon\www\php81\mysql-init"
+|    |--"C:\laragon\www\php81\src"
+|    |    |--"C:\laragon\www\php81\src\app"
+|    |    |--"C:\laragon\www\php81\src\public"
+|    |    |    |--"C:\laragon\www\php81\src\public\cliente1"
+|    |    |    |    \--"C:\laragon\www\php81\src\public\cliente1\index.php"
+|    |    |    |--"C:\laragon\www\php81\src\public\cliente2"
+|    |    |    |    \--"C:\laragon\www\php81\src\public\cliente2\index.php"
+|    |    |--"C:\laragon\www\php81\src\system"
+|    |    |--"C:\laragon\www\php81\src\tests"
+|    |    |--"C:\laragon\www\php81\src\writable"
+|    |    |--"C:\laragon\www\php81\src\.env"
+|    |    |--"C:\laragon\www\php81\src\composer.json"
+|    |    |--"C:\laragon\www\php81\src\env"
+|    |    |--"C:\laragon\www\php81\src\LICENSE"
+|    |    |--"C:\laragon\www\php81\src\phpunit.xml.dist"
+|    |    |--"C:\laragon\www\php81\src\preload.php"
+|    |    |--"C:\laragon\www\php81\src\README.md"
+|    |    |--"C:\laragon\www\php81\src\spark"
+|    |--"C:\laragon\www\php81\websocket_server"
+|    |    |--"C:\laragon\www\php81\websocket_server\Dockerfile"
+|    |    |--"C:\laragon\www\php81\websocket_server\start.sh"
+|    |    \--"C:\laragon\www\php81\websocket_server\websocket.php"
+|    |--"C:\laragon\www\php81\docker-compose.yml"
+|    \--"C:\laragon\www\php81\Dockerfile"
+
+"C:\laragon\www\php81\Dockerfile":
+
+FROM php:8.1-apache
+# -----------------------------
+# Linux Layer
+# -----------------------------
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libaio1 \
+    libicu-dev \
+    libxml2-dev \
+    libpng-dev \
+    g++ \
+    unixodbc-dev \
+    unzip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# -----------------------------
+# Instalação de extensão PHP
+# -----------------------------
+RUN docker-php-ext-install intl pdo pdo_mysql mysqli soap ctype fileinfo
+
+# Ativa o mod_rewrite para o Apache
+RUN a2enmod rewrite
+
+# Define o diretório de trabalho como /var/www/html
+WORKDIR /var/www/html
+
+# Modifica a configuração do DocumentRoot
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+"C:\laragon\www\php81\websocket_server\Dockerfile":
+
+# Usar uma imagem base do PHP
+FROM php:8.1-cli
+
+# Instalar dependências necessárias para a extensão Swoole
+RUN apt-get update && apt-get install -y \
+        libpq-dev \
+    && docker-php-ext-install pdo pdo_mysql \
+    && pecl install swoole \
+    && docker-php-ext-enable swoole
+
+# Copiar o código PHP para a pasta do servidor
+COPY ./ /var/www/html/
+
+# Criar e copiar o script start.sh
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Expor a porta 4109
+EXPOSE 4109
+
+CMD ["/start.sh"]
+
+"C:\laragon\www\siscom\docker-compose.yml":
+
+vversion: '3.8'
+
+services:
+  php81-apache:
+    build: .
+    image: php:8.1-apache
+    container_name: php81-apache
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "4107:80"
+    depends_on:
+      - mysql80
+  
+  php81-websocket:
+    build: ./websocket_server
+    image: php:8.1-cli
+    container_name: php81-websocket
+    volumes:
+      - ./websocket_server:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "4109:4109"
+    depends_on:
+      - mysql80
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql80
+      PMA_USER: user
+      PMA_PASSWORD: userpass
+      PMA_DATABASE: db
+    ports:
+      - "4110:80"
+    depends_on:
+      - mysql80
+  
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "4111:8080"
+    depends_on:
+      - mysql80
+  
+  mysql80:
+    image: mysql:8.0
+    container_name: mysql80
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=userpass
+      - TZ=America/Sao_Paulo
+    ports:
+      - "3341:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql-data:
+
+"C:\laragon\www\php81\websocket_server\websocket.php":
+
+<?php
+# Carregar a extensão Swoole
+# websocket_server\websocket.php
+if (!extension_loaded('swoole')) {
+    die("Swoole extension is not installed\n");
+}
+
+// Criar um servidor WebSocket com Swoole
+$server = new Swoole\WebSocket\Server("0.0.0.0", 4109);
+
+$server->on("start", function (Swoole\WebSocket\Server $server) {
+    echo "Swoole WebSocket Server is started at http://127.0.0.1:4109\n";
+});
+
+$server->on('open', function(Swoole\WebSocket\Server $server, $request) {
+    echo "Connection open: {$request->fd}\n";
+    // Você pode enviar uma mensagem para o cliente recém-conectado aqui, se necessário
+});
+
+$server->on('message', function(Swoole\WebSocket\Server $server, $frame) {
+    echo "Received message: {$frame->data}\n";
+    
+    // Broadcasting a mensagem para todos os clientes conectados
+    foreach ($server->connections as $fd) {
+        if ($server->isEstablished($fd)) {
+|    | $server->push($fd, $frame->data);
+        }
+    }
+});
+
+$server->on('close', function($ser, $fd) {
+    echo "Connection closed: {$fd}\n";
+});
+
+$server->start();
