@@ -15,13 +15,13 @@
 
         // data: A primeira variável no array, data, é uma referência ao valor atual do estado. 
         // Inicialmente, data será null, mas esse valor pode mudar ao longo do ciclo de vida do componente.
-                
+
         // setData: A segunda variável, setData, é uma função que você chama para atualizar 
         // o valor de data. Quando setData é chamada com um novo valor, o componente é re-renderizado, 
         // e data terá esse novo valor.
-        
+
         const [data, setData] = React.useState(null);
-        
+
 
         // Função de Efeito: () => {} é uma função que será executada após cada renderização do componente. 
         // No entanto, devido à forma como você configurou as dependências (explicarei em um momento), 

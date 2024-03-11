@@ -6,7 +6,7 @@ SELECT
     t.`data_inicio_real` AS `taf_data_inicio_real`,
     t.`data_fim_real` AS `taf_data_fim_real`,
     tc.`colaborador_id` AS `tc_colaborador_id`,
-    t.`checklist` AS `taf_checklist`,
+    t.`checklist` AS `taf_checklist`, 
     t.`descricao` AS `taf_descricao`,
     t.`data_inicio_programado` AS `taf_data_inicio_programado`,
     t.`data_fim_programado` AS `taf_data_fim_programado`,

@@ -29,6 +29,16 @@ $routes->group('meureact', function ($routes) {
         $routes->get('cartao/(:segment)', 'MeuReactEndpointController::myCard/$1');
         $routes->get('cartao/(:any)', 'MeuReactEndpointController::myCard/$1');
         $routes->post('cartao', 'MeuReactEndpointController::myCard');
+        # www/meureact/endpoint/arrasta/(:any)
+        $routes->get('arrasta', 'MeuReactEndpointController::myDrag');
+        $routes->get('arrasta/(:segment)', 'MeuReactEndpointController::myDrag/$1');
+        $routes->get('arrasta/(:any)', 'MeuReactEndpointController::myDrag/$1');
+        $routes->post('arrasta', 'MeuReactEndpointController::myDrag');
+        # www/meureact/endpoint/ordenar/(:any)
+        $routes->get('ordenar', 'MeuReactEndpointController::myrder');
+        $routes->get('ordenar/(:segment)', 'MeuReactEndpointController::myrder/$1');
+        $routes->get('ordenar/(:any)', 'MeuReactEndpointController::myrder/$1');
+        $routes->post('ordenar', 'MeuReactEndpointController::myrder');
     });
 });
 
