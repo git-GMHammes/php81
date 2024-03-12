@@ -4,6 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Database\Query;
 use CodeIgniter\Model;
+
 // use system\Database\Exceptions\DatabaseException;
 
 class DadodsPessoaisModel extends Model
@@ -18,12 +19,12 @@ class DadodsPessoaisModel extends Model
     protected $allowedFields = [];
     protected $validationRules = [];
     protected $validationMessages = [];
-    protected $skipValidation     = false;
+    protected $skipValidation = false;
 
     protected $useTimestamps = false;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
     protected $dbInsert;
     protected $dbReplace;
@@ -67,7 +68,7 @@ class DadodsPessoaisModel extends Model
             $this->message['message']['danger'] = array(
                 $th->getMessage(),
             );
-            session()->set('message',  $this->message);
+            session()->set('message', $this->message);
             session()->markAsTempdata('message', 5);
         }
         return $this;
@@ -75,8 +76,8 @@ class DadodsPessoaisModel extends Model
 
     public function dbRead($keyVariable = NULL, $keyValue = NULL)
     {
-        $getColumnsFromTable = array();
-        // $getColumnsFromTable = $this->getColumnsFromTable($this->table)['COLUMN'];
+        // $getColumnsFromTable = array();
+        $getColumnsFromTable = $this->getColumnsFromTable($this->table)['COLUMN'];
         $this->allowedFields = $getColumnsFromTable;
         // myPrint($getColumnsFromTable, 'src/app/Models/ComCategoriaModel.php');
         #
@@ -93,7 +94,7 @@ class DadodsPessoaisModel extends Model
             $this->message['message']['danger'] = array(
                 $th->getMessage(),
             );
-            session()->set('message',  $this->message);
+            session()->set('message', $this->message);
             session()->markAsTempdata('message', 5);
         }
         return $this;
@@ -104,7 +105,6 @@ class DadodsPessoaisModel extends Model
         try {
             if (isset($key) && isset($dbUpdate)) {
                 $this->allowedFields = array_keys($dbUpdate);
-                // myPrint($this->allowedFields, true);
                 $this->update($key, $dbUpdate);
                 // myPrint($dbUpdate, true);
             }
@@ -118,7 +118,7 @@ class DadodsPessoaisModel extends Model
             $this->message['message']['danger'] = array(
                 $th->getMessage(),
             );
-            session()->set('message',  $this->message);
+            session()->set('message', $this->message);
             session()->markAsTempdata('message', 5);
         }
         return $this;
@@ -133,7 +133,7 @@ class DadodsPessoaisModel extends Model
             $this->message['message']['danger'] = array(
                 $th->getMessage(),
             );
-            session()->set('message',  $this->message);
+            session()->set('message', $this->message);
             session()->markAsTempdata('message', 5);
         }
         return $this;

@@ -1,6 +1,6 @@
 <?php
 $in_php = array(
-    "title" => "Lista de Pessoas III",
+    "title" => "Lista de Pessoas IV",
     "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat massa id felis dapibus, ac malesuada ipsum venenatis. Pellentesque vitae dui dui. Curabitur sollicitudin metus elementum vulputate blandit. Donec in varius diam. Vestibulum a est quis lacus pretium viverra eu id est. Vivamus efficitur tempus est, sed consectetur justo pellentesque sit amet. Sed vehicula consectetur augue, vel commodo leo pulvinar volutpat. Etiam sagittis non ligula bibendum tincidunt. Nunc sed tellus id arcu interdum dapibus vel sed enim. Ut dictum accumsan viverra. Donec cursus libero ut neque mattis, eu pellentesque lorem pharetra. Nam pharetra iaculis est, quis porta mi iaculis at. Fusce dui felis, pharetra eget massa vel, aliquam vulputate tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam quam quam, dictum sed risus quis, euismod tincidunt erat. Mauris pellentesque erat risus.",
     "keywords" => "Ordenar",
     "body" => "ordenar",
@@ -10,9 +10,9 @@ $in_php = array(
     "js" => array()
 );
 ?>
-<div class="app_tabela_api" data-inphp='<?php echo json_encode($in_php); ?>'></div>
+<div class="app_tabela_api_order" data-inphp='<?php echo json_encode($in_php); ?>'></div>
 <script type="text/babel">
-    function AppTabelaAPI() {
+    function AppTabelaAPIOrder() {
         // Informações da API dos dados pessoais
         const [dadosPessoais, setDadosPessoais] = React.useState([]);
         // Informações do PHP
@@ -26,7 +26,7 @@ $in_php = array(
         );
 
         React.useEffect(() => {
-            const appElement = document.querySelector('.app_tabela_api');
+            const appElement = document.querySelector('.app_tabela_api_order');
             // Informações do PHP
             const dataResult = appElement.getAttribute('data-inphp');
             const data = JSON.parse(dataResult);
@@ -46,19 +46,21 @@ $in_php = array(
 
         // Informações para arrastar o index
         const onDragStart = (e, index) => {
-            e.dataTransfer.setData("dragIndex", index);
+            e.dataTransfer.setData("dragIndex", index.toString());
         };
         const onDrop = (e, dropIndex) => {
-            const dragIndex = e.dataTransfer.getData("dragIndex");
-            const draggedItem = dadosPessoais[dragIndex];
-            const remainingItems = dadosPessoais.filter((_, index) => index !== dragIndex);
-            const reorderedItems = [
-                ...remainingItems.slice(0, dropIndex),
-                draggedItem,
-                ...remainingItems.slice(dropIndex)
-            ];
-            setDadosPessoais(reorderedItems);
+            e.preventDefault(); // Para permitir o drop.
+            const dragIndex = Number(e.dataTransfer.getData("dragIndex"));
+            // Obter uma cópia do estado atual para evitar a mutação direta.
+            let newDadosPessoais = [...dadosPessoais];
+            // Remover o item arrastado da lista e guardá-lo em uma variável.
+            const draggedItem = newDadosPessoais.splice(dragIndex, 1)[0];
+            // Inserir o item arrastado na nova posição.
+            newDadosPessoais.splice(dropIndex, 0, draggedItem);
+            // Atualizar o estado com a nova lista reordenada.
+            setDadosPessoais(newDadosPessoais);
         };
+
 
         const onDragOver = (e) => {
             e.preventDefault(); // Necessário para permitir o drop
@@ -87,7 +89,18 @@ $in_php = array(
                         </thead>
                         <tbody>
                             {dadosPessoais.map((pessoa, index) => (
-                                <tr key={pessoa.id}>
+                                <tr
+                                    // Chave única para cada linha, necessária para otimizações do React
+                                    key={pessoa.id}
+                                    // Torna a linha arrastável
+                                    draggable="true"
+                                    // Define a função a ser chamada quando o arraste é iniciado
+                                    onDragStart={(e) => onDragStart(e, index)}
+                                    // Define a função a ser chamada quando um item é solto sobre esta linha
+                                    onDrop={(e) => onDrop(e, index)}
+                                    // Define a função a ser chamada quando um item está sendo arrastado sobre esta linha
+                                    onDragOver={onDragOver}
+                                >
                                     <th scope="row">
                                         <div className="d-flex justify-content-center align-middle">
                                             <span className="align-middle">
@@ -99,8 +112,20 @@ $in_php = array(
                                     <td>{pessoa.id}</td>
                                     <td>
                                         <div className="col-md-4">
-                                            <input type="text" className="form-control" id="ordem" name="order[]" style={{ width: '90px' }} defaultValue={index + 1} required />
-                                            <input type="text" className="form-control" id="ordem" name="id[]" style={{ width: '90px' }} defaultValue={pessoa.id} required />
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id={"ordem" + pessoa.id}
+                                                name="order[]"
+                                                style={{ width: '90px' }}
+                                                value={index + 1}
+                                                readOnly
+                                            />
+                                            <input
+                                                type="hidden"
+                                                name="id[]"
+                                                value={pessoa.id}
+                                            />
                                         </div>
                                     </td>
                                     <td>{pessoa.nome}</td>
@@ -131,5 +156,5 @@ $in_php = array(
         );
         {/*  */ }
     }
-    ReactDOM.render(<AppTabelaAPI />, document.querySelector('.app_tabela_api'));
+    ReactDOM.render(<AppTabelaAPIOrder />, document.querySelector('.app_tabela_api_order'));
 </script>

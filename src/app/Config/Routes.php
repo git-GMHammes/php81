@@ -14,13 +14,11 @@ $routes->addRedirect('/table/api', '/react/tabela/api');
 $routes->group('meureact', function ($routes) {
     # www/meureact/endpoint/verbo/(:any)
     $routes->group('api', function ($routes) {
-        # www/meureact/api/verbo/(:any)
-        $routes->get('verbo', 'Controller::verbo');
-        $routes->get('verbo/(:segment)', 'Controller::verbo/$1');
-        $routes->get('verbo/(:any)', 'Controller::verbo/$1');
-        $routes->post('verbo', 'Controller::verbo');
-        $routes->group('endpoint', function ($routes) {
-        });
+        # www/meureact/api/ordenar/(:any)
+        $routes->get('ordenar', 'MeuReactApiController::dbSort');
+        $routes->get('ordenar/(:segment)', 'MeuReactApiController::dbSort/$1');
+        $routes->get('ordenar/(:any)', 'MeuReactApiController::dbSort/$1');
+        $routes->post('ordenar', 'MeuReactApiController::dbSort');
     });
     # www/meureact/endpoint/myCard/(:any)
     $routes->group('endpoint', function ($routes) {
@@ -35,10 +33,10 @@ $routes->group('meureact', function ($routes) {
         $routes->get('arrasta/(:any)', 'MeuReactEndpointController::myDrag/$1');
         $routes->post('arrasta', 'MeuReactEndpointController::myDrag');
         # www/meureact/endpoint/ordenar/(:any)
-        $routes->get('ordenar', 'MeuReactEndpointController::myrder');
-        $routes->get('ordenar/(:segment)', 'MeuReactEndpointController::myrder/$1');
-        $routes->get('ordenar/(:any)', 'MeuReactEndpointController::myrder/$1');
-        $routes->post('ordenar', 'MeuReactEndpointController::myrder');
+        $routes->get('ordenar', 'MeuReactEndpointController::myorder');
+        $routes->get('ordenar/(:segment)', 'MeuReactEndpointController::myorder/$1');
+        $routes->get('ordenar/(:any)', 'MeuReactEndpointController::myorder/$1');
+        $routes->post('ordenar', 'MeuReactEndpointController::myorder');
     });
 });
 

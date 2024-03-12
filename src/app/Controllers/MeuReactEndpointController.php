@@ -330,7 +330,7 @@ class MeuReactEndpointController extends ResourceController
     # route POST /www/meureact/endpoint/rdenar/(:any)
     # Informação sobre o controller
     # retorno do controller [VIEW]
-    public function myrder($parameter = NULL)
+    public function myorder($parameter = NULL)
     {
         $request = service('request');
         $processRequest = (array) $request->getVar();
@@ -341,6 +341,7 @@ class MeuReactEndpointController extends ResourceController
         $loadView = array(
             $this->head,
             $this->menu,
+            'react_web/tabela_api_order',
             'react_web/tabela_api',
             'react_web/tabela_indice',
             'react_web/tabela',
