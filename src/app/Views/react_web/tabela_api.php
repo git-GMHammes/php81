@@ -86,8 +86,8 @@ $in_php = array(
                             </tr>
                         </thead>
                         <tbody>
-                            {dadosPessoais.map((pessoa, index) => (
-                                <tr key={pessoa.id}>
+                            {dadosPessoais.map((dados_api, index) => (
+                                <tr key={dados_api.id}>
                                     <th scope="row">
                                         <div className="d-flex justify-content-center align-middle">
                                             <span className="align-middle">
@@ -96,18 +96,18 @@ $in_php = array(
                                             {index + 1}
                                         </div>
                                     </th>
-                                    <td>{pessoa.id}</td>
+                                    <td>{dados_api.id}</td>
                                     <td>
                                         <div className="col-md-4">
-                                            <input type="text" className="form-control" id="ordem" name="order[]" style={{ width: '90px' }} defaultValue={index + 1} required />
-                                            <input type="text" className="form-control" id="ordem" name="id[]" style={{ width: '90px' }} defaultValue={pessoa.id} required />
+                                            <input type="hidden" className="form-control" id="ordem" name="order[]" style={{ width: '90px' }} defaultValue={index + 1} required />
+                                            <input type="hidden" className="form-control" id="ordem" name="id[]" style={{ width: '90px' }} defaultValue={dados_api.id} required />
                                         </div>
                                     </td>
-                                    <td>{pessoa.nome}</td>
-                                    <td>{pessoa.telefone}</td>
-                                    <td>{pessoa.email}</td>
-                                    <td>{pessoa.end_cep}</td>
-                                    <td>{pessoa.end_complemento}</td>
+                                    <td>{dados_api.nome}</td>
+                                    <td>{dados_api.telefone}</td>
+                                    <td>{dados_api.email}</td>
+                                    <td>{dados_api.end_cep}</td>
+                                    <td>{dados_api.end_complemento}</td>
                                 </tr>
                             ))}
                         </tbody>
