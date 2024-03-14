@@ -326,8 +326,8 @@ class MeuReactEndpointController extends ResourceController
     }
 
     # Consumo de API
-    # route GET /www/meureact/endpoint/rdenar/(:any)
-    # route POST /www/meureact/endpoint/rdenar/(:any)
+    # route GET /www/meureact/endpoint/ordenar/(:any)
+    # route POST /www/meureact/endpoint/ordenar/(:any)
     # Informação sobre o controller
     # retorno do controller [VIEW]
     public function myorder($parameter = NULL)
@@ -341,6 +341,7 @@ class MeuReactEndpointController extends ResourceController
         $loadView = array(
             $this->head,
             $this->menu,
+            'react_web/tabela_api_order_submit',
             'react_web/tabela_api_order',
             'react_web/tabela_api',
             'react_web/tabela_indice',

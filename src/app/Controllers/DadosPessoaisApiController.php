@@ -276,7 +276,7 @@ class DadosPessoaisApiController extends ResourceController
                 $dbResponse = $this->ModelDadodsPessoais
                     ->where('id', $processRequest['id'])
                     ->where('deleted_at', NULL)
-                    ->orderBy('updated_at', 'asc')
+                    ->orderBy('order', 'asc')
                     ->dBread()
                     ->find();
                 #
@@ -284,14 +284,14 @@ class DadosPessoaisApiController extends ResourceController
                 $dbResponse = $this->ModelDadodsPessoais
                     ->where('id', $parameter)
                     ->where('deleted_at', NULL)
-                    ->orderBy('updated_at', 'asc')
+                    ->orderBy('order', 'asc')
                     ->dBread()
                     ->find();
                 #
             } else {
                 $dbResponse = $this->ModelDadodsPessoais
                     ->where('deleted_at', NULL)
-                    ->orderBy('updated_at', 'asc')
+                    ->orderBy('order', 'asc')
                     ->dBread()
                     ->findAll();
             };
