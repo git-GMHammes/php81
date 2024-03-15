@@ -10,6 +10,32 @@ $routes->get('/', 'Home::index');
 $routes->addRedirect('/table/array', '/react/tabela/array');
 $routes->addRedirect('/table/api', '/react/tabela/api');
 
+# www/tipopessoa/(:any)
+$routes->group('tipopessoa', function ($routes) {
+    # www/tipopessoa/endpoint/verbo/(:any)
+    $routes->group('api', function ($routes) {
+        # www/tipopessoa/api/exibir/(:any)
+        $routes->get('exibir', 'TipoPessoaApiController::dbRead');
+        $routes->get('exibir/(:segment)', 'TipoPessoaApiController::dbRead/$1');
+        $routes->get('exibir/(:any)', 'TipoPessoaApiController::dbRead/$1');
+        $routes->post('exibir', 'TipoPessoaApiController::dbRead');
+        $routes->post('exibir/(:any)', 'TipoPessoaApiController::dbRead/$1');
+    });
+});
+
+# www/generopessoa/(:any)
+$routes->group('generopessoa', function ($routes) {
+    # www/generopessoa/endpoint/verbo/(:any)
+    $routes->group('api', function ($routes) {
+        # www/generopessoa/api/exibir/(:any)
+        $routes->get('exibir', 'GeneroPessoaApiController::dbRead');
+        $routes->get('exibir/(:segment)', 'GeneroPessoaApiController::dbRead/$1');
+        $routes->get('exibir/(:any)', 'GeneroPessoaApiController::dbRead/$1');
+        $routes->post('exibir', 'GeneroPessoaApiController::dbRead');
+        $routes->post('exibir/(:any)', 'GeneroPessoaApiController::dbRead/$1');
+    });
+});
+
 # www/meureact/(:any)
 $routes->group('meureact', function ($routes) {
     # www/meureact/endpoint/verbo/(:any)
@@ -109,21 +135,21 @@ $routes->group('dadospessoais', function ($routes) {
         $routes->get('criar/(:segment)', 'DadosPessoaisApiController::create_update/$1');
         $routes->get('criar/(:any)', 'DadosPessoaisApiController::create_update/$1');
         $routes->post('criar', 'DadosPessoaisApiController::create_update');
-        # www/dadospessoais/api/listar/(:any)
-        $routes->get('listar', 'DadosPessoaisApiController::dbRead');
-        $routes->get('listar/(:segment)', 'DadosPessoaisApiController::dbRead/$1');
-        $routes->get('listar/(:any)', 'DadosPessoaisApiController::dbRead/$1');
-        $routes->post('listar', 'DadosPessoaisApiController::dbRead');
+        # www/dadospessoais/api/exibir/(:any)
+        $routes->get('exibir', 'DadosPessoaisApiController::dbRead');
+        $routes->get('exibir/(:segment)', 'DadosPessoaisApiController::dbRead/$1');
+        $routes->get('exibir/(:any)', 'DadosPessoaisApiController::dbRead/$1');
+        $routes->post('exibir', 'DadosPessoaisApiController::dbRead');
         # www/dadospessoais/api/atualizar/(:any)
         $routes->get('atualizar', 'DadosPessoaisApiController::create_update');
         $routes->get('atualizar/(:segment)', 'DadosPessoaisApiController::create_update/$1');
         $routes->get('atualizar/(:any)', 'DadosPessoaisApiController::create_update/$1');
         $routes->post('atualizar', 'DadosPessoaisApiController::create_update');
-        # www/dadospessoais/api/excluir/(:any)
-        $routes->get('excluir', 'DadosPessoaisApiController::dbDelete');
-        $routes->get('excluir/(:segment)', 'DadosPessoaisApiController::dbDelete/$1');
-        $routes->get('excluir/(:any)', 'DadosPessoaisApiController::dbDelete/$1');
-        $routes->post('excluir', 'DadosPessoaisApiController::dbDelete');
+        # www/dadospessoais/api/deletar/(:any)
+        $routes->get('deletar', 'DadosPessoaisApiController::dbDelete');
+        $routes->get('deletar/(:segment)', 'DadosPessoaisApiController::dbDelete/$1');
+        $routes->get('deletar/(:any)', 'DadosPessoaisApiController::dbDelete/$1');
+        $routes->post('deletar', 'DadosPessoaisApiController::dbDelete');
         # www/dadospessoais/api/limpar/(:any)
         $routes->get('limpar', 'DadosPessoaisApiController::dbClean');
         $routes->get('limpar/(:segment)', 'DadosPessoaisApiController::dbClean/$1');

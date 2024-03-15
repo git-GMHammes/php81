@@ -4,19 +4,19 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\DadodsPessoaisModel;
+use App\Models\DadosPessoaisModel;
 use Exception;
 
 class DadosPessoaisApiController extends ResourceController
 {
     use ResponseTrait;
-    private $ModelDadodsPessoais;
+    private $ModelDadosPessoais;
     private $dbFields;
     private $uri;
 
     public function __construct()
     {
-        $this->ModelDadodsPessoais = new DadodsPessoaisModel();
+        $this->ModelDadosPessoais = new DadosPessoaisModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
     }
     #
@@ -35,47 +35,47 @@ class DadosPessoaisApiController extends ResourceController
         try {
             if (isset($processRequest['id'])) {
                 # CRUD da Model
-                $dbResponse[] = $this->ModelDadodsPessoais
+                $dbResponse[] = $this->ModelDadosPessoais
                     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //    ->where('id', $processRequest['id'])
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBupdate($processRequest['id'], $processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('id', $processRequest['id'])
                 //     ->dBdelete();
                 #
             } elseif ($parameter !== NULL) {
                 # CRUD da Model
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('id', $parameter)
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBupdate($parameter, $processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('id', $parameter)
                 //     ->dBdelete();
                 #
             } else {
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
@@ -187,11 +187,11 @@ class DadosPessoaisApiController extends ResourceController
         try {
             if ($id === true) {
                 if ($this->validtoken_csrf($token_csrf)) {
-                    $this->ModelDadodsPessoais->dbUpdate(
+                    $this->ModelDadosPessoais->dbUpdate(
                         $processRequest['id'],
                         $this->dbFields($processRequest)
                     );
-                    if ($this->ModelDadodsPessoais->affectedRows() > 0) {
+                    if ($this->ModelDadosPessoais->affectedRows() > 0) {
                         $this->returnMyFunction(['Update realizado com sucesso'], 'success');
                         $processRequestSuccess = true;
                     }
@@ -199,8 +199,8 @@ class DadosPessoaisApiController extends ResourceController
             } elseif ($id === false) {
                 if ($this->validtoken_csrf($token_csrf)) {
                     // myPrint($this->dbFields($processRequest), 'src\app\Controllers\DadosPessoaisApiController.php');
-                    $this->ModelDadodsPessoais->dbCreate($this->dbFields($processRequest));
-                    if ($this->ModelDadodsPessoais->affectedRows() > 0) {
+                    $this->ModelDadosPessoais->dbCreate($this->dbFields($processRequest));
+                    if ($this->ModelDadosPessoais->affectedRows() > 0) {
                         $this->returnMyFunction(['Create realizado com sucesso'], 'success');
                         $processRequestSuccess = true;
                     }
@@ -273,7 +273,7 @@ class DadosPessoaisApiController extends ResourceController
         #
         try {
             if (isset($processRequest['id'])) {
-                $dbResponse = $this->ModelDadodsPessoais
+                $dbResponse = $this->ModelDadosPessoais
                     ->where('id', $processRequest['id'])
                     ->where('deleted_at', NULL)
                     ->orderBy('order', 'asc')
@@ -281,7 +281,7 @@ class DadosPessoaisApiController extends ResourceController
                     ->find();
                 #
             } elseif ($parameter !== NULL) {
-                $dbResponse = $this->ModelDadodsPessoais
+                $dbResponse = $this->ModelDadosPessoais
                     ->where('id', $parameter)
                     ->where('deleted_at', NULL)
                     ->orderBy('order', 'asc')
@@ -289,7 +289,7 @@ class DadosPessoaisApiController extends ResourceController
                     ->find();
                 #
             } else {
-                $dbResponse = $this->ModelDadodsPessoais
+                $dbResponse = $this->ModelDadosPessoais
                     ->where('deleted_at', NULL)
                     ->orderBy('order', 'asc')
                     ->dBread()
@@ -359,47 +359,47 @@ class DadosPessoaisApiController extends ResourceController
         try {
             if (isset($processRequest['id'])) {
                 # CRUD da Model
-                $dbResponse[] = $this->ModelDadodsPessoais
+                $dbResponse[] = $this->ModelDadosPessoais
                     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //    ->where('id', $processRequest['id'])
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBupdate($processRequest['id'], $processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('id', $processRequest['id'])
                 //     ->dBdelete();
                 #
             } elseif ($parameter !== NULL) {
                 # CRUD da Model
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('id', $parameter)
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBupdate($parameter, $processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('id', $parameter)
                 //     ->dBdelete();
                 #
             } else {
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelDadodsPessoais
+                // $dbResponse[] = $this->ModelDadosPessoais
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()

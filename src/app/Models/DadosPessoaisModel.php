@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 
 // use system\Database\Exceptions\DatabaseException;
 
-class DadodsPessoaisModel extends Model
+class DadosPessoaisModel extends Model
 {
 
     protected $DBGroup = 'php81_dev';
@@ -54,7 +54,6 @@ class DadodsPessoaisModel extends Model
         }
         return $getTable;
     }
-
     public function dbCreate($dbCreate)
     {
         try {

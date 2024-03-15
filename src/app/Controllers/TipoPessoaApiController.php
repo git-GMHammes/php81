@@ -3,19 +3,19 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\DadosPessoaisModel;
+use App\Models\TipoPessoaModel;
 use Exception;
 
-class MeuReactApiController extends ResourceController
+class TipoPessoaApiController extends ResourceController
 {
     use ResponseTrait;
-    private $ModelDadosPessoais;
+    private $ModelTipoPessoa;
     private $dbFields;
     private $uri;
 
     public function __construct()
     {
-        $this->ModelDadosPessoais = new DadosPessoaisModel();
+        $this->ModelTipoPessoa = new TipoPessoaModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
     }
     #
@@ -35,47 +35,47 @@ class MeuReactApiController extends ResourceController
         try {
             if (isset($processRequest['id'])) {
                 # CRUD da Model
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //    ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //    ->where('id', $processRequest['id'])
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
                 #
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->dBupdate($processRequest['id'], $processRequest);
                 #
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->where('id', $processRequest['id'])
                 //     ->dBdelete();
                 #
             } elseif ($parameter !== NULL) {
                 # CRUD da Model
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->where('id', $parameter)
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
                 #
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->dBupdate($parameter, $processRequest);
                 #
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->where('id', $parameter)
                 //     ->dBdelete();
                 #
             } else {
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->dBcreate($processRequest);
                 #
-                // $dbResponse[] = $this->ModelResponse
+                // $dbResponse[] = $this->ModelTipoPessoa
                 //     ->where('deleted_at', NULL)
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
@@ -123,32 +123,44 @@ class MeuReactApiController extends ResourceController
             }
         }
     }
-    # route POST /www/meureact/api/ordenar/(:any)
-    # route GET /www/meureact/api/ordenar/(:any)
+
+    # route POST /www/tipopessoa/api/exibir/(:any)
+    # route GET /www/tipopessoa/api/exibir/(:any)
     # Informação sobre o controller
     # retorno do controller [JSON]
-    public function dbSort($parameter = NULL)
+    public function dbRead($parameter = NULL)
     {
         # Parâmentros para receber um POST
         $request = service('request');
         $processRequest = (array) $request->getVar();
-        $json = $processRequest['json'] ?? 0;
-        $processRequest = eagarScagaire($processRequest);
+        $json = ($processRequest['json'] ?? 0);
+        // $processRequest = eagarScagaire($processRequest);
         #
         try {
             if (isset($processRequest['id'])) {
-                $fullCont = count($processRequest['id']);
-                for ($i_update = 0; $i_update < $fullCont; $i_update++) {
-                    $dbUpdate = array(
-                        'id' => $processRequest['id'][$i_update],
-                        'order' => $processRequest['order'][$i_update]
-                    );
-                    $this->ModelDadosPessoais->dbUpdate($processRequest['id'][$i_update], $dbUpdate);
-                    // myPrint($dbUpdate, 'src\app\Controllers\MeuReactApiController.php', true);
-                }
+                $dbResponse = $this->ModelTipoPessoa
+                   ->where('id', $processRequest['id'])
+                    ->where('deleted_at', NULL)
+                    ->orderBy('ordem', 'asc')
+                    ->dBread()
+                    ->find();
+                #
+            } elseif ($parameter !== NULL) {
+                $dbResponse = $this->ModelTipoPessoa
+                    ->where('id', $parameter)
+                    ->where('deleted_at', NULL)
+                    ->orderBy('ordem', 'asc')
+                    ->dBread()
+                    ->find();
+                #
+            } else {
+                $dbResponse = $this->ModelTipoPessoa
+                    ->where('deleted_at', NULL)
+                    ->orderBy('ordem', 'asc')
+                    ->dBread()
+                    ->findAll();
             }
-            // myPrint($processRequest, 'src\app\Controllers\MeuReactApiController.php');
-
+            ;
             $apiRespond = [
                 'status' => 'success',
                 'message' => 'API loading data (dados para carregamento da API)',
@@ -161,7 +173,7 @@ class MeuReactApiController extends ResourceController
                 ],
                 // 'method' => '__METHOD__',
                 // 'function' => '__FUNCTION__',
-                'result' => $processRequest,
+                'result' => $dbResponse,
                 'metadata' => [
                     'page_title' => 'Application title',
                     'getURI' => $this->uri->getSegments(),
@@ -172,20 +184,30 @@ class MeuReactApiController extends ResourceController
             ];
             $response = $this->response->setJSON($apiRespond, 201);
         } catch (\Exception $e) {
-            $apiRespond = array(
-                'message' => array('danger' => $e->getMessage()),
-                'page_title' => 'Application title',
-                'getURI' => $this->uri->getSegments(),
-            );
-            // $this->returnFunction(array($e->getMessage()), 'danger',);
+            $apiRespond = [
+                'status' => 'error',
+                'message' => $e->getMessage(),
+                'date' => date('Y-m-d'),
+                'api' => [
+                    'version' => '1.0',
+                    'method' => $request->getMethod() ?? 'unknown',
+                    'description' => 'API Criar Method',
+                    'content_type' => 'application/x-www-form-urlencoded'
+                ],
+                'metadata' => [
+                    'page_title' => 'ERRO - API Method',
+                    'getURI' => $this->uri->getSegments(),
+                ]
+            ];
             $response = $this->response->setJSON($apiRespond, 500);
         }
         if ($json == 1) {
             return $response;
             // return redirect()->to('project/endpoint/parameter/parameter/' . $parameter);
         } else {
-            return redirect()->back();
-            // return $response;
+            return $response;
+            // return redirect()->back();
         }
     }
 }
+?>

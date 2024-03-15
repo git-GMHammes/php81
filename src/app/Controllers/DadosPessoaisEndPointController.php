@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\DadodsPessoaisModel;
+use App\Models\DadosPessoaisModel;
 use Exception;
 
 class DadosPessoaisEndPointController extends ResourceController
@@ -15,12 +15,12 @@ class DadosPessoaisEndPointController extends ResourceController
     private $footer = 'dadospessoais/footer';
     private $head = 'dadospessoais/head';
     private $menu = 'dadospessoais/menu';
-    private $ModelDadodsPessoais;
+    private $ModelDadosPessoais;
     private $uri;
     #
     public function __construct()
     {
-        $this->ModelDadodsPessoais = new DadodsPessoaisModel();
+        $this->ModelDadosPessoais = new DadosPessoaisModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
     }
     #
@@ -146,7 +146,7 @@ class DadosPessoaisEndPointController extends ResourceController
             $this->menu,
             $this->message,
             // 'dadospessoais/teste_input',
-            'dadospessoais/react/api/006_api_form',
+            'dadospessoais/react/form/main',
             $this->footer,
         );
         try {
@@ -163,7 +163,7 @@ class DadosPessoaisEndPointController extends ResourceController
                 ],
                 // 'method' => '__METHOD__',
                 // 'function' => '__FUNCTION__',
-                'result' => $processRequest,
+                'result' => $requestJSONform,
                 'loadView' => $loadView,
                 'metadata' => [
                     'page_title' => 'Application title',
