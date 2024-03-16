@@ -1,5 +1,5 @@
 <?php
-$id_form = (isset($result['id_form']) ? $result['id_form'] : '');
+$id_form = (isset ($result['id_form']) ? $result['id_form'] : '');
 // Aqui como todos os que serão enviados com o react
 $in_php_campos_001 = array(
     "id_form" => $id_form,
@@ -30,58 +30,92 @@ $in_php_campos_001 = array(
         const [dadosApiTipoPessoa, setDadosApiTipoPessoa] = React.useState([]);
         const [dadosApiValue, setDadosApiValue] = React.useState(null)
         // Definindo estados para os campos que queremos extrair
-        const [telephone, setTelephone] = React.useState('');
-        const [cpf, setCpf] = React.useState('');
+        const [addressCode, setAddressCode] = React.useState(null);
+        const [addressComplement, setAddressComplement] = React.useState(null);
         const [birthDate, setBirthDate] = React.useState('');
+        const [city, setCity] = React.useState(null);
+        const [cpf, setCpf] = React.useState('');
+        const [createdAt, setCreatedAt] = React.useState('');
+        const [deletedAt, setDeletedAt] = React.useState(null);
+        const [gender, setGender] = React.useState('');
+        const [id, setId] = React.useState('');
+        const [mail, setMail] = React.useState(null);
+        const [name, setName] = React.useState('');
+        const [order, setOrder] = React.useState('');
+        const [personType, setPersonType] = React.useState('');
+        const [rg, setRg] = React.useState('');
+        const [telephone, setTelephone] = React.useState('');
+        const [uf, setUf] = React.useState(null);
+        const [updatedAt, setUpdatedAt] = React.useState('');
 
         React.useEffect(() => {
             const appElement = document.querySelector('.campos_001');
-            let data;
+            let dataInPhp;
             try {
-            const responseValue = await fetch(data.url_api_value);
-            const apiDataValue = await responseValue.json();
-
-            setDadosApiValue(apiDataValue.result);
-            if (apiDataValue.result && apiDataValue.result.length > 0) {
-                const item = apiDataValue.result[0];
-                setTelephone(item.telephone);
-                setCpf(item.cpf);
-                setBirthDate(item.birth_date);
+                dataInPhp = JSON.parse(appElement.getAttribute('data-inphp'));
+            } catch (error) {
+                console.error('Parsing error:', error);
+                return;
             }
 
-            const responseTipoPessoa = await fetch(data.url_api_tipo_pessoa);
-            const apiDataTipoPessoa = await responseTipoPessoa.json();
-            setDadosApiTipoPessoa(apiDataTipoPessoa.result);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+            // Defina esses valores imediatamente, já que eles não dependem das chamadas de API.
+            setUrlPost(dataInPhp.url_post);
+            setIdForm(dataInPhp.id_form);
+            setTokenCsrf(dataInPhp.token_csrf);
+            setUrlApiValue(dataInPhp.url_api_value);
+            setUrlApiTipoPessoa(dataInPhp.url_api_tipo_pessoa);
 
-            setUrlPost(data.url_post);
-            setIdForm(data.id_form);
-            setTokenCsrf(data.token_csrf);
-            setUrlApiValue(data.url_api_value);
-            setUrlApiTipoPessoa(data.url_api_tipo_pessoa);
-
-            fetch(data.url_api_value)
-                .then(response => response.json())
-                .then(apiDataValue => {
+            // Função assíncrona para buscar os dados da API.
+            const fetchData = async () => {
+                try {
+                    // Chama a API para obter os dados do formulário.
+                    const responseValue = await fetch(dataInPhp.url_api_value);
+                    const apiDataValue = await responseValue.json();
                     setDadosApiValue(apiDataValue.result);
-                })
-                .catch(error => console.error('Error fetching data:', error));
 
-            // Busca os tipos de pessoa
-            fetch(data.url_api_tipo_pessoa)
-                .then(response => response.json())
-                .then(apiDataTipoPessoa => {
+                    if (apiDataValue.result && apiDataValue.result.length > 0) {
+                        const item = apiDataValue.result[0];
+                        // Atualizando os estados com os dados recebidos
+                        setAddressCode(item.address_code);
+                        setAddressComplement(item.address_complement);
+                        setBirthDate(item.birth_date);
+                        setCity(item.city);
+                        setCpf(item.cpf);
+                        setCreatedAt(item.created_at);
+                        setDeletedAt(item.deleted_at);
+                        setGender(item.gender);
+                        setId(item.id);
+                        setMail(item.mail);
+                        setName(item.name);
+                        setOrder(item.order);
+                        setPersonType(item.person_type);
+                        setRg(item.rg);
+                        setTelephone(item.telephone);
+                        setUf(item.uf);
+                        setUpdatedAt(item.updated_at);
+
+                    }
+
+                    // Chama a API para obter os tipos de pessoa.
+                    const responseTipoPessoa = await fetch(dataInPhp.url_api_tipo_pessoa);
+                    const apiDataTipoPessoa = await responseTipoPessoa.json();
                     setDadosApiTipoPessoa(apiDataTipoPessoa.result);
-                })
-                .catch(error => console.error('Error fetching data:', error));
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            };
 
+            // Executa a função assíncrona definida acima.
+            fetchData();
         }, []);
 
         return (
             <div className="container">
-                {dadosApiValue && dadosApiValue.length > 0 && (<span>{dadosApiValue[0].telephone}</span>)}
+                <div>
+                    {telephone}&nbsp; <br />
+                    {cpf}&nbsp; <br />
+                    {birthDate}&nbsp; <br />
+                </div>
                 {debugField && (
                     <div>
                         <div id="Exibe os dados Value">
