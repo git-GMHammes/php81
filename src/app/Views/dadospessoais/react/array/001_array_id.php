@@ -1,3 +1,9 @@
+<div class="d-flex justify-content-center">
+    # route GET /www/dadospessoais/endpoint/listar/array/(:any)
+</div>
+<div class="d-flex justify-content-center">
+    https://github.com/git-GMHammes/php81/blob/main/src/app/Views/dadospessoais/react/array/001_array_id.php
+</div>
 <!-- Div onde o aplicativo React será montado -->
 <div id="dadosPessoaisReact_id" data-result='<?php echo json_encode($result); ?>'></div>
 
