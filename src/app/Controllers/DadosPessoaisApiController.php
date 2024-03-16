@@ -28,12 +28,12 @@ class DadosPessoaisApiController extends ResourceController
     {
         # Parâmentros para receber um POST
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
         // $processRequest = eagarScagaire($processRequest);
         #
         try {
-            if (isset($processRequest['id'])) {
+            if (isset ($processRequest['id'])) {
                 # CRUD da Model
                 $dbResponse[] = $this->ModelDadosPessoais
                     ->dBcreate($processRequest);
@@ -80,7 +80,8 @@ class DadosPessoaisApiController extends ResourceController
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
-            };
+            }
+            ;
             $apiRespond = [
                 'status' => 'success',
                 'message' => 'API loading data (dados para carregamento da API)',
@@ -141,13 +142,21 @@ class DadosPessoaisApiController extends ResourceController
     private function dbFields($processRequestFields = array())
     {
         $dbCreate = array();
-        (isset($processRequestFields['id'])) ? ($dbCreate['id'] = $processRequestFields['id']) : (NULL);
-        (isset($processRequestFields['nome'])) ? ($dbCreate['nome'] = $processRequestFields['nome']) : (NULL);
-        (isset($processRequestFields['telefone'])) ? ($dbCreate['telefone'] = $processRequestFields['telefone']) : (NULL);
-        (isset($processRequestFields['email'])) ? ($dbCreate['email'] = $processRequestFields['email']) : (NULL);
-        (isset($processRequestFields['idade'])) ? ($dbCreate['idade'] = $processRequestFields['idade']) : (NULL);
-        (isset($processRequestFields['end_cep'])) ? ($dbCreate['end_cep'] = $processRequestFields['end_cep']) : (NULL);
-        (isset($processRequestFields['end_complemento'])) ? ($dbCreate['end_complemento'] = $processRequestFields['end_complemento']) : (NULL);
+        (isset ($processRequestFields['address_complement'])) ? ($dbCreate['address_complement'] = $processRequestFields['address_complement']) : (NULL);
+        (isset ($processRequestFields['address_code'])) ? ($dbCreate['address_code'] = $processRequestFields['address_code']) : (NULL);
+        (isset ($processRequestFields['personType'])) ? ($dbCreate['person_type'] = $processRequestFields['personType']) : (NULL);
+        (isset ($processRequestFields['birth_date'])) ? ($dbCreate['birth_date'] = $processRequestFields['birth_date']) : (NULL);
+        (isset ($processRequestFields['telephone'])) ? ($dbCreate['telephone'] = $processRequestFields['telephone']) : (NULL);
+        (isset ($processRequestFields['full_name'])) ? ($dbCreate['full_name'] = $processRequestFields['full_name']) : (NULL);
+        (isset ($processRequestFields['gender'])) ? ($dbCreate['gender'] = $processRequestFields['gender']) : (NULL);
+        (isset ($processRequestFields['order'])) ? ($dbCreate['order'] = $processRequestFields['order']) : (NULL);
+        (isset ($processRequestFields['mail'])) ? ($dbCreate['mail'] = $processRequestFields['mail']) : (NULL);
+        (isset ($processRequestFields['city'])) ? ($dbCreate['city'] = $processRequestFields['city']) : (NULL);
+        (isset ($processRequestFields['cpf'])) ? ($dbCreate['cpf'] = $processRequestFields['cpf']) : (NULL);
+        (isset ($processRequestFields['id'])) ? ($dbCreate['id'] = $processRequestFields['id']) : (NULL);
+        (isset ($processRequestFields['rg'])) ? ($dbCreate['rg'] = $processRequestFields['rg']) : (NULL);
+        (isset ($processRequestFields['uf'])) ? ($dbCreate['uf'] = $processRequestFields['uf']) : (NULL);
+        // myPrint($dbCreate, 'src\app\Controllers\DadosPessoaisApiController.php');
         return ($dbCreate);
     }
 
@@ -156,10 +165,10 @@ class DadosPessoaisApiController extends ResourceController
         // ['success', 'warning', 'danger'];
         if ($message !== array()) {
             $message['message'][$typeMessage] = $message;
-            session()->set('message',  $message);
+            session()->set('message', $message);
             session()->markAsTempdata('message', 5);
             if ($dataValue !== array()) {
-                session()->set('value_form',  $dataValue);
+                session()->set('value_form', $dataValue);
             }
             session()->markAsTempdata('message', 15);
         }
@@ -176,10 +185,11 @@ class DadosPessoaisApiController extends ResourceController
     {
         # Parâmentros para receber um POST
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
+        // myPrint($processRequest, 'src\app\Controllers\DadosPessoaisApiController.php', true);
         $token_csrf = ($processRequest['token_csrf'] ?? NULL);
         $json = ($processRequest['json'] ?? FALSE);
-        $id = (isset($processRequest['id'])) ? (true) : (false);
+        $id = (isset ($processRequest['id'])) ? (true) : (false);
         $processRequest = eagarScagaire($processRequest);
         #
         // myPrint($processRequest, 'src\app\Controllers\DadosPessoaisApiController.php');
@@ -207,10 +217,11 @@ class DadosPessoaisApiController extends ResourceController
                 }
             } else {
                 $this->returnMyFunction(['ERRO: Dados enviados inválidos'], 'danger');
-            };
-            $status = (!isset($processRequestSuccess) || $processRequestSuccess !== true) ? ('trouble') : ('success');
-            $message = (!isset($processRequestSuccess) || $processRequestSuccess !== true) ? ('Erro - requisição que foi bem-formada mas não pôde ser seguida devido a erros semânticos.') : ('API loading data (dados para carregamento da API)');
-            $cod_http = (!isset($processRequestSuccess) || $processRequestSuccess !== true) ? (422) : (201);
+            }
+            ;
+            $status = (!isset ($processRequestSuccess) || $processRequestSuccess !== true) ? ('trouble') : ('success');
+            $message = (!isset ($processRequestSuccess) || $processRequestSuccess !== true) ? ('Erro - requisição que foi bem-formada mas não pôde ser seguida devido a erros semânticos.') : ('API loading data (dados para carregamento da API)');
+            $cod_http = (!isset ($processRequestSuccess) || $processRequestSuccess !== true) ? (422) : (201);
             $apiRespond = [
                 'status' => $status,
                 'message' => $message,
@@ -255,8 +266,8 @@ class DadosPessoaisApiController extends ResourceController
             return $response;
             // return redirect()->to('project/endpoint/parameter/parameter/' . $parameter);
         } else {
-            return $response;
-            // return redirect()->back();
+            return redirect()->back();
+            // return $response;
         }
     }
 
@@ -268,11 +279,11 @@ class DadosPessoaisApiController extends ResourceController
     {
         # Parâmentros para receber um POST
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
         // $processRequest = eagarScagaire(processRequest);
         #
         try {
-            if (isset($processRequest['id'])) {
+            if (isset ($processRequest['id'])) {
                 $dbResponse = $this->ModelDadosPessoais
                     ->where('id', $processRequest['id'])
                     ->where('deleted_at', NULL)
@@ -294,7 +305,8 @@ class DadosPessoaisApiController extends ResourceController
                     ->orderBy('order', 'asc')
                     ->dBread()
                     ->findAll();
-            };
+            }
+            ;
             $apiRespond = [
                 'status' => 'success',
                 'message' => 'API loading data (dados para carregamento da API)',
@@ -352,12 +364,12 @@ class DadosPessoaisApiController extends ResourceController
     {
         # Parâmentros para receber um POST
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
         // $processRequest = eagarScagaire($processRequest);
         #
         try {
-            if (isset($processRequest['id'])) {
+            if (isset ($processRequest['id'])) {
                 # CRUD da Model
                 $dbResponse[] = $this->ModelDadosPessoais
                     ->dBcreate($processRequest);
@@ -404,7 +416,8 @@ class DadosPessoaisApiController extends ResourceController
                 //     ->orderBy('updated_at', 'asc')
                 //     ->dBread()
                 //     ->find();
-            };
+            }
+            ;
             $apiRespond = [
                 'status' => 'success',
                 'message' => 'API loading data (dados para carregamento da API)',

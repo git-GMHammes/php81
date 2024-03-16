@@ -132,11 +132,11 @@ class DadosPessoaisEndPointController extends ResourceController
         $dbCerate = array(
             'person_type' => '',
             'order' => 0,
-            'name' => '',
+            'full_name' => '',
             'gender' => '',
-            'birth_date' => '1111-11-11',
-            'rg' => '000000',
-            'cpf' => '11122233344',
+            'birth_date' => NULL,
+            'rg' => '',
+            'cpf' => '',
             'telephone' => '21900009999',
         );
         $this->ModelDadosPessoais->dbCreate($dbCerate);
