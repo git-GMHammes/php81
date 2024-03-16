@@ -260,8 +260,8 @@ class DadosPessoaisApiController extends ResourceController
         }
     }
 
-    # route POST /www/dadospessoais/api/listar/(:any)
-    # route GET /www/dadospessoais/api/listar/(:any)
+    # route POST /www/dadospessoais/api/exibir/(:any)
+    # route GET /www/dadospessoais/api/exibir/(:any)
     # Informação sobre o controller
     # retorno do controller [JSON]
     public function dbRead($parameter = NULL)

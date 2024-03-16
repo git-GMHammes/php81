@@ -100,13 +100,13 @@ if (
     || $_SERVER['SERVER_NAME'] == 'www.'
 ) {
     # Ambiente HML
-    defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', false);
+    defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', true);
 } elseif (
     $_SERVER['SERVER_NAME'] == ''
     || $_SERVER['SERVER_NAME'] == 'www.'
 ) {
     # Ambiente PRD
-    defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', false);
+    defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', true);
 } else{
     defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', true);
 }

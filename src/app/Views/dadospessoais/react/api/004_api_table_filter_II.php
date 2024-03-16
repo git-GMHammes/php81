@@ -22,7 +22,7 @@
 
         // Efeito colateral para carregar dados da API
         React.useEffect(() => {
-            fetch('http://localhost:4107/dadospessoais/api/listar')
+            fetch('http://localhost:4107/dadospessoais/api/exibir')
                 .then(response => response.json())
                 .then(data => setData(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -42,7 +42,7 @@
         return (
             <div className="container mt-4">
                 <h1>Table from API</h1>
-                <h3>'http://localhost:4107/dadospessoais/api/listar'</h3>
+                <h3>'http://localhost:4107/dadospessoais/api/exibir'</h3>
 
                 {/* Campo de entrada para o filtro */}
                 <input 

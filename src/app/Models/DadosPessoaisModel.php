@@ -58,15 +58,16 @@ class DadosPessoaisModel extends Model
     {
         try {
             $this->allowedFields = array_keys($dbCreate);
+            // myPrint($this->allowedFields, 'src\app\Models\DadosPessoaisModel.php');
             $this->dbInsert = $this->insert($dbCreate);
             $this->affectedRows = $this->db->affectedRows();
-            // myPrint($this->allowedFields, true);
             // myPrint($dbCreate, true);
             // myPrint($this->dbInsert);
         } catch (\Throwable $th) {
             $this->message['message']['danger'] = array(
                 $th->getMessage(),
             );
+            myPrint($this->message, 'src\app\Models\DadosPessoaisModel.php');
             session()->set('message', $this->message);
             session()->markAsTempdata('message', 5);
         }

@@ -9,7 +9,7 @@
         // useEffect é usado para fazer a chamada da API quando o componente é montado
         React.useEffect(() => {
             // Fazendo a chamada da API
-            fetch('http://localhost:4107/dadospessoais/api/listar')
+            fetch('http://localhost:4107/dadospessoais/api/exibir')
                 .then(response => response.json()) // Converte a resposta em JSON
                 .then(data => setData(data.result)) // Armazena apenas a parte 'result' do JSON no state
                 .catch(error => console.error('Error fetching data:', error)); // Captura erros, se houver

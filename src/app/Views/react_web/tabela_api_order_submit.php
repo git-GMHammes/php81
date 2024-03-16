@@ -4,7 +4,7 @@ $in_php = array(
     "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat massa id felis dapibus, ac malesuada ipsum venenatis. Pellentesque vitae dui dui. Curabitur sollicitudin metus elementum vulputate blandit. Donec in varius diam. Vestibulum a est quis lacus pretium viverra eu id est. Vivamus efficitur tempus est, sed consectetur justo pellentesque sit amet. Sed vehicula consectetur augue, vel commodo leo pulvinar volutpat. Etiam sagittis non ligula bibendum tincidunt. Nunc sed tellus id arcu interdum dapibus vel sed enim. Ut dictum accumsan viverra. Donec cursus libero ut neque mattis, eu pellentesque lorem pharetra. Nam pharetra iaculis est, quis porta mi iaculis at. Fusce dui felis, pharetra eget massa vel, aliquam vulputate tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam quam quam, dictum sed risus quis, euismod tincidunt erat. Mauris pellentesque erat risus.",
     "keywords" => "Ordenar",
     "body" => "ordenar",
-    "url_api" => base_url() . "dadospessoais/api/listar",
+    "url_api" => base_url() . "dadospessoais/api/exibir",
     "url_post" => base_url() . "meureact/api/ordenar",
     "css" => array(),
     "js" => array()
@@ -12,9 +12,24 @@ $in_php = array(
 ?>
 <div class="tabela_api_order_submit" data-inphp='<?php echo json_encode($in_php); ?>'></div>
 <script type="text/babel">
+    // Formato Brasileiro para data
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString('pt-BR', options);
+    }
+    // Formatar Cidade e UF
+    function formatAddress(city, uf) {
+        let parts = [];
+
+        if (city) parts.push(city);
+        if (uf) parts.push(uf);
+
+        return parts.join(', ');
+    }
+
     function AppTabelaAPIOrderSubmit() {
         // Estado para armazenar dados recebidos da API
-        const [dadosRecebidosAPI, setDadosPessoais] = React.useState([]);
+        const [dadosRecebidosAPI, setDadosAPI] = React.useState([]);
 
         // Estados para armazenar informações passadas pelo PHP
         const [title, setTitle] = React.useState('');
@@ -22,8 +37,8 @@ $in_php = array(
 
         // Componente para exibir um ícone de movimento (não relacionado diretamente à ordenação, UI apenas)
         const MoveIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrows-move" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10M.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="bi bi-arrows-move" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10M.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8" />
             </svg>
         );
         // Seleciona o elemento que contém os dados passados pelo PHP
@@ -44,7 +59,7 @@ $in_php = array(
                     }
                     return response.json();
                 })
-                .then(apiData => setDadosPessoais(apiData.result))
+                .then(apiData => setDadosAPI(apiData.result))
                 .catch(error => console.error('Error fetching data:', error));
         }, []);
 
@@ -59,7 +74,7 @@ $in_php = array(
             let newDadosRecebidosAPI = [...dadosRecebidosAPI];
             const draggedItem = newDadosRecebidosAPI.splice(dragIndex, 1)[0];
             newDadosRecebidosAPI.splice(dropIndex, 0, draggedItem);
-            setDadosPessoais(newDadosRecebidosAPI);
+            setDadosAPI(newDadosRecebidosAPI);
 
             // Preparar dados para envio
             const postData = new FormData(); // Usando FormData para simular o envio de formulário
@@ -102,11 +117,11 @@ $in_php = array(
                                         #
                                     </div>
                                 </th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">E-mail</th>
-                                <th scope="col">CEP</th>
-                                <th scope="col">Complemento</th>
+                                <th scope="col">Nome (name/birth_date)</th>
+                                <th scope="col">Informações (person_type/gender)</th>
+                                <th scope="col">Contato (telephone/mail)</th>
+                                <th scope="col">Endereço (address_code/address_complement/city/uf)</th>
+                                <th scope="col">Município (city/uf)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -147,11 +162,40 @@ $in_php = array(
                                             />
                                         </div>
                                     </th>
-                                    <td>{dados_api.nome}</td>
-                                    <td>{dados_api.telefone}</td>
-                                    <td>{dados_api.email}</td>
-                                    <td>{dados_api.end_cep}</td>
-                                    <td>{dados_api.end_complemento}</td>
+                                    <td>
+                                        <div>
+                                            {dados_api.name}
+                                        </div>
+                                        <div>
+                                            {formatDate(dados_api.birth_date)}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {dados_api.person_type}
+                                        </div>
+                                        <div>
+                                            {dados_api.gender}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {dados_api.mail}
+                                        </div>
+                                        <div>
+                                            {dados_api.telephone}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {dados_api.address_code}{dados_api.address_complement}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {formatAddress(dados_api.city, dados_api.uf)}
+                                        </div>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

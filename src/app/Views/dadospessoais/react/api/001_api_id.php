@@ -35,10 +35,10 @@
 
         React.useEffect(() => {
 
-            // Fetch API: fetch('http://localhost:4107/dadospessoais/api/listar') é uma chamada à Fetch API, 
+            // Fetch API: fetch('http://localhost:4107/dadospessoais/api/exibir') é uma chamada à Fetch API, 
             // uma maneira moderna de fazer solicitações de rede (como chamadas a APIs) em JavaScript. 
             // Neste caso, você está fazendo uma solicitação GET para o URL especificado 
-            // (http://localhost/dadospessoais/api/listar). 
+            // (http://localhost/dadospessoais/api/exibir). 
             // Esta URL parece ser uma API local que lista dados pessoais.
 
             // Processando a Resposta:
@@ -60,7 +60,7 @@
             // resposta de erro do servidor, problemas na análise do JSON, etc.), o código dentro 
             // do .catch será executado. Aqui, você está apenas registrando o erro no console.
 
-            fetch('http://localhost:4107/dadospessoais/api/listar')
+            fetch('http://localhost:4107/dadospessoais/api/exibir')
                 .then(response => response.json())
                 .then(data => setData(data))
                 .catch(error => console.error('Error fetching data:', error));

@@ -20,7 +20,7 @@
     const App_table_api_table = () => {
         const [data, setData] = React.useState(null);
         React.useEffect(() => {
-            fetch('http://localhost:4107/dadospessoais/api/listar')
+            fetch('http://localhost:4107/dadospessoais/api/exibir')
                 .then(response => response.json())
                 .then(data => setData(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -29,7 +29,7 @@
         return (
             <div className="container mt-4">
                 <h1>Table from API</h1>
-                <h3>'http://localhost:4107/dadospessoais/api/listar'</h3>
+                <h3>'http://localhost:4107/dadospessoais/api/exibir'</h3>
                 {/*
                     {data && data.result && (...)}
 

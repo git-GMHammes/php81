@@ -31,7 +31,7 @@ class DadosPessoaisEndPointController extends ResourceController
     public function index($parameter = NULL)
     {
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
         // $processRequest = eagarScagaire($processRequest);
         #
         $loadView = array(
@@ -108,23 +108,39 @@ class DadosPessoaisEndPointController extends ResourceController
         // ['success', 'warning', 'danger'];
         if ($message !== array()) {
             $message['message'][$typeMessage] = $message;
-            session()->set('message',  $message);
+            session()->set('message', $message);
             session()->markAsTempdata('message', 5);
             if ($dataValue !== array()) {
-                session()->set('value_form',  $dataValue);
+                session()->set('value_form', $dataValue);
             }
             session()->markAsTempdata('message', 15);
         }
-        return (NULL);
+        return(NULL);
     }
 
     private function token_csrf()
     {
         $token_csrf = md5(password_hash(time(), PASSWORD_DEFAULT));
-        session()->set('token_csrf',  $token_csrf);
+        session()->set('token_csrf', $token_csrf);
         session()->markAsTempdata('token_csrf', 1800);
         // myPrint($token_csrf, 'www\oficina\app\Controllers\CustomersEndPointController.php', true);
         return $token_csrf;
+    }
+
+    private function createDb()
+    {
+        $dbCerate = array(
+            'person_type' => '',
+            'order' => 0,
+            'name' => '',
+            'gender' => '',
+            'birth_date' => '1111-11-11',
+            'rg' => '000000',
+            'cpf' => '11122233344',
+            'telephone' => '21900009999',
+        );
+        $this->ModelDadosPessoais->dbCreate($dbCerate);
+        return $this->ModelDadosPessoais->insertID();
     }
 
     # Consumo de API
@@ -134,23 +150,32 @@ class DadosPessoaisEndPointController extends ResourceController
     # retorno do controller [VIEW]
     public function dbCreate($parameter = NULL)
     {
+        // myPrint('Teste', 'dadospessoais/endpoint/CustomersEndPointController.php', true);
+        if ($parameter == NULL) {
+            // myPrint($this->createDb(), 'dadospessoais/endpoint/CustomersEndPointController.php');
+            if ($this->createDb() !== 0) {
+                $parameter = $this->createDb();
+                return redirect()->to('dadospessoais/endpoint/create/dadospessoais/' . $parameter);
+            }
+        }
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
-        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter);
+        $id = (isset($processRequest['id']) ? '/' . $processRequest['id'] : '/' . $parameter);
         $processRequest = eagarScagaire($processRequest);
-        // myPrint($processRequest, 'dadospessoais/endpoint/CustomersEndPointController.php');
         #
         $loadView = array(
             $this->head,
             $this->menu,
             $this->message,
             // 'dadospessoais/teste_input',
-            'dadospessoais/react/form/main',
+            'dadospessoais/react/form/campos_001',
             $this->footer,
         );
         try {
-            $requestJSONform = array();
+            $requestJSONform = array(
+                'id_form' => $parameter,
+            );
             $apiRespond = [
                 'status' => 'success',
                 'message' => 'API loading data (dados para carregamento da API)',
@@ -210,7 +235,7 @@ class DadosPessoaisEndPointController extends ResourceController
     public function dbRead_array($parameter1 = NULL, $parameter2 = NULL)
     {
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
         $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
         // $processRequest = eagarScagaire($processRequest);
@@ -232,7 +257,8 @@ class DadosPessoaisEndPointController extends ResourceController
             default:
                 myPrint('Error: ' . $parameter1, 'dadospessoais/endpoint/CustomersEndPointController.php');
                 break;
-        };
+        }
+        ;
         #
         $loadView = array(
             $this->head,
@@ -243,9 +269,9 @@ class DadosPessoaisEndPointController extends ResourceController
         );
         try {
             if ($id === '/') {
-                $myEndPoint = myEndPoint('dadospessoais/api/listar', '123');
+                $myEndPoint = myEndPoint('dadospessoais/api/exibir', '123');
             } else {
-                $myEndPoint = myEndPoint('dadospessoais/api/listar' . $id, '123');
+                $myEndPoint = myEndPoint('dadospessoais/api/exibir' . $id, '123');
             }
             $requestJSONform = (isset($myEndPoint['result'])) ? ($myEndPoint['result']) : (array());
             // myPrint($requestJSONform, '');
@@ -311,7 +337,7 @@ class DadosPessoaisEndPointController extends ResourceController
     public function dbRead_api($parameter1 = NULL, $parameter2 = NULL)
     {
         $request = service('request');
-        $processRequest = (array)$request->getVar();
+        $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
         $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
         // $processRequest = eagarScagaire($processRequest);
@@ -336,7 +362,8 @@ class DadosPessoaisEndPointController extends ResourceController
             default:
                 myPrint('Error: ' . $parameter1, 'dadospessoais/endpoint/CustomersEndPointController.php');
                 break;
-        };
+        }
+        ;
         #
         $loadView = array(
             $this->head,
