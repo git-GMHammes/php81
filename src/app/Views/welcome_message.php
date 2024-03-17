@@ -295,23 +295,24 @@
                 <div class="col-12 col-sm-6">
                     <div class="d-grid gap-2">
                         <a class="btn btn-outline-primary mb-2"
-                            href="<?= base_url() . 'dadospessoais/endpoint/listar/array' . '/id'; ?>" role="button"
+                            href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/id'; ?>" role="button"
                             target="_blanck">
                             React + Api Estático (ID)
                         </a>
                     </div>
                     <div class="d-grid gap-2">
-                        <a class="btn btn-outline-secondary mb-2"
-                            href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/paginator'; ?>" role="button"
-                            target="_blanck">
-                            React + Api Estático (Tabela/Paginação)
-                        </a>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <a class="btn btn-outline-success mb-2"
+                    <a class="btn btn-outline-success mb-2"
                             href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/table'; ?>" role="button"
                             target="_blanck">
                             React + Api Estático (Tabela)
+                        </a>
+                       
+                    </div>
+                    <div class="d-grid gap-2">
+                    <a class="btn btn-outline-secondary mb-2"
+                            href="<?= base_url() . 'dadospessoais/endpoint/listar/api' . '/paginator'; ?>" role="button"
+                            target="_blanck">
+                            React + Api Estático (Tabela/Paginação)
                         </a>
                     </div>
                     <div class="d-grid gap-2">

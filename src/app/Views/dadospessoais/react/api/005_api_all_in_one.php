@@ -1,5 +1,4 @@
 <div id="ReactResultAllInOne"></div>
-
 <script type="text/babel">
     // Componente React para exibir dados de uma API em uma tabela
     const AppApiAllInOn = () => {
@@ -10,9 +9,12 @@
         React.useEffect(() => {
             // Fazendo a chamada da API
             fetch('http://localhost:4107/dadospessoais/api/exibir')
-                .then(response => response.json()) // Converte a resposta em JSON
-                .then(data => setData(data.result)) // Armazena apenas a parte 'result' do JSON no state
-                .catch(error => console.error('Error fetching data:', error)); // Captura erros, se houver
+                // Converte a resposta em JSON    
+                .then(response => response.json())
+                // Armazena apenas a parte 'result' do JSON no state
+                .then(data => setData(data.result))
+                // Captura erros, se houver
+                .catch(error => console.error('Error fetching data:', error));
         }, []); // Array de dependências vazio significa que isso roda apenas na montagem do componente
 
         // Função para renderizar o cabeçalho da tabela
@@ -26,7 +28,8 @@
             return (
                 <tr>
                     {Object.keys(data[0]).map(key => (
-                        <th key={key}>{key}</th> // Cria um cabeçalho de tabela para cada chave
+                        // Cria um cabeçalho de tabela para cada chave
+                        <th key={key}>{key}</th>
                     ))}
                 </tr>
             );
@@ -38,7 +41,8 @@
             return data.map((item, index) => (
                 <tr key={index}>
                     {Object.keys(item).map(key => (
-                        <td key={`${index}-${key}`}>{item[key]}</td> // Cria uma célula de tabela para cada valor
+                        // Cria uma célula de tabela para cada valor
+                        <td key={`${index}-${key}`}>{item[key]}</td>
                     ))}
                 </tr>
             ));
@@ -48,12 +52,24 @@
         return (
             <div className="container mt-4">
                 <h1>Data from API</h1>
+                <h2>(Exibe todos os rotulos e dados de uma API em uma tabela)</h2>
+                <h3>'http://localhost:4107/dadospessoais/endpoint/listar/api/all_in_one'</h3>
+                <div>
+                    <div className="d-flex justify-content-center">
+                        # route GET /www/dadospessoais/endpoint/listar/api/all_in_one/(:any)
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        https://github.com/git-GMHammes/php81/blob/main/src/app/Views/dadospessoais/react/api/005_api_all_in_one.php
+                    </div>
+                </div>
                 <table>
                     <thead>
-                        {renderTableHeader()} // Renderiza o cabeçalho da tabela
+                        {/* Renderiza o cabeçalho da tabela */}
+                        {renderTableHeader()}
                     </thead>
                     <tbody>
-                        {data ? renderTableRows() : <tr><td>Loading...</td></tr>} // Renderiza as linhas da tabela ou mostra 'Loading...'
+                        {/* Renderiza as linhas da tabela ou mostra 'Loading...' */}
+                        {data ? renderTableRows() : <tr><td>Loading...</td></tr>}
                     </tbody>
                 </table>
             </div>

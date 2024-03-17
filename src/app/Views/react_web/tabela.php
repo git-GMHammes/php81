@@ -17,6 +17,16 @@ $in_php = array(
         const data = JSON.parse(dataResult);
         return (
             <div class="container">
+                <h1>Tabela React No ID</h1>
+                <h3>'http://localhost:4107/meureact/endpoint/ordenar'</h3>
+                <div>
+                    <div className="d-flex justify-content-center">
+                        # route GET /www/meureact/endpoint/ordenar/(:any)
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        https://github.com/git-GMHammes/php81/blob/main/src/app/Views/react_web/tabela.php
+                    </div>
+                </div>
                 <h2 className="mt-4 mb-4">{data.title}</h2>
                 <table className="table table-hover">
                     <thead>

@@ -82,6 +82,16 @@ $in_php = array(
 
         return (
             <div className="container">
+                <h1>Tabela from API</h1>
+                <h3>'http://localhost:4107/meureact/endpoint/ordenar'</h3>
+                <div>
+                    <div className="d-flex justify-content-center">
+                        # route GET /www/meureact/endpoint/ordenar/(:any)
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        https://github.com/git-GMHammes/php81/blob/main/src/app/Views/react_web/tabela_api.php
+                    </div>
+                </div>
                 <form className="was-validated" action={urlPost} method="post">
                     <h2 className="mt-4 mb-4">{title}</h2>
                     <table className="table table-hover">

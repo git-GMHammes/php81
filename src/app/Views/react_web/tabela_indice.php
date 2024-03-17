@@ -22,6 +22,16 @@ $in_php = array(
         ];
         return (
             <div className="container">
+                <h1>Tabela React Array MAP</h1>
+                <h3>'http://localhost:4107/meureact/endpoint/ordenar'</h3>
+                <div>
+                    <div className="d-flex justify-content-center">
+                        # route GET /www/meureact/endpoint/ordenar/(:any)
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        https://github.com/git-GMHammes/php81/blob/main/src/app/Views/react_web/tabela_indice.php
+                    </div>
+                </div>
                 <h2 className="mt-4 mb-4">{data.title}</h2>
                 <table className="table table-hover">
                     <thead>

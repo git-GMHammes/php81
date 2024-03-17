@@ -158,6 +158,16 @@ $in_php_campos_001 = array(
 
         return (
             <div className="container">
+                <h1>Formulário from API</h1>
+                <h3>'http://localhost:4107/index.php/dadospessoais/endpoint/create/dadospessoais/1036'</h3>
+                <div>
+                    <div className="d-flex justify-content-center">
+                        # route GET /www/dadospessoais/endpoint/create/dadospessoais/(:any)
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        https://github.com/git-GMHammes/php81/blob/main/src/app/Views/dadospessoais/react/form/campos_001.php
+                    </div>
+                </div>
                 {debugField && (
                     <div>
                         <div id="Exibe os dados Value">
