@@ -283,7 +283,7 @@
                     <div class="d-grid gap-2 mb-2">
                         <a class="btn btn-outline-info" href="<?= base_url() . 'meureact/endpoint/ordenar'; ?>"
                             role="button" target="_blanck">
-                            Tabela (Order)
+                            Tabela (Ordem)
                         </a>
                     </div>
                     <div class="d-grid gap-2 mb-2">
