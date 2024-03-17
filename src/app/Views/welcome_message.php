@@ -238,7 +238,7 @@
         <div class="card-header">
             <h5 class="card-title">
                 <div class="d-flex justify-content-center">
-                    Exemplos de React + CDN
+                    Exemplos de React/CDN + Babel/CDN = JSX
                 </div>
             </h5>
         </div>
