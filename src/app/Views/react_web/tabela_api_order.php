@@ -112,7 +112,7 @@ $in_php = array(
                                 <th scope="col">Nome (name/birth_date)</th>
                                 <th scope="col">Informações (person_type/gender)</th>
                                 <th scope="col">Contato (telephone/mail)</th>
-                                <th scope="col">Endereço (address_code/address_complement/city/uf)</th>
+                                <th scope="col">Endereço (address_code/address_complement)</th>
                                 <th scope="col">Município (city/uf)</th>
                             </tr>
                         </thead>
@@ -180,7 +180,10 @@ $in_php = array(
                                     </td>
                                     <td>
                                         <div>
-                                            {dados_api.address_code}{dados_api.address_complement}
+                                            {dados_api.address_code}
+                                        </div>
+                                        <div>
+                                            {dados_api.address_complement}
                                         </div>
                                     </td>
                                     <td>
