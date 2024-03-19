@@ -10,6 +10,117 @@ $routes->get('/', 'Home::index');
 $routes->addRedirect('/table/array', '/react/tabela/array');
 $routes->addRedirect('/table/api', '/react/tabela/api');
 
+# www/orgaoseguranca/(:any)
+$routes->group('orgaoseguranca', function ($routes) {
+    # www/orgaoseguranca/api/(:any)
+    $routes->group('api', function ($routes) {
+        # www/orgaoseguranca/api/exibir/(:any)
+        $routes->get('exibir', 'OrgaoSegurancaApiController::dbRead');
+        $routes->get('exibir/(:segment)', 'OrgaoSegurancaApiController::dbRead/$1');
+        $routes->get('exibir/(:any)', 'OrgaoSegurancaApiController::dbRead/$1');
+        $routes->post('exibir', 'OrgaoSegurancaApiController::dbRead');
+        $routes->post('exibir/(:any)', 'OrgaoSegurancaApiController::dbRead/$1');
+    });
+    # www/orgaoseguranca/endpoint/(:any)
+    $routes->group('endpoint', function ($routes) {
+        # www/orgaoseguranca/endpoint/verbo/(:any)
+        $routes->get('verbo', 'Controller::dbVerbo');
+        $routes->get('verbo/(:segment)', 'Controller::dbVerbo/$1');
+        $routes->get('verbo/(:any)', 'Controller::dbVerbo/$1');
+        $routes->post('verbo', 'Controller::dbVerbo');
+        $routes->post('verbo/(:any)', 'Controller::dbVerbo/$1');
+    });
+});
+
+# www/acesso/(:any)
+$routes->group('acesso', function ($routes) {
+    # www/acesso/usuario/(:any)
+    $routes->group('usuario', function ($routes) {
+        # www/acesso/usuario/api/(:any)
+        // src\app\Controllers\UsuarioAcessoEndPintController.php
+        $routes->group('api', function ($routes) {
+            # www/acesso/usuario/api/login/(:any)
+            $routes->get('login', 'UsuarioAcessoApiController::auth');
+            $routes->get('login/(:segment)', 'UsuarioAcessoApiController::auth/$1');
+            $routes->get('login/(:any)', 'UsuarioAcessoApiController::auth/$1');
+            $routes->post('login', 'UsuarioAcessoApiController::auth');
+            $routes->post('login/(:any)', 'UsuarioAcessoApiController::auth/$1');
+        });
+        $routes->group('endpoint', function ($routes) {
+            # www/acesso/usuario/endpoint/login/(:any)
+            $routes->get('login', 'UsuarioAcessoEndPintController::auth');
+            $routes->get('login/(:segment)', 'UsuarioAcessoEndPintController::auth/$1');
+            $routes->get('login/(:any)', 'UsuarioAcessoEndPintController::auth/$1');
+            $routes->post('login', 'UsuarioAcessoEndPintController::auth');
+            $routes->post('login/(:any)', 'UsuarioAcessoEndPintController::auth/$1');
+        });
+    });
+});
+
+# www/calendar/(:any)
+$routes->group('calendar', function ($routes) {
+    # www/calendar/usuario/(:any)
+    $routes->group('usuario', function ($routes) {
+        # www/calendar/usuario/api/(:any)
+        $routes->group('api', function ($routes) {
+            # www/calendar/usuario/api/criar/(:any)
+            $routes->get('criar', 'UserApiController::create_update');
+            $routes->get('criar/(:segment)', 'UserApiController::create_update/$1');
+            $routes->get('criar/(:any)', 'UserApiController::create_update/$1');
+            $routes->post('criar', 'UserApiController::create_update');
+            $routes->post('criar/(:any)', 'UserApiController::create_update/$1');
+        });
+        $routes->group('endpoint', function ($routes) {
+        });
+    });
+
+    $routes->group('api', function ($routes) {
+        # www/calendar/api/criar/(:any)
+        $routes->get('criar', 'CalendarApiController::create_update');
+        $routes->get('criar/(:segment)', 'CalendarApiController::create_update/$1');
+        $routes->get('criar/(:any)', 'CalendarApiController::create_update/$1');
+        $routes->post('criar', 'CalendarApiController::create_update');
+        # www/calendar/api/listar/(:any)
+        $routes->get('listar', 'CalendarApiController::dbRead');
+        $routes->get('listar/(:segment)', 'CalendarApiController::dbRead/$1');
+        $routes->get('listar/(:any)', 'CalendarApiController::dbRead/$1');
+        $routes->post('listar', 'CalendarApiController::dbRead');
+        # www/calendar/api/atualizar/(:any)
+        $routes->get('atualizar', 'CalendarApiController::create_update');
+        $routes->get('atualizar/(:segment)', 'CalendarApiController::create_update/$1');
+        $routes->get('atualizar/(:any)', 'CalendarApiController::create_update/$1');
+        $routes->post('atualizar', 'CalendarApiController::create_update');
+        # www/calendar/api/excluir/(:any)
+        $routes->get('excluir', 'CalendarApiController::dbDelete');
+        $routes->get('excluir/(:segment)', 'CalendarApiController::dbDelete/$1');
+        $routes->get('excluir/(:any)', 'CalendarApiController::dbDelete/$1');
+        $routes->post('excluir', 'CalendarApiController::dbDelete');
+        # www/calendar/api/limpar/(:any)
+        $routes->get('limpar', 'CalendarApiController::dbClean');
+        $routes->get('limpar/(:segment)', 'CalendarApiController::dbClean/$1');
+        $routes->get('limpar/(:any)', 'CalendarApiController::dbClean/$1');
+        $routes->post('limpar', 'CalendarApiController::dbClean');
+    });
+    # www/calendar/endpoint/(:any)
+    $routes->group('endpoint', function ($routes) {
+        # www/calendar/endpoint/principal/(:any)
+        $routes->get('principal', 'CalendarEndPointController::main');
+        $routes->get('principal/(:segment)', 'CalendarEndPointController::main/$1');
+        $routes->get('principal/(:any)', 'CalendarEndPointController::main/$1');
+        $routes->post('principal', 'CalendarEndPointController::main');
+        # www/calendar/endpoint/listar/(:any)
+        $routes->get('listar', 'CalendarEndPointController::dbRead');
+        $routes->get('listar/(:segment)', 'CalendarEndPointController::dbRead/$1');
+        $routes->get('listar/(:any)', 'CalendarEndPointController::dbRead/$1');
+        $routes->post('listar', 'CalendarEndPointController::dbRead');
+        # www/calendar/endpoint/create/calendar/(:any)
+        $routes->get('create/calendar', 'CalendarEndPointController::dbCreate');
+        $routes->get('create/calendar/(:segment)', 'CalendarEndPointController::dbCreate/$1');
+        $routes->get('create/calendar/(:any)', 'CalendarEndPointController::dbCreate/$1');
+        $routes->post('create/calendar', 'CalendarEndPointController::dbCreate');
+    });
+});
+
 # www/tipopessoa/(:any)
 $routes->group('tipopessoa', function ($routes) {
     # www/tipopessoa/endpoint/verbo/(:any)
@@ -173,69 +284,6 @@ $routes->group('dadospessoais', function ($routes) {
         $routes->get('create/dadospessoais/(:segment)', 'DadosPessoaisEndPointController::dbCreate/$1');
         $routes->get('create/dadospessoais/(:any)', 'DadosPessoaisEndPointController::dbCreate/$1');
         $routes->post('create/dadospessoais', 'DadosPessoaisEndPointController::dbCreate');
-    });
-});
-
-# www/calendar/(:any)
-$routes->group('calendar', function ($routes) {
-    # www/calendar/usuario/(:any)
-    $routes->group('usuario', function ($routes) {
-        # www/calendar/usuario/api/(:any)
-        $routes->group('api', function ($routes) {
-            # www/calendar/usuario/api/criar/(:any)
-            $routes->get('criar', 'UserApiController::create_update');
-            $routes->get('criar/(:segment)', 'UserApiController::create_update/$1');
-            $routes->get('criar/(:any)', 'UserApiController::create_update/$1');
-            $routes->post('criar', 'UserApiController::create_update');
-            $routes->post('criar/(:any)', 'UserApiController::create_update/$1');
-        });
-        $routes->group('endpoint', function ($routes) {
-        });
-    });
-    $routes->group('api', function ($routes) {
-        # www/calendar/api/criar/(:any)
-        $routes->get('criar', 'CalendarApiController::create_update');
-        $routes->get('criar/(:segment)', 'CalendarApiController::create_update/$1');
-        $routes->get('criar/(:any)', 'CalendarApiController::create_update/$1');
-        $routes->post('criar', 'CalendarApiController::create_update');
-        # www/calendar/api/listar/(:any)
-        $routes->get('listar', 'CalendarApiController::dbRead');
-        $routes->get('listar/(:segment)', 'CalendarApiController::dbRead/$1');
-        $routes->get('listar/(:any)', 'CalendarApiController::dbRead/$1');
-        $routes->post('listar', 'CalendarApiController::dbRead');
-        # www/calendar/api/atualizar/(:any)
-        $routes->get('atualizar', 'CalendarApiController::create_update');
-        $routes->get('atualizar/(:segment)', 'CalendarApiController::create_update/$1');
-        $routes->get('atualizar/(:any)', 'CalendarApiController::create_update/$1');
-        $routes->post('atualizar', 'CalendarApiController::create_update');
-        # www/calendar/api/excluir/(:any)
-        $routes->get('excluir', 'CalendarApiController::dbDelete');
-        $routes->get('excluir/(:segment)', 'CalendarApiController::dbDelete/$1');
-        $routes->get('excluir/(:any)', 'CalendarApiController::dbDelete/$1');
-        $routes->post('excluir', 'CalendarApiController::dbDelete');
-        # www/calendar/api/limpar/(:any)
-        $routes->get('limpar', 'CalendarApiController::dbClean');
-        $routes->get('limpar/(:segment)', 'CalendarApiController::dbClean/$1');
-        $routes->get('limpar/(:any)', 'CalendarApiController::dbClean/$1');
-        $routes->post('limpar', 'CalendarApiController::dbClean');
-    });
-    # www/calendar/endpoint/(:any)
-    $routes->group('endpoint', function ($routes) {
-        # www/calendar/endpoint/principal/(:any)
-        $routes->get('principal', 'CalendarEndPointController::main');
-        $routes->get('principal/(:segment)', 'CalendarEndPointController::main/$1');
-        $routes->get('principal/(:any)', 'CalendarEndPointController::main/$1');
-        $routes->post('principal', 'CalendarEndPointController::main');
-        # www/calendar/endpoint/listar/(:any)
-        $routes->get('listar', 'CalendarEndPointController::dbRead');
-        $routes->get('listar/(:segment)', 'CalendarEndPointController::dbRead/$1');
-        $routes->get('listar/(:any)', 'CalendarEndPointController::dbRead/$1');
-        $routes->post('listar', 'CalendarEndPointController::dbRead');
-        # www/calendar/endpoint/create/calendar/(:any)
-        $routes->get('create/calendar', 'CalendarEndPointController::dbCreate');
-        $routes->get('create/calendar/(:segment)', 'CalendarEndPointController::dbCreate/$1');
-        $routes->get('create/calendar/(:any)', 'CalendarEndPointController::dbCreate/$1');
-        $routes->post('create/calendar', 'CalendarEndPointController::dbCreate');
     });
 });
 

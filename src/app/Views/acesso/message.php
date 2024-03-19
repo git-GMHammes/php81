@@ -14,6 +14,7 @@ if (session()->get('message')) {
     }
 
 }
+
 if (session()->get('system_log')) {
     $system_log = session()->get('system_log');
 }

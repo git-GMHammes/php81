@@ -1,25 +1,21 @@
 <?php
-
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\CandidatoModel;
-use App\Models\UserModel;
+use App\Models\OrgaoSegurancaModel;
 use Exception;
 
-class CandidatoApiController extends ResourceController
+class OrgaoSegurancaApiController extends ResourceController
 {
     use ResponseTrait;
-    private $ModelCandidato;
-    private $ModelUser;
+    private $ModelOrgaoSeguranca;
     private $dbFields;
     private $uri;
 
     public function __construct()
     {
-        $this->ModelCandidato = new CandidatoModel();
-        $this->ModelUser = new UserModel();
+        $this->ModelOrgaoSeguranca = new OrgaoSegurancaModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
     }
     #
@@ -32,7 +28,7 @@ class CandidatoApiController extends ResourceController
         # Parâmentros para receber um POST
         $request = service('request');
         $processRequest = (array) $request->getVar();
-        // $uploadedFiles = $request->getFiles();
+        $uploadedFiles = $request->getFiles();
         $json = $processRequest['json'] ?? 0;
         // $processRequest = eagarScagaire($processRequest);
         #
@@ -128,154 +124,8 @@ class CandidatoApiController extends ResourceController
         }
     }
 
-    private function validtoken_csrf($token)
-    {
-        if ($token = '$ywB9i/CRwduLN0lgDED2jR.UrpxAw1eHBThgNYG.xfBfrhHr8IBOY2') {
-            return true;
-        }
-        if (session()->get('token_csrf')) {
-            $token_csrf = session()->get('token_csrf');
-        } else {
-            $token_csrf = 'FALSE';
-        }
-        if ($token_csrf == $token) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private function returnMyFunction($message = array(), $typeMessage, $dataValue = array())
-    {
-        // ['success', 'warning', 'danger'];
-        if ($message !== array()) {
-            $message['message'][$typeMessage] = $message;
-            session()->set('message', $message);
-            session()->markAsTempdata('message', 5);
-            if ($dataValue !== array()) {
-                session()->set('value_form', $dataValue);
-            }
-            session()->markAsTempdata('message', 15);
-        }
-        return (NULL);
-    }
-
-    private function dbFields($processRequestFields = array())
-    {
-        $dbCreate = array();
-        (isset ($processRequestFields['uf'])) ? ($dbCreate['uf'] = $processRequestFields['uf']) : (NULL);
-        (isset ($processRequestFields['name'])) ? ($dbCreate['name'] = $processRequestFields['name']) : (NULL);
-        (isset ($processRequestFields['mail'])) ? ($dbCreate['mail'] = $processRequestFields['mail']) : (NULL);
-        (isset ($processRequestFields['city'])) ? ($dbCreate['city'] = $processRequestFields['city']) : (NULL);
-        (isset ($processRequestFields['office'])) ? ($dbCreate['office'] = $processRequestFields['office']) : (NULL);
-        (isset ($processRequestFields['sector'])) ? ($dbCreate['sector'] = $processRequestFields['sector']) : (NULL);
-        (isset ($processRequestFields['location'])) ? ($dbCreate['location'] = $processRequestFields['location']) : (NULL);
-        (isset ($processRequestFields['zip_code'])) ? ($dbCreate['zip_code'] = $processRequestFields['zip_code']) : (NULL);
-        (isset ($processRequestFields['neighborhood'])) ? ($dbCreate['neighborhood'] = $processRequestFields['neighborhood']) : (NULL);
-        (isset ($processRequestFields['military_rank'])) ? ($dbCreate['military_rank'] = $processRequestFields['military_rank']) : (NULL);
-        return ($dbCreate);
-    }
-
-    # route POST /www/candidato/api/criar/(:any)
-    # route GET /www/candidato/api/criar/(:any)
-    # route POST /www/candidato/api/atualizar/(:any)
-    # route GET /www/candidato/api/atualizar/(:any)
-    # Informação sobre o controller
-    # retorno do controller [JSON]
-    public function create_update($parameter = NULL)
-    {
-        # Parâmentros para receber um POST
-        $request = service('request');
-        $processRequest = (array) $request->getVar();
-        // $uploadedFiles = $request->getFiles();
-        $token_csrf = ($processRequest['token_csrf'] ?? NULL);
-        $json = ($processRequest['json'] ?? 0);
-        $choice_update = (isset ($processRequest['id'])) ? (true) : (false);
-        // myPrint($processRequest, 'src\app\Controllers\CandidatoController.php Linha 195');
-        $processRequest = eagarScagaire($processRequest);
-        #
-        // $processRequest = array();
-        try {
-            if ($choice_update === true) {
-                if ($this->validtoken_csrf($token_csrf)) {
-                    $this->ModelCandidato->dbUpdate(
-                        $processRequest['id'],
-                        $this->dbFields($processRequest)
-                    );
-                    if ($this->ModelCandidato->affectedRows() > 0) {
-                        $this->returnMyFunction(['Update realizado com sucesso'], 'success');
-                        $processRequestSuccess = true;
-                    }
-                }
-            } elseif ($choice_update === false) {
-                if ($this->validtoken_csrf($token_csrf)) {
-                    // myPrint($this->dbFields($processRequest), 'src\app\Controllers\CandidatoController.php Linha 195');
-                    // $this->ModelCandidato->dbCreate($this->dbFields($processRequest));
-                    $this->ModelCandidato->dbCreate($processRequest);
-                    $id = ($this->ModelCandidato->affectedRows() > 0) ? ($this->ModelCandidato->insertID()) : (NULL);
-                    if ($this->ModelCandidato->affectedRows() > 0) {
-                        $this->returnMyFunction(['Create realizado com sucesso'], 'success');
-                        $processRequestSuccess = true;
-                    }
-                }
-            } else {
-                $this->returnMyFunction(['ERRO: Dados enviados inválidos'], 'danger');
-            }
-            ;
-            $status = (!isset ($processRequestSuccess) || $processRequestSuccess !== true) ? ('trouble') : ('success');
-            $message = (!isset ($processRequestSuccess) || $processRequestSuccess !== true) ? ('Erro - requisição que foi bem-formada mas não pôde ser seguida devido a erros semânticos.') : ('API loading data (dados para carregamento da API)');
-            $cod_http = (!isset ($processRequestSuccess) || $processRequestSuccess !== true) ? (422) : (201);
-            $apiRespond = [
-                'status' => $status,
-                'message' => $message,
-                'date' => date('Y-m-d'),
-                'api' => [
-                    'version' => '1.0',
-                    'method' => $request->getMethod() ?? 'unknown',
-                    'description' => 'API Description',
-                    'content_type' => 'application/x-www-form-urlencoded'
-                ],
-                // 'method' => '__METHOD__',
-                // 'function' => '__FUNCTION__',
-                'result' => $processRequest,
-                'metadata' => [
-                    'page_title' => 'Application title',
-                    'getURI' => $this->uri->getSegments(),
-                    // Você pode adicionar campos comentados anteriormente se forem relevantes
-                    // 'method' => '__METHOD__',
-                    // 'function' => '__FUNCTION__',
-                ]
-            ];
-            $response = $this->response->setJSON($apiRespond, $cod_http);
-        } catch (\Exception $e) {
-            $apiRespond = [
-                'status' => 'error',
-                'message' => $e->getMessage(),
-                'date' => date('Y-m-d'),
-                'api' => [
-                    'version' => '1.0',
-                    'method' => $request->getMethod() ?? 'unknown',
-                    'description' => 'API Criar Method',
-                    'content_type' => 'application/x-www-form-urlencoded'
-                ],
-                'metadata' => [
-                    'page_title' => 'ERRO - API Method',
-                    'getURI' => $this->uri->getSegments(),
-                ]
-            ];
-            $response = $this->response->setJSON($apiRespond, 500);
-        }
-        if ($json) {
-            return $response;
-            // return redirect()->to('project/endpoint/parameter/parameter/' . $parameter);
-        } else {
-            return $response;
-            // return redirect()->back();
-        }
-    }
-
-    # route POST /www/candidato/endpoint/listar/(:any)
-    # route GET /www/candidato/endpoint/listar/(:any)
+    # route POST /www/sigla/rota
+    # route GET /www/sigla/rota
     # Informação sobre o controller
     # retorno do controller [JSON]
     public function dbRead($parameter = NULL)
@@ -288,7 +138,7 @@ class CandidatoApiController extends ResourceController
         #
         try {
             if (isset ($processRequest['id'])) {
-                $dbResponse = $this->ModelCandidato
+                $dbResponse = $this->ModelOrgaoSeguranca
                     ->where('id', $processRequest['id'])
                     ->where('deleted_at', NULL)
                     ->orderBy('updated_at', 'asc')
@@ -296,7 +146,7 @@ class CandidatoApiController extends ResourceController
                     ->find();
                 #
             } elseif ($parameter !== NULL) {
-                $dbResponse = $this->ModelCandidato
+                $dbResponse = $this->ModelOrgaoSeguranca
                     ->where('id', $parameter)
                     ->where('deleted_at', NULL)
                     ->orderBy('updated_at', 'asc')
@@ -304,7 +154,7 @@ class CandidatoApiController extends ResourceController
                     ->find();
                 #
             } else {
-                $dbResponse = $this->ModelCandidato
+                $dbResponse = $this->ModelOrgaoSeguranca
                     ->where('deleted_at', NULL)
                     ->orderBy('updated_at', 'asc')
                     ->dBread()
@@ -360,3 +210,4 @@ class CandidatoApiController extends ResourceController
         }
     }
 }
+?>

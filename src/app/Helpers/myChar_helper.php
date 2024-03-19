@@ -28,12 +28,12 @@ if (!function_exists('myChar')) {
         }
         if ($category == 3) {
             # Remove caracter especial e retorna uderline
-            $remove_character1 = str_replace(array('\'', '"', ',', ';', '<', '>', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '_',  '-', '+', '=', '{', '}', '[', ']', '^', '~', '/', '?', ':', ',', '.', '|', ' '), '_', $remove_accent);
+            $remove_character1 = str_replace(array('\'', '"', ',', ';', '<', '>', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '_', '-', '+', '=', '{', '}', '[', ']', '^', '~', '/', '?', ':', ',', '.', '|', ' '), '_', $remove_accent);
             $remove_character = strtolower(str_replace(array('__'), '', $remove_character1));
         }
         if ($category == 4) {
             # Remove caracter especial e retorna com espaço
-            $remove_character1 = str_replace(array('\'', '"', ',', ';', '<', '>', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '_',  '-', '+', '=', '{', '}', '[', ']', '^', '~', '/', '?', ':', ',', '.', '|', ' '), '_', $remove_accent);
+            $remove_character1 = str_replace(array('\'', '"', ',', ';', '<', '>', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '_', '-', '+', '=', '{', '}', '[', ']', '^', '~', '/', '?', ':', ',', '.', '|', ' '), '_', $remove_accent);
             $remove_character = strtolower(str_replace(array('__'), '_', $remove_character1));
         }
         return $remove_character;
@@ -111,3 +111,27 @@ if (!function_exists('partial_value')) {
         }
     }
 }
+
+if (!function_exists('myToken')) {
+    /**
+     * Exibe um print e para o código
+     */
+    function myToken()
+    {
+        $date = date('Y-m-d H:i:s');
+        $n1 = time();
+        $n2 = date('H');
+        $n3 = date('i');
+        $n4 = date('s');
+        $nmult = $n1 * $n2 * $n3;
+        $total = intdiv($nmult, $n4 + 1);
+        #
+        // Convertendo a série numérica para uma string
+        $serieStr = strval($total);
+        // Pegando os últimos 6 dígitos da string
+        $ultimosSeisDigitos = substr($serieStr, -6);
+        return $ultimosSeisDigitos;
+    }
+}
+
+

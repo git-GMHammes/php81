@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\DadosPessoaisModel;
+use App\Models\UserModel;
 use Exception;
 
 class DadosPessoaisEndPointController extends ResourceController
@@ -16,11 +17,13 @@ class DadosPessoaisEndPointController extends ResourceController
     private $head = 'dadospessoais/head';
     private $menu = 'dadospessoais/menu';
     private $ModelDadosPessoais;
+    private $ModelUser;
     private $uri;
     #
     public function __construct()
     {
         $this->ModelDadosPessoais = new DadosPessoaisModel();
+        $this->ModelUser = new UserModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
     }
     #
@@ -115,7 +118,7 @@ class DadosPessoaisEndPointController extends ResourceController
             }
             session()->markAsTempdata('message', 15);
         }
-        return(NULL);
+        return (NULL);
     }
 
     private function token_csrf()
@@ -129,7 +132,7 @@ class DadosPessoaisEndPointController extends ResourceController
 
     private function createDb()
     {
-        $dbCerate = array(
+        $dbCerate_person = array(
             'person_type' => '',
             'order' => 0,
             'full_name' => '',
@@ -138,8 +141,19 @@ class DadosPessoaisEndPointController extends ResourceController
             'rg' => '',
             'cpf' => '',
             'telephone' => '21900009999',
+            'mail' => '@mail',
         );
-        $this->ModelDadosPessoais->dbCreate($dbCerate);
+        $this->ModelDadosPessoais->dbCreate($dbCerate_person);
+        $id = $this->ModelDadosPessoais->insertID();
+        #
+        $dbCerate_user = array(
+            'id' => $id,
+            'dados_pessoais_id' => $id,
+            'profile_id' => 0,
+            'token' => myToken()
+        );
+        $this->ModelUser->dbCreate($dbCerate_user);
+        #
         return $this->ModelDadosPessoais->insertID();
     }
 
@@ -150,18 +164,17 @@ class DadosPessoaisEndPointController extends ResourceController
     # retorno do controller [VIEW]
     public function dbCreate($parameter = NULL)
     {
-        // myPrint('Teste', 'dadospessoais/endpoint/CustomersEndPointController.php', true);
         if ($parameter == NULL) {
-            // myPrint($this->createDb(), 'dadospessoais/endpoint/CustomersEndPointController.php');
-            if ($this->createDb() !== 0) {
-                $parameter = $this->createDb();
-                return redirect()->to('dadospessoais/endpoint/create/dadospessoais/' . $parameter);
+            $id = $this->createDb();
+            if ($id > 0) {
+                return redirect()->to('dadospessoais/endpoint/create/dadospessoais/' . $id);
             }
         }
+
         $request = service('request');
         $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
-        $id = (isset($processRequest['id']) ? '/' . $processRequest['id'] : '/' . $parameter);
+        $id = (isset ($processRequest['id']) ? '/' . $processRequest['id'] : '/' . $parameter);
         $processRequest = eagarScagaire($processRequest);
         #
         $loadView = array(
@@ -237,7 +250,7 @@ class DadosPessoaisEndPointController extends ResourceController
         $request = service('request');
         $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
-        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
+        $id = (isset ($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
         // $processRequest = eagarScagaire($processRequest);
         #
         switch ($parameter1) {
@@ -273,7 +286,7 @@ class DadosPessoaisEndPointController extends ResourceController
             } else {
                 $myEndPoint = myEndPoint('dadospessoais/api/exibir' . $id, '123');
             }
-            $requestJSONform = (isset($myEndPoint['result'])) ? ($myEndPoint['result']) : (array());
+            $requestJSONform = (isset ($myEndPoint['result'])) ? ($myEndPoint['result']) : (array());
             // myPrint($requestJSONform, '');
             #
             $apiRespond = [
@@ -339,7 +352,7 @@ class DadosPessoaisEndPointController extends ResourceController
         $request = service('request');
         $processRequest = (array) $request->getVar();
         $json = $processRequest['json'] ?? 0;
-        $id = (isset($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
+        $id = (isset ($processRequest['id'])) ? ('/' . $processRequest['id']) : ('/' . $parameter2);
         // $processRequest = eagarScagaire($processRequest);
         #
         switch ($parameter1) {

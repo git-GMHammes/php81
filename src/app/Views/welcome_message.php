@@ -330,9 +330,11 @@
                         </a>
                     </div>
                     <div class="d-grid gap-2 mb-2">
-                        <button type="button" class="btn btn-outline-info">
-                            Info
-                        </button>
+                        <a class="btn btn-outline-info mb-2"
+                            href="<?= base_url() . 'calendar/endpoint/principal'; ?>"
+                            role="button" target="_blanck">
+                            Prototipo (Calendário/Plantão)
+                        </a>
                     </div>
                     <div class="d-grid gap-2 mb-2">
                         <button type="button" class="btn btn-outline-dark">

@@ -148,6 +148,7 @@ class DadosPessoaisApiController extends ResourceController
         (isset ($processRequestFields['birth_date'])) ? ($dbCreate['birth_date'] = $processRequestFields['birth_date']) : (NULL);
         (isset ($processRequestFields['telephone'])) ? ($dbCreate['telephone'] = $processRequestFields['telephone']) : (NULL);
         (isset ($processRequestFields['full_name'])) ? ($dbCreate['full_name'] = $processRequestFields['full_name']) : (NULL);
+        (isset ($processRequestFields['prevented'])) ? ($dbCreate['prevented'] = $processRequestFields['prevented']) : (NULL);
         (isset ($processRequestFields['gender'])) ? ($dbCreate['gender'] = $processRequestFields['gender']) : (NULL);
         (isset ($processRequestFields['order'])) ? ($dbCreate['order'] = $processRequestFields['order']) : (NULL);
         (isset ($processRequestFields['mail'])) ? ($dbCreate['mail'] = $processRequestFields['mail']) : (NULL);
