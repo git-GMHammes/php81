@@ -10,7 +10,7 @@ use CodeIgniter\Model;
 class TipoPessoaModel extends Model
 {
 
-    protected $DBGroup = 'php81_dev';
+    protected $DBGroup = GRUPO_DB_CONFIG;
 
     protected $table = 'tipo_pessoa';
     protected $primaryKey = 'id';

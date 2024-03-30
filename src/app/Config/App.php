@@ -178,34 +178,27 @@ class App extends BaseConfig
 
     public function __construct()
     {
-        $this->baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER["SERVER_PORT"];
-        if (
-            $_SERVER["SERVER_PORT"] == '80'
-            && $_SERVER['SERVER_NAME'] == 'localhost'
-        ) {
-            $this->baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER["SERVER_PORT"];
-        } elseif (
-            $_SERVER["SERVER_PORT"] !== '80'
-            && $_SERVER['SERVER_NAME'] == '127.0.0.1'
-        ) {
-            $this->baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER["SERVER_PORT"];
-        } elseif (
-            $_SERVER["SERVER_PORT"] !== '80'
-            && $_SERVER['SERVER_NAME'] == 'localhost'
-        ) {
-            $this->baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER["SERVER_PORT"];
-        } elseif (
-            $_SERVER['SERVER_NAME'] == 'www.qlikadmin.proderj.rj.gov.br'
-        ) {
-            $this->baseURL = 'https://www.qlikadmin.proderj.rj.gov.br';
-        } elseif (
-            $_SERVER['SERVER_NAME'] == 'qlikadmin.rj.gov.br'
-        ) {
-            $this->baseURL = 'https://qlikadmin.rj.gov.br';
-        } elseif (
-            $_SERVER['SERVER_NAME'] == 'www.qlikadmin.rj.gov.br'
-        ) {
-            $this->baseURL = 'https://www.qlikadmin.rj.gov.br';
+        $myPort = $_SERVER['SERVER_PORT'] ?? 80;
+        $myServer = $_SERVER['SERVER_NAME'] ?? 'localhost';
+        if ($myServer == 'localhost') {
+            if (
+                $myPort == 80
+                || $myPort == 443
+            ) {
+                $this->baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'];
+            } elseif (
+                $myPort == 4107
+            ) {
+                $this->baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+
+            }
+        } elseif ($myServer == 'habilidade.com') {
+            if (
+                $myPort == 80
+                || $myPort == 443
+            ) {
+                $this->baseURL = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/php81/src/public';
+            }
         } else {
             exit('O Sistema não reconheceu o Servidor ' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ' no APP.php');
         }

@@ -274,8 +274,8 @@ class CandidatoApiController extends ResourceController
         }
     }
 
-    # route POST /www/candidato/endpoint/listar/(:any)
-    # route GET /www/candidato/endpoint/listar/(:any)
+    # route POST /www/candidato/api/listar/(:any)
+    # route GET /www/candidato/api/listar/(:any)
     # Informação sobre o controller
     # retorno do controller [JSON]
     public function dbRead($parameter = NULL)

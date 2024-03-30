@@ -9,7 +9,7 @@ use CodeIgniter\Model;
 class OrgaoSegurancaModel extends Model
 {
 
-    protected $DBGroup = 'php81_dev';
+    protected $DBGroup = GRUPO_DB_CONFIG;
 
     protected $table = 'orgao_seguranca';
     protected $primaryKey = 'id';

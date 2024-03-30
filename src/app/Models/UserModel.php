@@ -9,7 +9,7 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
 
-    protected $DBGroup = 'php81_dev';
+    protected $DBGroup = GRUPO_DB_CONFIG;
 
     protected $table = 'proes_user';
     protected $primaryKey = 'id';

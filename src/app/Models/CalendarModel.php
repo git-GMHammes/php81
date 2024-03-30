@@ -9,7 +9,7 @@ use CodeIgniter\Model;
 class CalendarModel extends Model
 {
 
-    protected $DBGroup = 'php81_dev';
+    protected $DBGroup = GRUPO_DB_CONFIG;
 
     protected $table = 'tabela_banco_dados';
     protected $primaryKey = 'id';
