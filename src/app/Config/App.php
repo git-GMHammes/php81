@@ -180,7 +180,10 @@ class App extends BaseConfig
     {
         $myPort = $_SERVER['SERVER_PORT'] ?? 80;
         $myServer = $_SERVER['SERVER_NAME'] ?? 'localhost';
-        if ($myServer == 'localhost') {
+        if (
+            $myServer == 'localhost'
+            || $myServer = '192.168.0.113'
+        ) {
             if (
                 $myPort == 80
                 || $myPort == 443

@@ -348,6 +348,7 @@ class DadosPessoaisApiController extends ResourceController
             ];
             $response = $this->response->setJSON($apiRespond, 500);
         }
+        // myPrint($response, '');
         if ($parameter != 'json') {
             return $response;
             // return redirect()->back();
