@@ -1,0 +1,269 @@
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+DROP TABLE IF EXISTS `dados_pessoais`;
+CREATE TABLE IF NOT EXISTS `dados_pessoais` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `prevented` enum('Y','N') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `person_type` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `order` int DEFAULT NULL,
+  `initials` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `government_organ` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `administrative_unit` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `government` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Estadual',
+  `function_patent` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `full_name` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `gender` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `rg` varchar(333) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `expeditor_organ` varchar(333) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `expedition_date` date DEFAULT NULL,
+  `cpf` varchar(11) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cpf_validation` enum('Y','N') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `telephone` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mail` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `address_complement` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `address_code` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `city` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `uf` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DELETE FROM `dados_pessoais`;
+INSERT INTO `dados_pessoais` (`id`, `prevented`, `person_type`, `order`, `initials`, `government_organ`, `administrative_unit`, `government`, `function_patent`, `full_name`, `gender`, `birth_date`, `rg`, `expeditor_organ`, `expedition_date`, `cpf`, `cpf_validation`, `telephone`, `mail`, `address_complement`, `address_code`, `city`, `uf`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-18 16:51:19', '2024-03-30 21:36:07', NULL),
+	(2, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:17', '2024-03-30 21:37:17', NULL),
+	(3, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:17', '2024-03-30 21:37:17', NULL),
+	(4, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:17', '2024-03-30 21:37:17', NULL),
+	(5, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:17', '2024-03-30 21:37:17', NULL),
+	(6, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:17', '2024-03-30 21:37:17', NULL),
+	(7, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:17', '2024-03-30 21:37:17', NULL),
+	(8, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:17', '2024-03-30 21:37:17', NULL),
+	(9, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(10, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(11, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(12, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(13, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(14, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(15, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(16, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(17, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(18, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(19, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(20, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(21, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(22, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(23, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(24, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(25, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(26, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(27, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(28, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(29, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(30, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL),
+	(31, 'N', 'Funcionario Terceirizado', 0, 'PRODERJ', 'Centro de Tecnologia do Estado do Rio de Janeiro', 'GFS', 'Estadual', 'Analista de Sistemas', 'Gustavo Hammes', 'Masculino', '1977-07-07', '12345678-9', 'DETRAN', '2024-03-30', '11122233344', 'Y', '21900009999', 'contato@mail', 'Rua Jose Silva, 94', '20222333', 'Rio de Janeiro', 'RJ', '2024-03-30 21:37:18', '2024-03-30 21:37:18', NULL);
+
+DROP TABLE IF EXISTS `genero`;
+CREATE TABLE IF NOT EXISTS `genero` (
+  `ordem` int DEFAULT NULL,
+  `id_slug` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `description` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_slug`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `genero`;
+INSERT INTO `genero` (`ordem`, `id_slug`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(9, 'Agênero', 'Agênero', '2024-03-14 18:14:35', '2024-03-14 18:22:37', NULL),
+	(11, 'Andrógine', 'Andrógine', '2024-03-14 18:23:52', '2024-03-14 18:23:52', NULL),
+	(4, 'Binário', 'Binário', '2024-03-14 18:20:08', '2024-03-14 18:20:08', NULL),
+	(3, 'Feminino', 'Feminino', '2024-03-14 18:14:33', '2024-03-14 18:19:01', NULL),
+	(10, 'Genderqueer/Gênero queer', 'Genderqueer/Gênero queer', '2024-03-14 18:14:35', '2024-03-14 18:22:48', NULL),
+	(8, 'Gênero-fluxo', 'Gênero-fluxo', '2024-03-14 18:22:29', '2024-03-14 18:22:29', NULL),
+	(6, 'Homem não-binárie', 'Homem não-binárie', '2024-03-14 18:21:50', '2024-03-14 18:21:50', NULL),
+	(2, 'Masculino', 'Masculino', '2024-03-14 18:14:32', '2024-03-14 18:18:54', NULL),
+	(7, 'Mulher não-binárie', 'Mulher não-binárie', '2024-03-14 18:22:05', '2024-03-14 18:22:08', NULL),
+	(13, 'Multitransicional/Multitrans', 'Multitransicional/Multitrans', '2024-03-14 18:24:27', '2024-03-14 18:24:30', NULL),
+	(1, 'Não Informado', 'Não Informado', '2024-03-14 18:14:31', '2024-03-14 18:18:42', NULL),
+	(5, 'Não-binárie/Não binárie', 'Não-binárie/Não binárie', '2024-03-14 18:14:35', '2024-03-14 18:21:17', NULL),
+	(12, 'Sinesgênero', 'Sinesgênero', '2024-03-14 18:24:08', '2024-03-14 18:24:08', NULL);
+
+DROP TABLE IF EXISTS `menu_objeto`;
+CREATE TABLE IF NOT EXISTS `menu_objeto` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `menu_objeto`;
+
+DROP TABLE IF EXISTS `menu_perfil`;
+CREATE TABLE IF NOT EXISTS `menu_perfil` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `menu_perfil`;
+
+DROP TABLE IF EXISTS `ordem_pagamento`;
+CREATE TABLE IF NOT EXISTS `ordem_pagamento` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dados_pessoais_id` int DEFAULT NULL,
+  `initial_date` datetime DEFAULT NULL,
+  `final_date` datetime DEFAULT NULL,
+  `total_payable` decimal(15,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `ordem_pagamento`;
+
+DROP TABLE IF EXISTS `orgao_seguranca`;
+CREATE TABLE IF NOT EXISTS `orgao_seguranca` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `initials` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `descricao` varchar(333) DEFAULT NULL,
+  `government` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `orgao_seguranca`;
+INSERT INTO `orgao_seguranca` (`id`, `initials`, `descricao`, `government`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'PMERJ', 'Polícia Militar do Estado do Rio de Janeiro', 'Estadual', '2024-03-18 13:57:36', '2024-03-18 13:57:36', NULL),
+	(2, 'PCERJ', 'Polícia Civil do Estado do Rio de Janeiro ', 'Estadual', '2024-03-18 13:57:36', '2024-03-18 13:57:36', NULL),
+	(3, 'CBMERJ', 'Corpo de Bombeiros Militar do Estado do Rio de Janeiro', 'Estadual', '2024-03-18 13:57:36', '2024-03-18 13:57:36', NULL),
+	(4, 'SEAP', 'Secretaria de Administração Penitenciária e Ressocialização', 'Estadual', '2024-03-18 14:01:00', '2024-03-18 14:24:48', NULL),
+	(5, 'DEGASE', 'Departamento Geral de Ações Socioeducativas', 'Estadual', '2024-03-18 14:00:56', '2024-03-18 14:24:53', NULL),
+	(6, 'PF', 'Polícia Federal', 'Federal', '2024-03-18 13:57:36', '2024-03-18 14:24:57', NULL),
+	(7, 'PRF', 'Polícia Rodoviária Federal', 'Federal', '2024-03-18 13:57:36', '2024-03-18 14:24:59', NULL),
+	(8, 'GM-RJ', 'Guarda Municipal', 'Municipal', '2024-03-18 14:01:04', '2024-03-18 14:25:03', NULL),
+	(9, 'GCM', 'Guarda Civil Municipal', 'Municipal', '2024-03-18 14:23:25', '2024-03-18 14:25:05', NULL);
+
+DROP TABLE IF EXISTS `pagamento_hora`;
+CREATE TABLE IF NOT EXISTS `pagamento_hora` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `government` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Estadual',
+  `government_organ` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `administrative_unit` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `valor` decimal(15,2) DEFAULT NULL,
+  `function` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `pagamento_hora`;
+
+DROP TABLE IF EXISTS `perfil`;
+CREATE TABLE IF NOT EXISTS `perfil` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `government_agency` varchar(333) DEFAULT NULL,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `perfil`;
+INSERT INTO `perfil` (`id`, `descricao`, `government_agency`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(0, 'Desconhecido', NULL, '2024-03-18 13:07:32', '2024-03-18 13:07:55', NULL),
+	(1, 'PRODERJ', 'PRODERJ', '2024-03-18 12:58:49', '2024-03-18 13:07:59', NULL),
+	(2, 'Auditor', NULL, '2024-03-18 13:01:30', '2024-03-18 13:08:00', NULL),
+	(3, 'SIGRH', NULL, '2024-03-18 13:01:49', '2024-03-18 13:08:01', NULL),
+	(4, 'Admin', NULL, '2024-03-18 12:59:20', '2024-03-18 13:17:37', NULL),
+	(5, 'Recruitador', NULL, '2024-03-18 13:00:33', '2024-03-18 13:17:41', NULL),
+	(6, 'Candidato', NULL, '2024-03-18 13:00:24', '2024-03-18 13:17:45', NULL);
+
+DROP TABLE IF EXISTS `plantao_candiadto`;
+CREATE TABLE IF NOT EXISTS `plantao_candiadto` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dados_pessoais_id` int DEFAULT NULL,
+  `ordem_pagamento_id` int DEFAULT NULL,
+  `prevented` enum('Y','N') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N',
+  `full_name` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `gender` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `rg` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cpf` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `function` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `time_value` decimal(15,2) DEFAULT NULL,
+  `time_amount` int DEFAULT NULL,
+  `payment` decimal(15,2) DEFAULT NULL,
+  `administrative_unit` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `government_organ` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `government` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'Estadual',
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dados_pessoais_id` (`dados_pessoais_id`),
+  KEY `ordem_pagamento_id` (`ordem_pagamento_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `plantao_candiadto`;
+
+DROP TABLE IF EXISTS `proes_user`;
+CREATE TABLE IF NOT EXISTS `proes_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dados_pessoais_id` int DEFAULT NULL,
+  `profile_id` int DEFAULT NULL,
+  `token` varchar(300) DEFAULT NULL,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `dados_pessoais_id` (`dados_pessoais_id`),
+  CONSTRAINT `FK_proes_user_dados_pessoais` FOREIGN KEY (`dados_pessoais_id`) REFERENCES `dados_pessoais` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `proes_user`;
+INSERT INTO `proes_user` (`id`, `dados_pessoais_id`, `profile_id`, `token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 1, 0, '847157', '2024-03-18 16:51:19', '2024-03-18 16:51:19', NULL);
+
+DROP TABLE IF EXISTS `tipo_pessoa`;
+CREATE TABLE IF NOT EXISTS `tipo_pessoa` (
+  `id_slug` varchar(333) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ordem` int DEFAULT NULL,
+  `descricao` varchar(333) DEFAULT NULL,
+  `created_at` datetime DEFAULT (now()),
+  `updated_at` datetime DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_slug`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DELETE FROM `tipo_pessoa`;
+INSERT INTO `tipo_pessoa` (`id_slug`, `ordem`, `descricao`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	('Agente de Educação', 8, 'Agente de Educação', '2024-03-14 18:25:12', '2024-03-14 18:28:48', NULL),
+	('Bombeiro Civil', 6, 'Bombeiro Civil', '2024-03-14 18:25:12', '2024-03-14 18:29:04', NULL),
+	('Bombeiro Militar', 5, 'Bombeiro Militar', '2024-03-14 18:25:12', '2024-03-14 18:28:44', NULL),
+	('Guarda Municípal', 7, 'Guarda Municípal', '2024-03-14 18:25:12', '2024-03-14 18:28:46', NULL),
+	('Pessoa Física', 1, 'Pessoa Física', '2024-03-14 18:25:12', '2024-03-14 18:27:38', NULL),
+	('Pessoa Jurídica', 2, 'Pessoa Jurídica', '2024-03-14 18:25:12', '2024-03-14 18:27:42', NULL),
+	('Policial Civil', 4, 'Policial Civil', '2024-03-14 18:25:12', '2024-03-14 18:27:52', NULL),
+	('Policial Militar', 3, 'Policial Militar', '2024-03-14 18:25:12', '2024-03-14 18:27:49', NULL);
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
