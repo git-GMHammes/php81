@@ -14,9 +14,9 @@ class HomePage extends StatelessWidget {
           _buildItem(context, 'Models', 'Descrição de Models', '/models'),
           _buildItem(context, 'Services', 'Descrição de Services', '/services'),
           _buildItem(context, 'Views', 'Descrição de Views', '/views'),
-          _buildItem(context, 'Controllers', 'Descrição de Contollers',
-              '/controllers'),
+          _buildItem(context, 'Controllers', 'Descrição de Contollers', '/controllers'),
           _buildItem(context, 'Widgets', 'Descrição de Widgets', '/widgets'),
+          _buildItem(context, 'WebSocket', 'Descrição de WebSocket', '/websocket'),
         ],
       ),
     );

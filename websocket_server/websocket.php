@@ -14,7 +14,8 @@ $server->on("start", function (Swoole\WebSocket\Server $server) {
 
 $server->on('open', function(Swoole\WebSocket\Server $server, $request) {
     echo "Connection open: {$request->fd}\n";
-    // Você pode enviar uma mensagem para o cliente recém-conectado aqui, se necessário
+    // Enviar uma mensagem de volta ao cliente assim que a conexão for estabelecida
+    $server->push($request->fd, "Conexão estabelecida com sucesso");
 });
 
 $server->on('message', function(Swoole\WebSocket\Server $server, $frame) {
