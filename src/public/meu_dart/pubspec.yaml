@@ -1,0 +1,9 @@
+name: meu_dart
+description: Exemplos de Projeto Dart.
+# A versão do Dart SDK que seu projeto é compatível.
+environment:
+  sdk: '>=2.12.0 <4.0.0'
+
+executables:
+  meu_dart:
+    path: bin/main.dart
