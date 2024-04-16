@@ -7,28 +7,45 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Estrutura do Projeto Flutter'),
+        title: const Text('Home Page'),
       ),
-      body: ListView(
-        children: <Widget>[
-          _buildItem(context, 'Models', 'Descrição de Models', '/models'),
-          _buildItem(context, 'Services', 'Descrição de Services', '/services'),
-          _buildItem(context, 'Views', 'Descrição de Views', '/views'),
-          _buildItem(context, 'Controllers', 'Descrição de Contollers', '/controllers'),
-          _buildItem(context, 'Widgets', 'Descrição de Widgets', '/widgets'),
-          _buildItem(context, 'WebSocket', 'Descrição de WebSocket', '/websocket'),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.home,
+              size: 64.0,
+              color: Theme.of(context).primaryColor,
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ListView(
+                  children: <Widget>[
+                    _buildItem(context, 'ViewModels', 'Descrição de ViewModels', '/viewmodels'),
+                    _buildItem(context, 'WebSocket', 'Descrição de WebSocket', '/websocket'),
+                    _buildItem(context, 'Services', 'Descrição de Services', '/services'),
+                    _buildItem(context, 'Widgets', 'Descrição de Widgets', '/widgets'),
+                    _buildItem(context, 'Models', 'Descrição de Models', '/models'),
+                    _buildItem(context, 'Views', 'Descrição de Views', '/views'),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildItem(
-      BuildContext context, String title, String subtitle, String routeName) {
+  Widget _buildItem(BuildContext context, String title, String description, String route) {
     return ListTile(
       title: Text(title),
-      subtitle: Text(subtitle),
+      subtitle: Text(description),
       onTap: () {
-        Navigator.of(context).pushNamed(routeName);
+        Navigator.of(context).pushNamed(route);
       },
     );
   }

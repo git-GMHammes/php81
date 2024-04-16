@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ControllersPage extends StatelessWidget {
-  const ControllersPage({super.key});
+class ViewmodelsPage extends StatelessWidget {
+  const ViewmodelsPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Controllers'),
+        title: const Text('Models Views'),
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
