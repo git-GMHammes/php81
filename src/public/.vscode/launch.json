@@ -1,0 +1,55 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "meu_dart",
+            "cwd": "meu_dart",
+            "request": "launch",
+            "type": "dart", 
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "mobiapp1",
+            "cwd": "mobiapp1",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "mobiapp1 (profile mode)",
+            "cwd": "mobiapp1",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "mobiapp1 (release mode)",
+            "cwd": "mobiapp1",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "snippets",
+            "cwd": "snippets",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "snippets (profile mode)",
+            "cwd": "snippets",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "snippets (release mode)",
+            "cwd": "snippets",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
