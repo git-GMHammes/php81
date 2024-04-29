@@ -1,3 +1,32 @@
+// /lib
+// |-- /models
+// |   |-- model.dart
+// |   |-- user.dart
+// |-- /services
+// |   |-- api_service.dart
+// |   |-- authentication_service.dart
+// |-- /utils
+// |   |-- constants.dart
+// |   |-- router.dart
+// |-- /viewmodels
+// |   |-- /home
+// |   |   |-- home_viewmodel.dart
+// |   |-- /login
+// |   |   |-- login_viewmodel.dart
+// |   |-- /settings
+// |   |   |-- settings_viewmodel.dart
+// |-- /views
+// |   |-- /home
+// |   |   |-- home_view.dart
+// |   |-- /login
+// |   |   |-- login_view.dart
+// |   |-- /settings
+// |   |   |-- settings_view.dart
+// |-- /widgets
+// |   |-- head_widgets.dart
+// |   |-- nav_widgets.dart
+// /main.dart
+//   
 // Comandos para gerenciamento de projetos:
 // 
 // flutter create: Cria um novo projeto Flutter.
@@ -69,4 +98,4 @@
 // Use um script para automatizar tarefas comuns.
 // Crie um alias para comandos longos ou complexos.
 // 
-  
+
