@@ -6,7 +6,7 @@ void main() {
   };
 
   // Acessar um usuário pelo seu username
-  String nomeUsuario = usuarios['maria456'];
+  String? nomeUsuario = usuarios['maria456'];
   print('Nome do usuário: $nomeUsuario'); // Saída: Maria Clara
 
   // Adicionar um novo usuário

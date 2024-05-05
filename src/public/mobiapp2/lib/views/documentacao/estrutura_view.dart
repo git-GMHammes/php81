@@ -87,6 +87,7 @@ class EstrutraView extends StatelessWidget {
                   '  |-- /views\n'
                   '  |   |-- /home\n'
                   '  |   |   |-- home_view.dart\n'
+                  '  |   |   |-- ods_view.dart\n'
                   '  |   |-- /login\n'
                   '  |   |   |-- login_view.dart\n'
                   '  |   |-- /settings\n'

@@ -20,6 +20,7 @@ class WebSocketPageState extends State<WebSocketPage> {
 
       channel.stream.listen(
         (message) {
+          // ignore: avoid_print
           print(
               'Mensagem recebida: $message'); // Confirme que esta linha é alcançada.
           setState(() {
@@ -34,6 +35,7 @@ class WebSocketPageState extends State<WebSocketPage> {
           });
         },
         onError: (error) {
+          // ignore: avoid_print
           print('Erro no WebSocket: $error');
           setState(() {
             connectionStatus = 'Erro na conexão';
@@ -45,6 +47,7 @@ class WebSocketPageState extends State<WebSocketPage> {
       // Se você quer que o Flutter envie uma mensagem assim que conectar:
       channel.sink.add('Olá, servidor!'); // Envie uma mensagem para o servidor.
     } catch (e) {
+      // ignore: avoid_print
       print('Exceção ao conectar ao WebSocket: $e');
       setState(() {
         connectionStatus = 'Exceção na conexão';
