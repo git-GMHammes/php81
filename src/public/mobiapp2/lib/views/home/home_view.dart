@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobiapp2/views/home/home_ods_link.dart';
+import 'package:mobiapp2/widgets/text_pattern.dart';
 
 class HomeView extends StatelessWidget {
-  HomeView({super.key});
-
-  final _styles = <String, TextStyle>{
-    'headline1': const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-    'bodyText1': const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-    'bodyText2': TextStyle(fontSize: 14, color: Colors.grey[600]),
-    'subtitle1': const TextStyle(
-        fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black),
-    'subtitle2': const TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-        color: Color.fromARGB(221, 146, 132, 132)),
-    // Adicione outros estilos conforme necessário
-  };
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,234 +38,35 @@ class HomeView extends StatelessWidget {
                 spacing: 5.0,
                 runSpacing: 5.0,
                 children: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/ods001');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods001.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods002.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods003.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods004.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods005.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods006.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods007.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods008.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods009.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods010.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods011.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods012.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods013.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods014.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods015.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods016.png',
-                          fit: BoxFit.contain),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/estrutura');
-                    },
-                    child: Container(
-                      width: 65,
-                      height: 65,
-                      margin: const EdgeInsets.only(bottom: 1.0, right: 1.0),
-                      child: Image.asset('assets/images/ods/ods017.png',
-                          fit: BoxFit.contain),
-                    ),
+                  Container(
+                    padding: const EdgeInsets.all(5.0),
+                    child: const HomeOdsLink(),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 40),
             Container(
-              width: double
-                  .infinity,
+              width: double.infinity,
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment
                     .center, // Alinha os filhos ao centro no eixo cruzado
                 children: <Widget>[
-                  Text('Definição de ODS 2',
+                  Text('Definição de ODS',
                       softWrap: true,
                       overflow: TextOverflow.clip,
                       textAlign: TextAlign.center,
-                      style: _styles['headline1']),
+                      // style: TextPattern.bodyText1,
+                      style: TextPattern.subtitle2,
+                  ),
                   Text(
                     'Objetivos de Desenvolvimento Sustentável',
                     softWrap: true,
                     overflow: TextOverflow.clip,
                     textAlign: TextAlign.center,
-                    style: _styles['subtitle2'],
+                    style: TextPattern.subtitle2,
                   ),
                   const SizedBox(height: 40),
                   Text(
@@ -284,7 +74,7 @@ class HomeView extends StatelessWidget {
                     softWrap: true,
                     overflow: TextOverflow.clip,
                     textAlign: TextAlign.justify,
-                    style: _styles['bodyText1'],
+                    style: TextPattern.bodyText1,
                   ),
                   const SizedBox(height: 20),
                   Text(
@@ -292,7 +82,7 @@ class HomeView extends StatelessWidget {
                     softWrap: true,
                     overflow: TextOverflow.clip,
                     textAlign: TextAlign.justify,
-                    style: _styles['bodyText1'],
+                    style: TextPattern.bodyText1,
                   ),
                   const SizedBox(height: 20),
                   Text(
@@ -300,10 +90,9 @@ class HomeView extends StatelessWidget {
                     softWrap: true,
                     overflow: TextOverflow.clip,
                     textAlign: TextAlign.justify,
-                    style: _styles['bodyText1'],
+                    style: TextPattern.bodyText1,
                   ),
                   const SizedBox(height: 20),
-                  
                 ],
               ),
             ),
@@ -312,7 +101,7 @@ class HomeView extends StatelessWidget {
                 Navigator.pushNamed(context, '/ods');
               },
               child: Image.asset('assets/images/ods/allods.jpg'),
-            ),//
+            ), //
           ],
         ),
       ),

@@ -14,7 +14,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case '/ods':
       return MaterialPageRoute(builder: (_) => OdsView());
     case '/ods001':
-      return MaterialPageRoute(builder: (_) => const Ods001View());
+      return MaterialPageRoute(builder: (_) => Ods001View());
     case '/teste':
       return MaterialPageRoute(builder: (_) => const TesteView());
     default:
